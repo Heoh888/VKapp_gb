@@ -1,19 +1,17 @@
 //
-//  FriendsTableViewCell.swift
+//  AllCroupTableViewCell.swift
 //  VKapp
 //
-//  Created by MacBook on 29.11.2021.
+//  Created by MacBook on 07.12.2021.
 //
 
 import UIKit
 
-class FriendsTableViewCell: UITableViewCell {
+class AllCroupTableViewCell: UITableViewCell {
 
-
-    @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var avatar: UIImageView!
-    
+    @IBOutlet weak var cellViewGroup: UIView!
+    @IBOutlet weak var nameGruop: UILabel!
+    @IBOutlet weak var imageGroup: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +22,4 @@ class FriendsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
