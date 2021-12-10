@@ -44,14 +44,18 @@ class ViewController: UIViewController {
     // MARK: - Actions
     @IBAction func loginButton(_ sender: Any) {
         let bounds = button.bounds
+        let storyoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyoard.instantiateViewController(identifier: "lowerBar")
+        
         if loginInput.text == "admin" && passwordInput.text == "123345" {
             infoResult.textColor = UIColor(hex: "#0C7DE8")
-            
             infoResult.text = "Вы вошли в систему"
+            self.present(vc, animated: true, completion: nil)
         } else {
             infoResult.textColor = UIColor(hex: "#E85E7E")
             infoResult.text = "Неверный логин или пароль"
         }
+        // Анимация кнопки
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 0.15,
