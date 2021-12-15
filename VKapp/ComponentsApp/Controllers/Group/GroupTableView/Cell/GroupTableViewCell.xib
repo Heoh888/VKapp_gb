@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellViewGroup" rowHeight="104" id="9JS-38-pgm" userLabel="Friends Table View Cell" customClass="GroupTableViewCell" customModule="VKapp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9JS-38-pgm" id="ZJW-7T-aKg">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SF8-cZ-RrY">
+                        <rect key="frame" x="8" y="8" width="398" height="89"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TheСat" id="nh3-kY-qY4">
+                                <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4z-w0-fFd">
+                                <rect key="frame" x="107" y="34" width="269" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.36862745099999999" blue="0.4941176471" alpha="0.54580789529999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="e4z-w0-fFd" firstAttribute="top" secondItem="SF8-cZ-RrY" secondAttribute="top" constant="34" id="UL8-UF-aNn"/>
+                            <constraint firstAttribute="bottom" secondItem="e4z-w0-fFd" secondAttribute="bottom" constant="34" id="hLR-qF-kDD"/>
+                            <constraint firstItem="e4z-w0-fFd" firstAttribute="leading" secondItem="nh3-kY-qY4" secondAttribute="trailing" constant="18" id="m1j-qa-u5J"/>
+                            <constraint firstItem="e4z-w0-fFd" firstAttribute="leading" secondItem="nh3-kY-qY4" secondAttribute="trailing" constant="18" id="qSI-ma-YKf"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="e4z-w0-fFd" secondAttribute="trailing" constant="22" id="xzg-6T-u3t"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="SF8-cZ-RrY" secondAttribute="trailing" constant="8" id="7qs-GW-Aum"/>
+                    <constraint firstItem="SF8-cZ-RrY" firstAttribute="top" secondItem="ZJW-7T-aKg" secondAttribute="top" constant="8" id="9Sh-gR-f9w"/>
+                    <constraint firstAttribute="bottom" secondItem="SF8-cZ-RrY" secondAttribute="bottom" constant="7" id="Gdp-Xz-mkR"/>
+                    <constraint firstItem="SF8-cZ-RrY" firstAttribute="leading" secondItem="ZJW-7T-aKg" secondAttribute="leading" constant="8" id="noV-I5-sxE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellViewGroup" destination="SF8-cZ-RrY" id="fSp-6Q-Sax"/>
+                <outlet property="imageGroup" destination="nh3-kY-qY4" id="F4I-mZ-lw7"/>
+                <outlet property="nameGroup" destination="e4z-w0-fFd" id="AgR-f3-iki"/>
+            </connections>
+            <point key="canvasLocation" x="279.71014492753625" y="65.625"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="TheСat" width="900" height="900"/>
+    </resources>
+</document>
