@@ -9,16 +9,14 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cellView: UIView!
+
+    @IBOutlet weak var shadow: UIView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var avatar: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    func setupCell(user: User) {
-        self.avatar.image = user.image
-        self.userName.text = user.name
     }
 }

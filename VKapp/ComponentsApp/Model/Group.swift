@@ -9,13 +9,8 @@ import UIKit
 
 class Group {
     
-    public var friends = [["Адвентисты 7го дня",
-                           "CS: GO",
-                           "Все о крипте",
-                           "Музыкальные кошки"]]
-    
-    public var logoImage = [[UIImage(named: "7day")!,
-                             UIImage(named: "cs_go")!,
-                             UIImage(named: "cripto")!,
-                             UIImage(named: "musickat")!]]
+    let grups:[WeatherModel] = [WeatherModel(name: "Адвентисты 7го дня", image: UIImage(named: "7day")!),
+                                WeatherModel(name: "CS: GO", image: UIImage(named: "cs_go")!),
+                                WeatherModel(name: "Все о крипте", image: UIImage(named: "cripto")!),
+                                WeatherModel(name: "Музыкальные кошки", image: UIImage(named: "musickat")!)]
 }
