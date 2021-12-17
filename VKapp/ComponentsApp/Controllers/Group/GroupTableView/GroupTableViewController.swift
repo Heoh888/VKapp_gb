@@ -44,11 +44,12 @@ class GroupTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func addCity(segue: UIStoryboardSegue) {
+    @IBAction func addGroup(segue: UIStoryboardSegue) {
         if segue.identifier == "addGroup" {
             guard let allGroupController = segue.source as? AllGroupTableViewController else { return }
             if let indexPath = allGroupController.tableView.indexPathForSelectedRow {
-                let group = allGroupController.allGroup.grups[indexPath.row]
+                let group = allGroupController.fillteredAllGroup[indexPath.row]
+                print(indexPath)
                 if userGroups.count == 0 {
                     userGroups.append(group)
                     tableView.reloadData()
