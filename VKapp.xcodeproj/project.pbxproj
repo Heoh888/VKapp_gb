@@ -35,6 +35,7 @@
 		FADC7F7A276A20A200C81260 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC7F78276A20A200C81260 /* NewsTableViewCell.swift */; };
 		FADC7F7D276A6C9F00C81260 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC7F7C276A6C9F00C81260 /* News.swift */; };
 		FADEE0C5275FAD94009BBFFF /* AllGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEE0C4275FAD94009BBFFF /* AllGroupTableViewController.swift */; };
+		FAF15C2F277228FF006FC004 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF15C2E277228FF006FC004 /* CommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		FADC7F78276A20A200C81260 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		FADC7F7C276A6C9F00C81260 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		FADEE0C4275FAD94009BBFFF /* AllGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupTableViewController.swift; sourceTree = "<group>"; };
+		FAF15C2E277228FF006FC004 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 		FA372B47276C104B00168776 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				FAF15C2B2772271A006FC004 /* Comments */,
 				FA372B48276C106600168776 /* PostViewController.swift */,
 			);
 			path = Post;
@@ -310,6 +313,14 @@
 				FA0346162768FA6C00DCBB60 /* Cell */,
 			);
 			path = AllGroupTableView;
+			sourceTree = "<group>";
+		};
+		FAF15C2B2772271A006FC004 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				FAF15C2E277228FF006FC004 /* CommentTableViewCell.swift */,
+			);
+			path = Comments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +461,7 @@
 				FA160103274F106200BF9C63 /* ViewController.swift in Sources */,
 				FAA56C98275E4742000DDB92 /* FriendsTableViewController.swift in Sources */,
 				FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */,
+				FAF15C2F277228FF006FC004 /* CommentTableViewCell.swift in Sources */,
 				FA0346152768E3FF00DCBB60 /* User.swift in Sources */,
 				FA6ADAD52764F6B600693F96 /* WeatherModel.swift in Sources */,
 				FAA56C8E275E384D000DDB92 /* FriendscCollectionViewController.swift in Sources */,

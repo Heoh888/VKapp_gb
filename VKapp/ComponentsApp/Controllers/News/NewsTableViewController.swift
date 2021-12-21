@@ -10,12 +10,15 @@ import UIKit
 class NewsTableViewController: UITableViewController {
     
     var allNews = News()
+    var like = NewsTableViewCell()
     
     @IBOutlet var tableViewNews: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewNews.estimatedRowHeight = 7
+        tableViewNews.rowHeight = UITableView.automaticDimension
+        tableViewNews.estimatedRowHeight = 229.0
     }
     
     // MARK: - Table view data source
@@ -30,6 +33,7 @@ class NewsTableViewController: UITableViewController {
         cell.userName.text = allNews.news[indexPath.row].nameUser
         cell.imageAvatar.image = allNews.news[indexPath.row].imageAvatar
         cell.imageAvatar.layer.cornerRadius = cell.imageAvatar.frame.height / 2
+        cell.textPost.text = allNews.news[indexPath.row].textPost
         cell.imagePost.image = allNews.news[indexPath.row].imagePost
         cell.headerPost.layer.cornerRadius = cell.headerPost.frame.height / 2
         cell.likeText.text = String(allNews.news[indexPath.row].like)
@@ -38,12 +42,16 @@ class NewsTableViewController: UITableViewController {
             cell.like.tintColor = UIColor.gray
         } else {
             cell.like.tintColor = UIColor.red
+            if allNews.news[indexPath.row].animation == true {
+                liked(sender: cell.like)
+                allNews.news[indexPath.row].animation = false
+            }
         }
         cell.commentsText.text = String(allNews.news[indexPath.row].comment.count)
         cell.commentsBase.layer.cornerRadius = cell.commentsBase.frame.height / 2
         cell.rePostText.text = String(allNews.news[indexPath.row].rePost)
         cell.rePostBase.layer.cornerRadius = cell.rePostBase.frame.height / 2
-        cell.post.layer.cornerRadius = cell.post.frame.height / 20
+        cell.post.layer.cornerRadius = cell.post.frame.width / 20
         cell.views.text = String(allNews.news[indexPath.row].views)
         cell.shadow.layer.shadowColor = UIColor.gray.cgColor
         cell.shadow.layer.shadowOffset = CGSize(width: 3, height: 3)
@@ -51,17 +59,29 @@ class NewsTableViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func likeButton(_ sender:AnyObject) {
+    @IBAction func likeButton(_ sender:AnyObject)   {
         let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
         let index = self.tableView.indexPathForRow(at: buttonPosition)
         if allNews.news[index![1]].likeStatus == false {
             allNews.news[index![1]].like += 1
             allNews.news[index![1]].likeStatus = true
+            allNews.news[index![1]].animation = true
         } else {
             allNews.news[index![1]].like -= 1
             allNews.news[index![1]].likeStatus = false
         }
         tableViewNews.reloadData()
+    }
+    
+    public func liked(sender:AnyObject)  {
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.duration = 1
+        animation.timingFunction = .init(name: .easeInEaseOut)
+        animation.mass = 2
+        animation.stiffness = 400
+        sender.layer.add(animation, forKey: nil)
     }
     
     @IBAction func rePostButton(_ sender: AnyObject) {
@@ -72,7 +92,6 @@ class NewsTableViewController: UITableViewController {
         let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
         self.present(avc, animated: true, completion: nil)
         tableViewNews.reloadData()
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,50 +100,4 @@ class NewsTableViewController: UITableViewController {
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
