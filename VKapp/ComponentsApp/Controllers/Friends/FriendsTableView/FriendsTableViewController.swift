@@ -30,9 +30,9 @@ extension FriendsTableViewController:UITableViewDataSource, UITableViewDelegate 
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsTableViewCell") as! FriendsTableViewCell
         tableView.separatorColor = UIColor.clear
         cell.userName.text = arrUsers.users[indexPath.row].name
-        cell.avatar.image = arrUsers.users[indexPath.row].image
-        cell.shadow.layer.cornerRadius = cell.shadow.frame.height / 7
+        cell.avatar.image = arrUsers.users[indexPath.row].image[0]
         cell.avatar.layer.cornerRadius = cell.avatar.frame.height / 2
+        cell.shadow.layer.cornerRadius = 10
         cell.shadow.layer.shadowColor = UIColor.gray.cgColor
         cell.shadow.layer.shadowOffset = CGSize(width: 3, height: 3)
         cell.shadow.layer.shadowOpacity = 4

@@ -10,6 +10,6 @@ import UIKit
 
 struct WeatherModel {
     let name:String
-    let image:UIImage
+    let image:[UIImage]
 }
 

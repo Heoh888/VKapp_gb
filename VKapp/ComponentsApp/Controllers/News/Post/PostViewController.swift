@@ -10,6 +10,8 @@ import UIKit
 class PostViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var postText: UILabel!
+    
     @IBOutlet var myView: UIView!
     @IBOutlet weak var comment: UIView!
     @IBOutlet weak var viewComment: UIView!
@@ -82,6 +84,7 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell") as! CommentTableViewCell
+        self.tableView.frame.origin.y = postText.frame.height + 50
         cell.textComment.text = comments.news[0].comment[indexPath.row]
 
         return cell
