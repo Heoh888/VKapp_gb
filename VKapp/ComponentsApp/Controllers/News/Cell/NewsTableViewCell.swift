@@ -8,14 +8,13 @@
 import UIKit
 
 class NewsTableViewCell: UITableViewCell {
-    
-    var news = NewsTableViewController()
 
     @IBOutlet weak var headerPost: UIView!
     @IBOutlet weak var shadow: UIView!
     @IBOutlet weak var post: UIView!
     @IBOutlet weak var imageAvatar: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var textPost: UILabel!
     @IBOutlet weak var imagePost: UIImageView!
     
     @IBOutlet weak var likeButton: UIButton!

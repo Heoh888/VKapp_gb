@@ -42,9 +42,5 @@ extension FriendscCollectionViewController: UICollectionViewDelegate, UICollecti
         print(collectionView.frame.size)
         return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2 + 30)
     }
-    
-
-    
-
 }
 
