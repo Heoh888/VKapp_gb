@@ -15,7 +15,7 @@ struct NewsModel {
     var like:Int
     var likeStatus: Bool
     var rePost:Int
-    let comment:[String]
+    var comment:[String]
     let views:Int
     var animation:Bool
 }
@@ -29,7 +29,7 @@ class News {
                                       like: 2000,
                                       likeStatus: false,
                                       rePost: 2,
-                                      comment: ["Ghb","wefdf"],
+                                      comment: ["Ты тоже можешь добавить комментарий!"],
                                       views: 2,
                                       animation: false),
                             NewsModel(nameUser: "Oliver",
@@ -39,7 +39,7 @@ class News {
                                       like: 5,
                                       likeStatus: false,
                                       rePost: 20,
-                                      comment: ["derfw","wrwefdf"],
+                                      comment:["Ты тоже можешь добавить комментарий!"],
                                       views: 2,
                                       animation: false),
                             NewsModel(nameUser: "Tony",
@@ -49,7 +49,7 @@ class News {
                                       like: 5,
                                       likeStatus: false,
                                       rePost: 20,
-                                      comment: ["derfw","wrwefdf"],
+                                      comment: ["Ты тоже можешь добавить комментарий!"],
                                       views: 2,
                                       animation: false),
                             NewsModel(nameUser: "Mason",
@@ -59,7 +59,7 @@ class News {
                                       like: 5,
                                       likeStatus: false,
                                       rePost: 20,
-                                      comment: ["derfw","wrwefdf"],
+                                      comment: ["Ты тоже можешь добавить комментарий!"],
                                       views: 2,
                                       animation: false)]
 }

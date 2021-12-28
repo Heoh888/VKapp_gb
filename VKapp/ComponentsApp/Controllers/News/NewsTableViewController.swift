@@ -104,6 +104,7 @@ class NewsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyoard.instantiateViewController(identifier: "PostViewController") as! PostViewController
+        vc.index = IndexPath(row: indexPath[1], section: 0)
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
