@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0346152768E3FF00DCBB60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0346142768E3FF00DCBB60 /* User.swift */; };
+		FA03461B2769008300DCBB60 /* AllCroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */; };
 		FA1600FF274F106200BF9C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1600FE274F106200BF9C63 /* AppDelegate.swift */; };
 		FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA160100274F106200BF9C63 /* SceneDelegate.swift */; };
 		FA160103274F106200BF9C63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA160102274F106200BF9C63 /* ViewController.swift */; };
@@ -21,15 +23,14 @@
 		FA29F30F275A42DE00BBB0EE /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29F30E275A42DE00BBB0EE /* GroupTableViewController.swift */; };
 		FA29F312275A434200BBB0EE /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA29F311275A434200BBB0EE /* GroupTableViewCell.xib */; };
 		FA29F314275A435600BBB0EE /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29F313275A435600BBB0EE /* GroupTableViewCell.swift */; };
+		FA6ADAD52764F6B600693F96 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6ADAD42764F6B600693F96 /* WeatherModel.swift */; };
 		FAA56C8E275E384D000DDB92 /* FriendscCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C8D275E384D000DDB92 /* FriendscCollectionViewController.swift */; };
 		FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C8F275E446A000DDB92 /* FriendsViewCell.swift */; };
 		FAA56C92275E446A000DDB92 /* FriendsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA56C90275E446A000DDB92 /* FriendsViewCell.xib */; };
 		FAA56C98275E4742000DDB92 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C97275E4742000DDB92 /* FriendsTableViewController.swift */; };
-		FAB7737B27555DB7007F37C1 /* PulUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7737A27555DB7007F37C1 /* PulUsers.swift */; };
 		FAB77381275564DE007F37C1 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB77380275564DE007F37C1 /* FriendsTableViewCell.swift */; };
 		FAB7738527556653007F37C1 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */; };
 		FADEE0C5275FAD94009BBFFF /* AllGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEE0C4275FAD94009BBFFF /* AllGroupTableViewController.swift */; };
-		FADEE0C7275FADAC009BBFFF /* AllCroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEE0C6275FADAC009BBFFF /* AllCroupTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA0346142768E3FF00DCBB60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCroupTableViewCell.swift; sourceTree = "<group>"; };
 		FA1600FB274F106200BF9C63 /* VKapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1600FE274F106200BF9C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA160100274F106200BF9C63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,15 +71,14 @@
 		FA29F30E275A42DE00BBB0EE /* GroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		FA29F311275A434200BBB0EE /* GroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
 		FA29F313275A435600BBB0EE /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		FA6ADAD42764F6B600693F96 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		FAA56C8D275E384D000DDB92 /* FriendscCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendscCollectionViewController.swift; sourceTree = "<group>"; };
 		FAA56C8F275E446A000DDB92 /* FriendsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewCell.swift; sourceTree = "<group>"; };
 		FAA56C90275E446A000DDB92 /* FriendsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsViewCell.xib; sourceTree = "<group>"; };
 		FAA56C97275E4742000DDB92 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
-		FAB7737A27555DB7007F37C1 /* PulUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulUsers.swift; sourceTree = "<group>"; };
 		FAB77380275564DE007F37C1 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
 		FADEE0C4275FAD94009BBFFF /* AllGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupTableViewController.swift; sourceTree = "<group>"; };
-		FADEE0C6275FADAC009BBFFF /* AllCroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCroupTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0346162768FA6C00DCBB60 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		FA1600F2274F106200BF9C63 = {
 			isa = PBXGroup;
 			children = (
@@ -169,8 +179,9 @@
 		FA29F30A275A419100BBB0EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FAB7737A27555DB7007F37C1 /* PulUsers.swift */,
 				FA29F30B275A41B100BBB0EE /* Group.swift */,
+				FA0346142768E3FF00DCBB60 /* User.swift */,
+				FA6ADAD42764F6B600693F96 /* WeatherModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				FADEE0C4275FAD94009BBFFF /* AllGroupTableViewController.swift */,
-				FADEE0C6275FADAC009BBFFF /* AllCroupTableViewCell.swift */,
+				FA0346162768FA6C00DCBB60 /* Cell */,
 			);
 			path = AllGroupTableView;
 			sourceTree = "<group>";
@@ -403,16 +414,17 @@
 				FA160103274F106200BF9C63 /* ViewController.swift in Sources */,
 				FAA56C98275E4742000DDB92 /* FriendsTableViewController.swift in Sources */,
 				FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */,
+				FA0346152768E3FF00DCBB60 /* User.swift in Sources */,
+				FA6ADAD52764F6B600693F96 /* WeatherModel.swift in Sources */,
 				FAA56C8E275E384D000DDB92 /* FriendscCollectionViewController.swift in Sources */,
+				FA03461B2769008300DCBB60 /* AllCroupTableViewCell.swift in Sources */,
 				FADEE0C5275FAD94009BBFFF /* AllGroupTableViewController.swift in Sources */,
 				FA29F30C275A41B100BBB0EE /* Group.swift in Sources */,
 				FAB77381275564DE007F37C1 /* FriendsTableViewCell.swift in Sources */,
 				FA1600FF274F106200BF9C63 /* AppDelegate.swift in Sources */,
-				FAB7737B27555DB7007F37C1 /* PulUsers.swift in Sources */,
 				FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */,
 				FA29F30F275A42DE00BBB0EE /* GroupTableViewController.swift in Sources */,
 				FA29F314275A435600BBB0EE /* GroupTableViewCell.swift in Sources */,
-				FADEE0C7275FADAC009BBFFF /* AllCroupTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         let storyoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyoard.instantiateViewController(identifier: "lowerBar")
         
-        if loginInput.text == "admin" && passwordInput.text == "123345" {
+        if loginInput.text == "admin" && passwordInput.text == "12345" {
             infoResult.textColor = UIColor(hex: "#0C7DE8")
             infoResult.text = "Вы вошли в систему"
             self.present(vc, animated: true, completion: nil)
