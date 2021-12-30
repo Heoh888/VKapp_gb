@@ -32,9 +32,9 @@ class AllGroupTableViewController: UITableViewController, UISearchResultsUpdatin
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllCroupTableViewCell", for: indexPath) as! AllCroupTableViewCell
         tableView.separatorColor = UIColor.clear
         cell.nameGruop.text = fillteredAllGroup[indexPath.row].name
-        cell.imageGroup.image = fillteredAllGroup[indexPath.row].image
-        cell.shadow.layer.cornerRadius = cell.shadow.frame.height / 7
+        cell.imageGroup.image = fillteredAllGroup[indexPath.row].image[0]
         cell.imageGroup.layer.cornerRadius = cell.imageGroup.frame.height / 2
+        cell.shadow.layer.cornerRadius = 10
         cell.shadow.layer.shadowColor = UIColor.gray.cgColor
         cell.shadow.layer.shadowOffset = CGSize(width: 3, height: 3)
         cell.shadow.layer.shadowOpacity = 4

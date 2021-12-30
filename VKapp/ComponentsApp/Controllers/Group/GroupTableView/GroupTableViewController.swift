@@ -26,10 +26,10 @@ class GroupTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellViewGroup", for: indexPath) as! GroupTableViewCell
         tableView.separatorColor = UIColor.clear
-        cell.cellViewGroup.layer.cornerRadius = cell.cellViewGroup.frame.height / 7
         cell.nameGroup.text = userGroups[indexPath.row].name
-        cell.imageGroup.image = userGroups[indexPath.row].image
-        cell.imageGroup.layer.cornerRadius = cell.cellViewGroup.frame.height / 2.5
+        cell.imageGroup.image = userGroups[indexPath.row].image[0]
+        cell.imageGroup.layer.cornerRadius = cell.imageGroup.frame.height / 2
+        cell.cellViewGroup.layer.cornerRadius = 10
         cell.cellViewGroup.layer.shadowColor = UIColor.gray.cgColor
         cell.cellViewGroup.layer.shadowOffset = CGSize(width: 3, height: 3)
         cell.cellViewGroup.layer.shadowOpacity = 4

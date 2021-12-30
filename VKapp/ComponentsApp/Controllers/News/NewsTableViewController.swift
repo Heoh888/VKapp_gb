@@ -30,33 +30,51 @@ class NewsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
         tableView.separatorColor = UIColor.clear
+        cell.headerPost.layer.cornerRadius = 10
         cell.userName.text = allNews.news[indexPath.row].nameUser
         cell.imageAvatar.image = allNews.news[indexPath.row].imageAvatar
         cell.imageAvatar.layer.cornerRadius = cell.imageAvatar.frame.height / 2
         cell.textPost.text = allNews.news[indexPath.row].textPost
         cell.imagePost.image = allNews.news[indexPath.row].imagePost
-        cell.headerPost.layer.cornerRadius = cell.headerPost.frame.height / 2
+        cell.imagePost.layer.cornerRadius = 10
         cell.likeText.text = String(allNews.news[indexPath.row].like)
         cell.likeBase.layer.cornerRadius = cell.likeBase.frame.height / 2
-        if allNews.news[indexPath.row].likeStatus == false {
-            cell.like.tintColor = UIColor.gray
-        } else {
-            cell.like.tintColor = UIColor.red
-            if allNews.news[indexPath.row].animation == true {
-                liked(sender: cell.like)
-                allNews.news[indexPath.row].animation = false
-            }
-        }
+        cell.like.tintColor = likeColour(status: allNews.news[indexPath.row].likeStatus, cell: cell.like, statusAnimation: &allNews.news[indexPath.row].animation)
         cell.commentsText.text = String(allNews.news[indexPath.row].comment.count)
         cell.commentsBase.layer.cornerRadius = cell.commentsBase.frame.height / 2
         cell.rePostText.text = String(allNews.news[indexPath.row].rePost)
         cell.rePostBase.layer.cornerRadius = cell.rePostBase.frame.height / 2
-        cell.post.layer.cornerRadius = cell.post.frame.width / 20
+        cell.post.layer.cornerRadius = 10
         cell.views.text = String(allNews.news[indexPath.row].views)
         cell.shadow.layer.shadowColor = UIColor.gray.cgColor
         cell.shadow.layer.shadowOffset = CGSize(width: 3, height: 3)
         cell.shadow.layer.shadowOpacity = 4
         return cell
+    }
+    
+    private func likeColour(status: Bool, cell: AnyObject, statusAnimation: inout Bool) -> UIColor {
+        var color: UIColor
+        if status == false {
+            color = UIColor.gray
+        } else {
+            color = UIColor.red
+            if statusAnimation == true {
+                liked(sender: cell)
+                statusAnimation = false
+            }
+        }
+        return color
+    }
+    
+    private func liked(sender:AnyObject)  {
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.duration = 1
+        animation.timingFunction = .init(name: .easeInEaseOut)
+        animation.mass = 2
+        animation.stiffness = 400
+        sender.layer.add(animation, forKey: nil)
     }
     
     @IBAction func likeButton(_ sender:AnyObject)   {
@@ -71,17 +89,6 @@ class NewsTableViewController: UITableViewController {
             allNews.news[index![1]].likeStatus = false
         }
         tableViewNews.reloadData()
-    }
-    
-    public func liked(sender:AnyObject)  {
-        let animation = CASpringAnimation(keyPath: "transform.scale")
-        animation.fromValue = 0
-        animation.toValue = 1
-        animation.duration = 1
-        animation.timingFunction = .init(name: .easeInEaseOut)
-        animation.mass = 2
-        animation.stiffness = 400
-        sender.layer.add(animation, forKey: nil)
     }
     
     @IBAction func rePostButton(_ sender: AnyObject) {
