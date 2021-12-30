@@ -55,7 +55,6 @@ class ViewController: UIViewController {
             infoResult.textColor = UIColor(hex: "#E85E7E")
             infoResult.text = "Неверный логин или пароль"
         }
-        // Анимация кнопки
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 0.15,
@@ -89,7 +88,7 @@ class ViewController: UIViewController {
     }
 }
 
-// Расширение класс ViewController чтобы можно было определить устройство пользователя
+// MARK: - Orientation of the device
 extension ViewController {
     func deviceType() {
         if UIDevice.current.orientation.isLandscape {
@@ -114,10 +113,8 @@ extension ViewController {
     }
 }
 
-// Расширение класс UIColor что бы можно было работать с "hex" кодировкой
+// MARK: - hex: Code
 extension UIColor {
-    
-    // MARK: - Initialization
     convenience init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
@@ -147,13 +144,9 @@ extension UIColor {
         }
         self.init(red: r, green: g, blue: b, alpha: a)
     }
-    
-    // MARK: - Computed Properties
     var toHex: String? {
         return toHex()
     }
-    
-    // MARK: - From UIColor to String
     func toHex(alpha: Bool = false) -> String? {
         guard let components = cgColor.components, components.count >= 3 else {
             return nil

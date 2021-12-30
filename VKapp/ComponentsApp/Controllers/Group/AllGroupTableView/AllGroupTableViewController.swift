@@ -15,6 +15,7 @@ class AllGroupTableViewController: UITableViewController, UISearchResultsUpdatin
     
     var searchController = UISearchController(searchResultsController: nil)
 
+    // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
         fillteredAllGroup = allGroup.grups
@@ -23,7 +24,6 @@ class AllGroupTableViewController: UITableViewController, UISearchResultsUpdatin
     }
 
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fillteredAllGroup.count
     }

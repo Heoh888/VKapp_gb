@@ -14,6 +14,7 @@ class NewsTableViewController: UITableViewController {
     
     @IBOutlet var tableViewNews: UITableView!
     
+    // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewNews.estimatedRowHeight = 7
@@ -22,7 +23,6 @@ class NewsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allNews.news.count
     }
@@ -39,7 +39,9 @@ class NewsTableViewController: UITableViewController {
         cell.imagePost.layer.cornerRadius = 10
         cell.likeText.text = String(allNews.news[indexPath.row].like)
         cell.likeBase.layer.cornerRadius = cell.likeBase.frame.height / 2
-        cell.like.tintColor = likeColour(status: allNews.news[indexPath.row].likeStatus, cell: cell.like, statusAnimation: &allNews.news[indexPath.row].animation)
+        cell.like.tintColor = likeColour(status: allNews.news[indexPath.row].likeStatus,
+                                         cell: cell.like,
+                                         statusAnimation: &allNews.news[indexPath.row].animation)
         cell.commentsText.text = String(allNews.news[indexPath.row].comment.count)
         cell.commentsBase.layer.cornerRadius = cell.commentsBase.frame.height / 2
         cell.rePostText.text = String(allNews.news[indexPath.row].rePost)
@@ -52,6 +54,15 @@ class NewsTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyoard.instantiateViewController(identifier: "PostViewController") as! PostViewController
+        vc.index = IndexPath(row: indexPath[1], section: 0)
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - Private functions
     private func likeColour(status: Bool, cell: AnyObject, statusAnimation: inout Bool) -> UIColor {
         var color: UIColor
         if status == false {
@@ -77,6 +88,7 @@ class NewsTableViewController: UITableViewController {
         sender.layer.add(animation, forKey: nil)
     }
     
+    // MARK: - Actions
     @IBAction func likeButton(_ sender:AnyObject)   {
         let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
         let index = self.tableView.indexPathForRow(at: buttonPosition)
@@ -101,10 +113,4 @@ class NewsTableViewController: UITableViewController {
         tableViewNews.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyoard.instantiateViewController(identifier: "PostViewController") as! PostViewController
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }

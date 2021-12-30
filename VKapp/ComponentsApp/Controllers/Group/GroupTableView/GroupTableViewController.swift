@@ -12,13 +12,14 @@ class GroupTableViewController: UITableViewController {
     @IBOutlet var groupTableView: UITableView!
     
     var userGroups = [WeatherModel]()
+    
+    // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
         groupTableView.register(UINib(nibName: "GroupTableViewCell", bundle: nil), forCellReuseIdentifier: "CellViewGroup")
     }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userGroups.count
     }
@@ -36,7 +37,6 @@ class GroupTableViewController: UITableViewController {
         return cell
     }
     
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             userGroups.remove(at: indexPath.row)
@@ -44,6 +44,7 @@ class GroupTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Actions
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         if segue.identifier == "addGroup" {
             guard let allGroupController = segue.source as? AllGroupTableViewController else { return }
