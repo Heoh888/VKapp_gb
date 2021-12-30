@@ -24,9 +24,6 @@
 		FA29F312275A434200BBB0EE /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA29F311275A434200BBB0EE /* GroupTableViewCell.xib */; };
 		FA29F314275A435600BBB0EE /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29F313275A435600BBB0EE /* GroupTableViewCell.swift */; };
 		FA372B49276C106600168776 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA372B48276C106600168776 /* PostViewController.swift */; };
-		FA581DCA27788DE200D7483D /* OneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DC927788DE200D7483D /* OneController.swift */; };
-		FA581DCC27788E0900D7483D /* SecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DCB27788E0900D7483D /* SecondController.swift */; };
-		FA581DCE27788FED00D7483D /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DCD27788FED00D7483D /* Animator.swift */; };
 		FA581DD12778BF8C00D7483D /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DD02778BF8C00D7483D /* CustomNavigationController.swift */; };
 		FA581DD32778C0E000D7483D /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DD22778C0E000D7483D /* InteractiveTransition.swift */; };
 		FA581DD62778C61400D7483D /* PushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DD52778C61400D7483D /* PushAnimator.swift */; };
@@ -85,9 +82,6 @@
 		FA29F311275A434200BBB0EE /* GroupTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupTableViewCell.xib; sourceTree = "<group>"; };
 		FA29F313275A435600BBB0EE /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		FA372B48276C106600168776 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		FA581DC927788DE200D7483D /* OneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneController.swift; sourceTree = "<group>"; };
-		FA581DCB27788E0900D7483D /* SecondController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondController.swift; sourceTree = "<group>"; };
-		FA581DCD27788FED00D7483D /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		FA581DD02778BF8C00D7483D /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		FA581DD22778C0E000D7483D /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
 		FA581DD52778C61400D7483D /* PushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAnimator.swift; sourceTree = "<group>"; };
@@ -172,9 +166,6 @@
 				FA16010C274F106400BF9C63 /* LaunchScreen.storyboard */,
 				FA16010F274F106400BF9C63 /* Info.plist */,
 				FA160107274F106200BF9C63 /* VKapp.xcdatamodeld */,
-				FA581DC927788DE200D7483D /* OneController.swift */,
-				FA581DCB27788E0900D7483D /* SecondController.swift */,
-				FA581DCD27788FED00D7483D /* Animator.swift */,
 			);
 			path = VKapp;
 			sourceTree = "<group>";
@@ -507,7 +498,6 @@
 				FA0346152768E3FF00DCBB60 /* User.swift in Sources */,
 				FA581DD62778C61400D7483D /* PushAnimator.swift in Sources */,
 				FA6ADAD52764F6B600693F96 /* WeatherModel.swift in Sources */,
-				FA581DCA27788DE200D7483D /* OneController.swift in Sources */,
 				FAA56C8E275E384D000DDB92 /* FriendscCollectionViewController.swift in Sources */,
 				FA03461B2769008300DCBB60 /* AllCroupTableViewCell.swift in Sources */,
 				FADEE0C5275FAD94009BBFFF /* AllGroupTableViewController.swift in Sources */,
@@ -521,9 +511,7 @@
 				FADC7F76276A208600C81260 /* NewsTableViewController.swift in Sources */,
 				FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */,
 				FADC7F7A276A20A200C81260 /* NewsTableViewCell.swift in Sources */,
-				FA581DCC27788E0900D7483D /* SecondController.swift in Sources */,
 				FA29F30F275A42DE00BBB0EE /* GroupTableViewController.swift in Sources */,
-				FA581DCE27788FED00D7483D /* Animator.swift in Sources */,
 				FA29F314275A435600BBB0EE /* GroupTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,9 +12,9 @@ class FriendscCollectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var index = IndexPath(item: 0, section: 0)
-    
     private var arrUsers = User()
     
+    // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(UINib(nibName: "FriendsViewCell", bundle: nil), forCellWithReuseIdentifier: "FriendsViewCell")
@@ -22,6 +22,8 @@ class FriendscCollectionViewController: UIViewController {
         self.collectionView.delegate = self
     }
 }
+
+// MARK: - Collection view data source
 extension FriendscCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

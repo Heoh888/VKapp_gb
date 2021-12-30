@@ -28,7 +28,6 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                                         y: 0,
                                         width: transitionContext.containerView.frame.height,
                                         height: transitionContext.containerView.frame.width)
-//        destination.view.frame = source.view.frame
         destination.view.transform = CGAffineTransform(rotationAngle: .pi / 2)
         
         setAnchorPoint(anchorPoint: CGPoint(x: 1, y: 0), forView: source.view)

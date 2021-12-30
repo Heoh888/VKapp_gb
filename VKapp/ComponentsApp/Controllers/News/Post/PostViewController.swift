@@ -43,19 +43,13 @@ class PostViewController: UIViewController {
 
     let width:CGFloat = 314
     
+    // MARK: - lifeСycle
     override func viewDidLoad() {
-        print(index)
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         initialiSetup()
         AppUtility.lockOrientation(.portrait)
-    }
-    
-    func getLableHeightRuntime() -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = postText.text!.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont(name: "Arial", size: 15)!], context: nil)
-        return ceil(boundingBox.height)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +60,7 @@ class PostViewController: UIViewController {
         self.tableView.removeObserver(self, forKeyPath: "contentSize")
     }
     
+    // MARK: - Observer
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize" {
             if let newValue = change?[.newKey] {
@@ -75,6 +70,21 @@ class PostViewController: UIViewController {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func getLableHeightRuntime() -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = postText.text!.boundingRect(with: constraintRect,
+                                                      options: .usesLineFragmentOrigin,
+                                                      attributes: [NSAttributedString.Key.font: UIFont(name: "Arial", size: 15)!],
+                                                      context: nil)
+        return ceil(boundingBox.height)
+    }
+    
+    // MARK: - Private functions
     private func initialiSetup() {
         self.likeText.text = String(news.news[index[1]].like)
         self.likeBase.layer.cornerRadius = self.likeBase.frame.height / 2
@@ -91,35 +101,22 @@ class PostViewController: UIViewController {
         buttomComment.layer.cornerRadius = buttomComment.frame.height / 2
         comment.layer.borderColor = UIColor.lightGray.cgColor
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyBoard)))
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
         self.postHeight.constant =  getLableHeightRuntime() + 280
-    }
-    
-    @IBAction func commentButton(_ sender: Any) {
-        if textCommetnt.text! != "" {
-            news.news[index[1]].comment.append(textCommetnt.text!)
-            print(news.news[index[1]].comment)
-            self.tableView.reloadData()
-        }
-        let animation = CASpringAnimation(keyPath: "transform.scale")
-        animation.fromValue = 0
-        animation.toValue = 1
-        animation.duration = 1
-        animation.timingFunction = .init(name: .easeInEaseOut)
-        animation.mass = 1
-        animation.stiffness = 400
-        buttomComment.layer.add(animation, forKey: nil)
-        self.view.frame.origin.y = 0
-        commentState = false
-        self.view.endEditing(true)
     }
     
     @objc private func hideKeyBoard() {
         self.view.endEditing(true)
         
     }
-     
+    
     @objc private func keyboardWillShow(notification: NSNotification) {
         if commentState == false {
             if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -135,12 +132,27 @@ class PostViewController: UIViewController {
         commentState = false
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    // MARK: - Actions
+    @IBAction func commentButton(_ sender: Any) {
+        if textCommetnt.text! != "" {
+            news.news[index[1]].comment.append(textCommetnt.text!)
+            self.tableView.reloadData()
+        }
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.duration = 1
+        animation.timingFunction = .init(name: .easeInEaseOut)
+        animation.mass = 1
+        animation.stiffness = 400
+        buttomComment.layer.add(animation, forKey: nil)
+        self.view.frame.origin.y = 0
+        commentState = false
+        self.view.endEditing(true)
     }
-
 }
+
+// MARK: - Table view data source
 extension PostViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return news.news[index[1]].comment.count
@@ -149,27 +161,29 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell") as! CommentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell") as! CommentTableViewCell
         cell.textComment.text = news.news[index[1]].comment[indexPath.row]
         return cell
     }
     
 }
+
+// MARK: - extension UILabel
 extension UILabel{
-public var requiredHeight: CGFloat {
-    let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: CGFloat.greatestFiniteMagnitude))
-    label.numberOfLines = 0
-    label.lineBreakMode = NSLineBreakMode.byWordWrapping
-    label.font = font
-    label.text = text
-    label.attributedText = attributedText
-    label.sizeToFit()
-    return label.frame.height
-  }
+    public var requiredHeight: CGFloat {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.attributedText = attributedText
+        label.sizeToFit()
+        return label.frame.height
+    }
 }

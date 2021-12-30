@@ -14,6 +14,7 @@ class FriendsTableViewController: UIViewController {
     var arrUsers = User()
     var icon = FriendscCollectionViewController()
     
+    // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
@@ -21,7 +22,9 @@ class FriendsTableViewController: UIViewController {
         self.tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendsTableViewCell")
     }
 }
-extension FriendsTableViewController:UITableViewDataSource, UITableViewDelegate {
+
+// MARK: - Table view data source
+extension FriendsTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrUsers.users.count
     }
