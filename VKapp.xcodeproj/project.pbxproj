@@ -37,6 +37,10 @@
 		FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C8F275E446A000DDB92 /* FriendsViewCell.swift */; };
 		FAA56C92275E446A000DDB92 /* FriendsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA56C90275E446A000DDB92 /* FriendsViewCell.xib */; };
 		FAA56C98275E4742000DDB92 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C97275E4742000DDB92 /* FriendsTableViewController.swift */; };
+		FAA7EA7E279964F000F96AA2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7EA7D279964F000F96AA2 /* ImageLoader.swift */; };
+		FAA7EA80279968FF00F96AA2 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7EA7F279968FF00F96AA2 /* FriendModel.swift */; };
+		FAA7EA8227996FD100F96AA2 /* FriendServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7EA8127996FD100F96AA2 /* FriendServiceManager.swift */; };
+		FAA7EA862799727700F96AA2 /* FriendsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7EA852799727700F96AA2 /* FriendsSection.swift */; };
 		FAB77381275564DE007F37C1 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB77380275564DE007F37C1 /* FriendsTableViewCell.swift */; };
 		FAB7738527556653007F37C1 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */; };
 		FACFFEB42781E3C9009B46DB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFFEB32781E3C9009B46DB /* Session.swift */; };
@@ -108,6 +112,10 @@
 		FAA56C8F275E446A000DDB92 /* FriendsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewCell.swift; sourceTree = "<group>"; };
 		FAA56C90275E446A000DDB92 /* FriendsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsViewCell.xib; sourceTree = "<group>"; };
 		FAA56C97275E4742000DDB92 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		FAA7EA7D279964F000F96AA2 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		FAA7EA7F279968FF00F96AA2 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
+		FAA7EA8127996FD100F96AA2 /* FriendServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendServiceManager.swift; sourceTree = "<group>"; };
+		FAA7EA852799727700F96AA2 /* FriendsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSection.swift; sourceTree = "<group>"; };
 		FAB77380275564DE007F37C1 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
 		FACFFEB32781E3C9009B46DB /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -322,8 +330,11 @@
 		FAA56C95275E46E1000DDB92 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				FAA7EA842799724600F96AA2 /* Loader */,
+				FAA7EA832799722200F96AA2 /* Model */,
 				FA29F317275C634000BBB0EE /* FriendsCollectionViewController */,
 				FAB7737D27555DFA007F37C1 /* FriendsTableView */,
+				FAA7EA8127996FD100F96AA2 /* FriendServiceManager.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -335,6 +346,22 @@
 				FA29F30D275A429B00BBB0EE /* GroupTableView */,
 			);
 			path = Group;
+			sourceTree = "<group>";
+		};
+		FAA7EA832799722200F96AA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAA7EA7F279968FF00F96AA2 /* FriendModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FAA7EA842799724600F96AA2 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				FAA7EA852799727700F96AA2 /* FriendsSection.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		FAB7737827555D87007F37C1 /* ComponentsApp */ = {
@@ -372,6 +399,7 @@
 			children = (
 				FAD579B027955F6700E35E20 /* RequestsServer.swift */,
 				FACFFEB32781E3C9009B46DB /* Session.swift */,
+				FAA7EA7D279964F000F96AA2 /* ImageLoader.swift */,
 			);
 			path = ServerClient;
 			sourceTree = "<group>";
@@ -656,16 +684,19 @@
 				FA581DDA2778F8F700D7483D /* AppUtility.swift in Sources */,
 				FA160109274F106200BF9C63 /* VKapp.xcdatamodeld in Sources */,
 				FA581DD82778D3F300D7483D /* PopAnimator.swift in Sources */,
+				FAA7EA7E279964F000F96AA2 /* ImageLoader.swift in Sources */,
 				FA160103274F106200BF9C63 /* ViewController.swift in Sources */,
 				FAA56C98275E4742000DDB92 /* FriendsTableViewController.swift in Sources */,
 				FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */,
 				FAF15C2F277228FF006FC004 /* CommentTableViewCell.swift in Sources */,
+				FAA7EA8227996FD100F96AA2 /* FriendServiceManager.swift in Sources */,
 				FA0346152768E3FF00DCBB60 /* User.swift in Sources */,
 				FA581DD62778C61400D7483D /* PushAnimator.swift in Sources */,
 				FA6ADAD52764F6B600693F96 /* WeatherModel.swift in Sources */,
 				FAA56C8E275E384D000DDB92 /* FriendscCollectionViewController.swift in Sources */,
 				FA03461B2769008300DCBB60 /* AllCroupTableViewCell.swift in Sources */,
 				FADEE0C5275FAD94009BBFFF /* AllGroupTableViewController.swift in Sources */,
+				FAA7EA862799727700F96AA2 /* FriendsSection.swift in Sources */,
 				FA29F30C275A41B100BBB0EE /* Group.swift in Sources */,
 				FA581DD32778C0E000D7483D /* InteractiveTransition.swift in Sources */,
 				FA581DD12778BF8C00D7483D /* CustomNavigationController.swift in Sources */,
@@ -677,6 +708,7 @@
 				FACFFEB42781E3C9009B46DB /* Session.swift in Sources */,
 				FADC7F76276A208600C81260 /* NewsTableViewController.swift in Sources */,
 				FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */,
+				FAA7EA80279968FF00F96AA2 /* FriendModel.swift in Sources */,
 				FADC7F7A276A20A200C81260 /* NewsTableViewCell.swift in Sources */,
 				FA29F30F275A42DE00BBB0EE /* GroupTableViewController.swift in Sources */,
 				FA29F314275A435600BBB0EE /* GroupTableViewCell.swift in Sources */,

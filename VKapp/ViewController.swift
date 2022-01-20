@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var infoResult: UILabel!
     @IBOutlet weak var loginInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
-    
+      
     // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
