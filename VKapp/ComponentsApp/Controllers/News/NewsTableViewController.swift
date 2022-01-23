@@ -20,6 +20,7 @@ class NewsTableViewController: UITableViewController {
         tableViewNews.estimatedRowHeight = 7
         tableViewNews.rowHeight = UITableView.automaticDimension
         tableViewNews.estimatedRowHeight = 229.0
+        AppUtility.lockOrientation(.portrait)
     }
     
     // MARK: - Table view data source

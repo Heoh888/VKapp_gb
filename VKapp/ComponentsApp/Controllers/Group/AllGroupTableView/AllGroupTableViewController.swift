@@ -9,7 +9,7 @@ import UIKit
 
 class AllGroupTableViewController: UITableViewController, UISearchResultsUpdating {
 
-    var allGroup = Group()
+    var allGroup = Groups()
     
     var fillteredAllGroup = [WeatherModel]()
     
@@ -21,6 +21,7 @@ class AllGroupTableViewController: UITableViewController, UISearchResultsUpdatin
         fillteredAllGroup = allGroup.grups
         searchController.searchResultsUpdater = self
         tableView.tableHeaderView = searchController.searchBar
+        AppUtility.lockOrientation(.portrait)
     }
 
     // MARK: - Table view data source

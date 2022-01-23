@@ -4,7 +4,6 @@
 //
 //  Created by MacBook on 13.01.2022.
 //
-
 import UIKit
 import WebKit
 
@@ -46,9 +45,14 @@ private extension LoginVkController {
 
 extension LoginVkController: WKNavigationDelegate {
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        
-        guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationResponse: WKNavigationResponse,
+                 decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+
+        guard
+            let url = navigationResponse.response.url,
+                url.path == "/blank.html",
+                let fragment = url.fragment  else {
             decisionHandler(.allow)
             return
         }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Group {
+class Groups {
     
     let grups:[WeatherModel] = [WeatherModel(name: "Адвентисты 7го дня", image: [UIImage(named: "7day")!]),
                                 WeatherModel(name: "CS: GO", image: [UIImage(named: "cs_go")!]),
