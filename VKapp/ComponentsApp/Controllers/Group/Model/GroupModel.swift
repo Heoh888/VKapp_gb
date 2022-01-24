@@ -4,6 +4,8 @@
 //
 //  Created by MacBook on 22.01.2022.
 //
+import Foundation
+import RealmSwift
 
 struct GroupVk: Decodable {
     let response: ResponceGroup
@@ -14,10 +16,10 @@ struct ResponceGroup: Decodable {
     let items: [Group]
 }
 
-struct Group: Decodable {
-    let id: Int
-    let name: String
-    let photo50: String
+class Group: Object, Decodable {
+    @objc dynamic var id: Int
+    @objc dynamic var name: String
+    @objc dynamic var photo50: String
     
     enum CodingKeys: String, CodingKey {
         case id

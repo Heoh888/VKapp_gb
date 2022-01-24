@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendscCollectionViewController: UIViewController {
     
@@ -66,6 +67,18 @@ extension FriendscCollectionViewController: UICollectionViewDelegate, UICollecti
 }
 
 extension FriendscCollectionViewController {
+    func saveFriendPhotos(friendPhotos: [FriendPhoto]) {
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.add(friendPhotos)
+            print(friendPhotos)
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
+    }
+    
     func loadLatters(arrayFriendPhotos: [String]) {
         for url in arrayFriendPhotos {
             friendPhotos.append(url)
@@ -78,6 +91,7 @@ extension FriendscCollectionViewController {
             switch result {
             case .success(let friendPhoto):
                 let section = self.fromFriendSection(from: friendPhoto.response.items)
+                self.saveFriendPhotos(friendPhotos: friendPhoto.response.items)
                 self.loadLatters(arrayFriendPhotos: section)
             case .failure(_):
                 return

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class GroupServiceManager {
     private var service = RequestsServer()
@@ -18,6 +19,7 @@ class GroupServiceManager {
             switch result {
             case .success(let group):
                 let section = self.formGroupArray(from: group.response.items)
+                self.saveFriend(groups: group.response.items)
                 complition(section)
             case .failure(_):
                 return
@@ -39,6 +41,16 @@ class GroupServiceManager {
     }
 }
 private extension GroupServiceManager {
+    func saveFriend(groups: [Group]) {
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.add(groups)
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
+    }
     
     func formGroupArray(from array: [Group]?) -> [GroupsSection] {
         guard let array = array else {

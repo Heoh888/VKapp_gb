@@ -8,7 +8,6 @@ import UIKit
 import WebKit
 
 class LoginVkController: UIViewController {
-     
     
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -30,7 +29,7 @@ private extension LoginVkController {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "8049559"),
+            URLQueryItem(name: "client_id", value: "8060157"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "friends, photos, groups"),

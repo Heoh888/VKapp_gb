@@ -13,17 +13,6 @@ class FriendPhotosServiceManager {
     private var service = RequestsServer()
     private let imageService = ImageLoader()
     
-    func loadFriendPhotos(idUser: Int, complition: @escaping([FriendsPhotosSection]) -> Void) {
-        service.loadPhotos(id: idUser) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let friendPhoto):
-                let section = friendPhoto
-            case .failure(_):
-                return
-            }
-        }
-    }
     
     func loadImage(url: String, complition: @escaping(UIImage) -> Void) {
         guard let url = URL(string: url) else { return }

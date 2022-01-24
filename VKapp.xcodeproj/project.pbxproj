@@ -29,8 +29,8 @@
 		FA581DD62778C61400D7483D /* PushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DD52778C61400D7483D /* PushAnimator.swift */; };
 		FA581DD82778D3F300D7483D /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DD72778D3F300D7483D /* PopAnimator.swift */; };
 		FA581DDA2778F8F700D7483D /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DD92778F8F700D7483D /* AppUtility.swift */; };
-		FA640E6C279DF6CA0037055E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA640E6B279DF6CA0037055E /* ViewController.swift */; };
 		FA6ADAD52764F6B600693F96 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6ADAD42764F6B600693F96 /* WeatherModel.swift */; };
+		FA7A2FB8279EC1840050AC6E /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = FA7A2FB7279EC1840050AC6E /* SwiftKeychainWrapper */; };
 		FAA56C8E275E384D000DDB92 /* FriendscCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C8D275E384D000DDB92 /* FriendscCollectionViewController.swift */; };
 		FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C8F275E446A000DDB92 /* FriendsViewCell.swift */; };
 		FAA56C92275E446A000DDB92 /* FriendsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA56C90275E446A000DDB92 /* FriendsViewCell.xib */; };
@@ -39,6 +39,8 @@
 		FAA7EA80279968FF00F96AA2 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7EA7F279968FF00F96AA2 /* FriendModel.swift */; };
 		FAA7EA8227996FD100F96AA2 /* FriendServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7EA8127996FD100F96AA2 /* FriendServiceManager.swift */; };
 		FAA7EA862799727700F96AA2 /* FriendsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7EA852799727700F96AA2 /* FriendsSection.swift */; };
+		FAAD1B87279EE365000BC14B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FAAD1B86279EE365000BC14B /* Realm */; };
+		FAAD1B89279EE365000BC14B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FAAD1B88279EE365000BC14B /* RealmSwift */; };
 		FAB77381275564DE007F37C1 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB77380275564DE007F37C1 /* FriendsTableViewCell.swift */; };
 		FAB7738527556653007F37C1 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */; };
 		FACFFEB42781E3C9009B46DB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFFEB32781E3C9009B46DB /* Session.swift */; };
@@ -100,7 +102,6 @@
 		FA581DD52778C61400D7483D /* PushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAnimator.swift; sourceTree = "<group>"; };
 		FA581DD72778D3F300D7483D /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		FA581DD92778F8F700D7483D /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
-		FA640E6B279DF6CA0037055E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA6ADAD42764F6B600693F96 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		FAA56C8D275E384D000DDB92 /* FriendscCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendscCollectionViewController.swift; sourceTree = "<group>"; };
 		FAA56C8F275E446A000DDB92 /* FriendsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +133,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAAD1B89279EE365000BC14B /* RealmSwift in Frameworks */,
+				FAAD1B87279EE365000BC14B /* Realm in Frameworks */,
+				FA7A2FB8279EC1840050AC6E /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +190,6 @@
 				FAB7737827555D87007F37C1 /* ComponentsApp */,
 				FA1600FE274F106200BF9C63 /* AppDelegate.swift */,
 				FA23A8C9279033B000A7FC12 /* LoginVkController.swift */,
-				FA640E6B279DF6CA0037055E /* ViewController.swift */,
 				FA160100274F106200BF9C63 /* SceneDelegate.swift */,
 				FA160104274F106200BF9C63 /* Main.storyboard */,
 				FA16010A274F106400BF9C63 /* Assets.xcassets */,
@@ -440,17 +443,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA160128274F106500BF9C63 /* Build configuration list for PBXNativeTarget "VKapp" */;
 			buildPhases = (
-				F1EB2DC00885C762696FBCEA /* [CP] Check Pods Manifest.lock */,
 				FA1600F7274F106200BF9C63 /* Sources */,
 				FA1600F8274F106200BF9C63 /* Frameworks */,
 				FA1600F9274F106200BF9C63 /* Resources */,
-				BE66310670A74F9B673CF894 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = VKapp;
+			packageProductDependencies = (
+				FA7A2FB7279EC1840050AC6E /* SwiftKeychainWrapper */,
+				FAAD1B86279EE365000BC14B /* Realm */,
+				FAAD1B88279EE365000BC14B /* RealmSwift */,
+			);
 			productName = VKapp;
 			productReference = FA1600FB274F106200BF9C63 /* VKapp.app */;
 			productType = "com.apple.product-type.application";
@@ -459,7 +465,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA16012B274F106500BF9C63 /* Build configuration list for PBXNativeTarget "VKappTests" */;
 			buildPhases = (
-				3988CA714273878B3D423C05 /* [CP] Check Pods Manifest.lock */,
 				FA160110274F106500BF9C63 /* Sources */,
 				FA160111274F106500BF9C63 /* Frameworks */,
 				FA160112274F106500BF9C63 /* Resources */,
@@ -478,11 +483,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA16012E274F106500BF9C63 /* Build configuration list for PBXNativeTarget "VKappUITests" */;
 			buildPhases = (
-				3520B0132826DACAE535DBF8 /* [CP] Check Pods Manifest.lock */,
 				FA16011A274F106500BF9C63 /* Sources */,
 				FA16011B274F106500BF9C63 /* Frameworks */,
 				FA16011C274F106500BF9C63 /* Resources */,
-				1CD85809A3FD20F305CC6352 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -526,6 +529,10 @@
 				Base,
 			);
 			mainGroup = FA1600F2274F106200BF9C63;
+			packageReferences = (
+				FA7A2FB6279EC1840050AC6E /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				FAAD1B85279EE365000BC14B /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = FA1600FC274F106200BF9C63 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -567,109 +574,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		1CD85809A3FD20F305CC6352 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VKapp-VKappUITests/Pods-VKapp-VKappUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VKapp-VKappUITests/Pods-VKapp-VKappUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VKapp-VKappUITests/Pods-VKapp-VKappUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3520B0132826DACAE535DBF8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VKapp-VKappUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3988CA714273878B3D423C05 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VKappTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BE66310670A74F9B673CF894 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F1EB2DC00885C762696FBCEA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VKapp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		FA1600F7274F106200BF9C63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -695,7 +599,6 @@
 				FAA7EA862799727700F96AA2 /* FriendsSection.swift in Sources */,
 				FA29F30C275A41B100BBB0EE /* Group.swift in Sources */,
 				FA581DD32778C0E000D7483D /* InteractiveTransition.swift in Sources */,
-				FA640E6C279DF6CA0037055E /* ViewController.swift in Sources */,
 				FA581DD12778BF8C00D7483D /* CustomNavigationController.swift in Sources */,
 				FAB77381275564DE007F37C1 /* FriendsTableViewCell.swift in Sources */,
 				FAFF0D64279C3D6E0051B993 /* GroupsSection.swift in Sources */,
@@ -911,7 +814,7 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -942,7 +845,7 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1082,6 +985,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA7A2FB6279EC1840050AC6E /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		FAAD1B85279EE365000BC14B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA7A2FB7279EC1840050AC6E /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA7A2FB6279EC1840050AC6E /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		FAAD1B86279EE365000BC14B /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAAD1B85279EE365000BC14B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		FAAD1B88279EE365000BC14B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAAD1B85279EE365000BC14B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FA160107274F106200BF9C63 /* VKapp.xcdatamodeld */ = {

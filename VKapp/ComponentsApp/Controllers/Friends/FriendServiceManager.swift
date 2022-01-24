@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class FriendServiceManager {
     private var service = RequestsServer()
     private let imageService = ImageLoader()
+    
     
     func loadFriend(complition: @escaping([FriendsSection]) -> Void) {
         service.loadFriend { [weak self] result in
@@ -18,6 +20,7 @@ class FriendServiceManager {
             switch result {
             case .success(let friend):
                 let section = self.formFriendsArray(from: friend.response.items)
+//                self.saveFriend(friends: friend.response.items)
                 complition(section)
             case .failure(_):
                 return
@@ -39,6 +42,15 @@ class FriendServiceManager {
     }
 }
 private extension FriendServiceManager {
+    func saveFriend(friends: [Friend]) {
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.add(friends)
+        } catch {
+            print(error)
+        }
+    }
     
     func formFriendsArray(from array: [Friend]?) -> [FriendsSection] {
         guard let array = array else {
