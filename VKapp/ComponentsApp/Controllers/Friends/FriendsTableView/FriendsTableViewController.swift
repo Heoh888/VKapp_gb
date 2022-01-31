@@ -12,6 +12,7 @@ class FriendsTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var arrUsers = User()
+    var service = RequestsServer()
     var icon = FriendscCollectionViewController()
     
     // MARK: - lifeСycle
@@ -20,11 +21,14 @@ class FriendsTableViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendsTableViewCell")
+        self.service.loadFriend()
+
     }
 }
 
 // MARK: - Table view data source
 extension FriendsTableViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrUsers.users.count
     }

@@ -12,10 +12,12 @@ class GroupTableViewController: UITableViewController {
     @IBOutlet var groupTableView: UITableView!
     
     var userGroups = [WeatherModel]()
+    var service = RequestsServer()
     
     // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.service.loadGroups()
         groupTableView.register(UINib(nibName: "GroupTableViewCell", bundle: nil), forCellReuseIdentifier: "CellViewGroup")
     }
     
