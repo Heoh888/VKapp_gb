@@ -42,14 +42,14 @@ class GroupServiceManager {
 }
 private extension GroupServiceManager {
     func saveFriend(groups: [Group]) {
-        do {
-            let realm = try Realm()
-            realm.beginWrite()
-            realm.add(groups)
-            try realm.commitWrite()
-        } catch {
-            print(error)
-        }
+//        do {
+//            let realm = try Realm()
+//            realm.beginWrite()
+//            realm.add(groups)
+//            try realm.commitWrite()
+//        } catch {
+//            print(error)
+//        }
     }
     
     func formGroupArray(from array: [Group]?) -> [GroupsSection] {

@@ -31,6 +31,7 @@
 		FA581DDA2778F8F700D7483D /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA581DD92778F8F700D7483D /* AppUtility.swift */; };
 		FA6ADAD52764F6B600693F96 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6ADAD42764F6B600693F96 /* WeatherModel.swift */; };
 		FA7A2FB8279EC1840050AC6E /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = FA7A2FB7279EC1840050AC6E /* SwiftKeychainWrapper */; };
+		FA9F079E27A7429400BB129C /* RealmCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F079D27A7429400BB129C /* RealmCacheService.swift */; };
 		FAA56C8E275E384D000DDB92 /* FriendscCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C8D275E384D000DDB92 /* FriendscCollectionViewController.swift */; };
 		FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C8F275E446A000DDB92 /* FriendsViewCell.swift */; };
 		FAA56C92275E446A000DDB92 /* FriendsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA56C90275E446A000DDB92 /* FriendsViewCell.xib */; };
@@ -103,6 +104,7 @@
 		FA581DD72778D3F300D7483D /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		FA581DD92778F8F700D7483D /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		FA6ADAD42764F6B600693F96 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		FA9F079D27A7429400BB129C /* RealmCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCacheService.swift; sourceTree = "<group>"; };
 		FAA56C8D275E384D000DDB92 /* FriendscCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendscCollectionViewController.swift; sourceTree = "<group>"; };
 		FAA56C8F275E446A000DDB92 /* FriendsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewCell.swift; sourceTree = "<group>"; };
 		FAA56C90275E446A000DDB92 /* FriendsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsViewCell.xib; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				FAD579B027955F6700E35E20 /* RequestsServer.swift */,
 				FACFFEB32781E3C9009B46DB /* Session.swift */,
 				FAA7EA7D279964F000F96AA2 /* ImageLoader.swift */,
+				FA9F079D27A7429400BB129C /* RealmCacheService.swift */,
 			);
 			path = ServerClient;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				FAA56C8E275E384D000DDB92 /* FriendscCollectionViewController.swift in Sources */,
 				FA03461B2769008300DCBB60 /* AllCroupTableViewCell.swift in Sources */,
 				FADEE0C5275FAD94009BBFFF /* AllGroupTableViewController.swift in Sources */,
+				FA9F079E27A7429400BB129C /* RealmCacheService.swift in Sources */,
 				FAA7EA862799727700F96AA2 /* FriendsSection.swift in Sources */,
 				FA29F30C275A41B100BBB0EE /* Group.swift in Sources */,
 				FA581DD32778C0E000D7483D /* InteractiveTransition.swift in Sources */,

@@ -16,10 +16,10 @@ struct ResponceFriendsPhoto: Decodable {
     let items: [FriendPhoto]
 }
 
-class FriendPhoto: Object, Decodable {
-    @objc dynamic var id: Int
-    @objc dynamic var owner_id: Int
-    @objc dynamic var sizes: [PhotoSize]
+struct FriendPhoto: Decodable {
+    let id: Int
+    let owner_id: Int
+    let sizes: [PhotoSize]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -28,7 +28,7 @@ class FriendPhoto: Object, Decodable {
     }
 }
 
-class PhotoSize: Object, Decodable {
+struct PhotoSize: Decodable {
     var url: String
     
     enum CodingKeys: String, CodingKey {

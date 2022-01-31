@@ -16,10 +16,10 @@ struct ResponceGroup: Decodable {
     let items: [Group]
 }
 
-class Group: Object, Decodable {
-    @objc dynamic var id: Int
-    @objc dynamic var name: String
-    @objc dynamic var photo50: String
+class Group: Decodable {
+    let id: Int
+    let name: String
+    let photo50: String
     
     enum CodingKeys: String, CodingKey {
         case id

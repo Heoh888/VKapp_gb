@@ -32,7 +32,7 @@ class PushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         UIView.animate(withDuration: duration,
                        animations: {
-            source.view.transform = CGAffineTransform(rotationAngle: .pi / 2)
+//            source.view.transform = CGAffineTransform(rotationAngle: .pi / 2)
             destination.view.transform = .identity
         },
                        completion: { isCompleted in

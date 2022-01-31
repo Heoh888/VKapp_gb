@@ -26,6 +26,7 @@ fileprivate enum TypeRequsts: String {
 final class RequestsServer {
     private let scheme = "https"
     private let host = "api.vk.com"
+    private let realmCacheService = RealmCacheService.shared
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
@@ -41,8 +42,8 @@ final class RequestsServer {
         let url = configureUrl(method: .friendsGet,
                                httpMethod: .get,
                                params: params)
-        print(url)
-        let task = session.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
             if let error = error {
                 return complition(.failure(.requestError(error)))
             }
@@ -51,6 +52,7 @@ final class RequestsServer {
             
             do {
                 let result = try decoder.decode(FriendVk.self, from: data)
+//                try self.realmCacheService?.add(object: result.response.items)
                 return complition(.success(result))
             } catch {
                 return complition(.failure(.parseError))
@@ -71,6 +73,8 @@ final class RequestsServer {
         let url = configureUrl(method: .gpoupGet,
                                httpMethod: .get,
                                params: params)
+        
+        print(url)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 return complition(.failure(.requestError(error)))
@@ -102,7 +106,6 @@ final class RequestsServer {
         let url = configureUrl(method: .photosGet,
                                httpMethod: .get,
                                params: params)
-        print(url)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 return complition(.failure(.requestError(error)))

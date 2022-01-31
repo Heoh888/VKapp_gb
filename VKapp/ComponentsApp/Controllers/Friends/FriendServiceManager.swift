@@ -19,8 +19,8 @@ class FriendServiceManager {
             guard let self = self else { return }
             switch result {
             case .success(let friend):
+                self.saveFriend(friends: friend.response.items)
                 let section = self.formFriendsArray(from: friend.response.items)
-//                self.saveFriend(friends: friend.response.items)
                 complition(section)
             case .failure(_):
                 return
@@ -44,9 +44,12 @@ class FriendServiceManager {
 private extension FriendServiceManager {
     func saveFriend(friends: [Friend]) {
         do {
+            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
             let realm = try Realm()
+            print(realm.configuration.fileURL)
             realm.beginWrite()
             realm.add(friends)
+            try realm.commitWrite()
         } catch {
             print(error)
         }
@@ -67,15 +70,12 @@ private extension FriendServiceManager {
             guard let firstChar = friend.firstName.first else {
                 continue
             }
-            
             guard var array = newArray[firstChar] else {
                 let newValue = [friend]
                 newArray.updateValue(newValue, forKey: firstChar)
                 continue
             }
-            
             array.append(friend)
-            
             newArray.updateValue(array, forKey: firstChar)
         }
         return newArray
