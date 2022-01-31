@@ -1,26 +1,25 @@
 //
-//  FriendServiceManager.swift
+//  GroupServiceManager.swift
 //  VKapp
 //
-//  Created by MacBook on 20.01.2022.
+//  Created by MacBook on 22.01.2022.
 //
 
 import Foundation
 import UIKit
 import RealmSwift
 
-class FriendServiceManager {
+class GroupServiceManager {
     private var service = RequestsServer()
     private let imageService = ImageLoader()
     
-    
-    func loadFriend(complition: @escaping([FriendsSection]) -> Void) {
-        service.loadFriend { [weak self] result in
+    func loadGroup(complition: @escaping([GroupsSection]) -> Void) {
+        service.loadGroups { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let friend):
-                let section = self.formFriendsArray(from: friend.response.items)
-//                self.saveFriend(friends: friend.response.items)
+            case .success(let group):
+                let section = self.formGroupArray(from: group.response.items)
+                self.saveFriend(groups: group.response.items)
                 complition(section)
             case .failure(_):
                 return
@@ -41,51 +40,52 @@ class FriendServiceManager {
         }
     }
 }
-private extension FriendServiceManager {
-    func saveFriend(friends: [Friend]) {
+private extension GroupServiceManager {
+    func saveFriend(groups: [Group]) {
         do {
             let realm = try Realm()
             realm.beginWrite()
-            realm.add(friends)
+            realm.add(groups)
+            try realm.commitWrite()
         } catch {
             print(error)
         }
     }
     
-    func formFriendsArray(from array: [Friend]?) -> [FriendsSection] {
+    func formGroupArray(from array: [Group]?) -> [GroupsSection] {
         guard let array = array else {
             return  []
         }
-        let sorted = sortFriends(array: array)
-        return fromFriendSection(array: sorted)
+        let sorted = sortGroups(array: array)
+        return fromGroupSection(array: sorted)
     }
     
-    func sortFriends(array: [Friend]) -> [Character: [Friend]] {
-        var newArray: [Character: [Friend]] = [:]
+    func sortGroups(array: [Group]) -> [Character: [Group]] {
+        var newArray: [Character: [Group]] = [:]
         
-        for friend in array {
-            guard let firstChar = friend.firstName.first else {
+        for group in array {
+            guard let firstChar = group.name.first else {
                 continue
             }
             
             guard var array = newArray[firstChar] else {
-                let newValue = [friend]
+                let newValue = [group]
                 newArray.updateValue(newValue, forKey: firstChar)
                 continue
             }
             
-            array.append(friend)
+            array.append(group)
             
             newArray.updateValue(array, forKey: firstChar)
         }
         return newArray
     }
     
-    func fromFriendSection(array: [Character: [Friend]]) -> [FriendsSection] {
-        var sectionsArray: [FriendsSection] = []
+    func fromGroupSection(array: [Character: [Group]]) -> [GroupsSection] {
+        var sectionsArray: [GroupsSection] = []
         
         for (key, array) in array {
-            sectionsArray.append(FriendsSection(key: key, data: array))
+            sectionsArray.append(GroupsSection(key: key, data: array))
         }
         sectionsArray.sort { $0 < $1 }
         return sectionsArray

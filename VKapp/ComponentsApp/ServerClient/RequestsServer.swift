@@ -51,7 +51,6 @@ final class RequestsServer {
             
             do {
                 let result = try decoder.decode(FriendVk.self, from: data)
-                print(result)
                 return complition(.success(result))
             } catch {
                 return complition(.failure(.parseError))
@@ -61,7 +60,7 @@ final class RequestsServer {
         task.resume()
     }
     
-    func loadGroups() {
+    func loadGroups(complition: @escaping (Result<GroupVk, RequestsServerErroe>) -> ()) {
         guard let token = Session.instance.token else {
             return
         }
@@ -72,21 +71,31 @@ final class RequestsServer {
         let url = configureUrl(method: .gpoupGet,
                                httpMethod: .get,
                                params: params)
-        print(url)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
-                fatalError("ERROR")
+                return complition(.failure(.requestError(error)))
             }
             guard let data = data else { return }
+            let decoder = JSONDecoder()
+            
+            do {
+                let result = try decoder.decode(GroupVk.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+                
+            }
         }
         task.resume()
     }
     
-    func loadPhotos() {
+    func loadPhotos(id: Int, complition: @escaping (Result<FriendPhotoVk, RequestsServerErroe>)-> ()) {
         guard let token = Session.instance.token else {
             return
         }
+
         let params: [String: String] = ["access_token": token,
+                                        "owner_id": String(id),
                                         "album_id": "profile",
                                         "extended": "1"
         ]
@@ -96,9 +105,18 @@ final class RequestsServer {
         print(url)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
-                fatalError("ERROR")
+                return complition(.failure(.requestError(error)))
             }
             guard let data = data else { return }
+            let decoder = JSONDecoder()
+            
+            do {
+                let result = try decoder.decode(FriendPhotoVk.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+                
+            }
         }
         task.resume()
     }
