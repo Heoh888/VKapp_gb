@@ -36,6 +36,7 @@
 		FAA56C98275E4742000DDB92 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA56C97275E4742000DDB92 /* FriendsTableViewController.swift */; };
 		FAB77381275564DE007F37C1 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB77380275564DE007F37C1 /* FriendsTableViewCell.swift */; };
 		FAB7738527556653007F37C1 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */; };
+		FACFFEB42781E3C9009B46DB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFFEB32781E3C9009B46DB /* Session.swift */; };
 		FADC7F76276A208600C81260 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC7F75276A208600C81260 /* NewsTableViewController.swift */; };
 		FADC7F7A276A20A200C81260 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC7F78276A20A200C81260 /* NewsTableViewCell.swift */; };
 		FADC7F7D276A6C9F00C81260 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC7F7C276A6C9F00C81260 /* News.swift */; };
@@ -94,6 +95,7 @@
 		FAA56C97275E4742000DDB92 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		FAB77380275564DE007F37C1 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
+		FACFFEB32781E3C9009B46DB /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		FADC7F75276A208600C81260 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		FADC7F78276A20A200C81260 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		FADC7F7C276A6C9F00C81260 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		FAB7737827555D87007F37C1 /* ComponentsApp */ = {
 			isa = PBXGroup;
 			children = (
+				FACFFEB22781E1F0009B46DB /* ServerClient */,
 				FA581DCF2778BF4400D7483D /* CustomNavigationController */,
 				FA29F30A275A419100BBB0EE /* Model */,
 				FA29F308275A416D00BBB0EE /* Controllers */,
@@ -317,6 +320,14 @@
 				FAB7737927555DA5007F37C1 /* Cell */,
 			);
 			path = FriendsTableView;
+			sourceTree = "<group>";
+		};
+		FACFFEB22781E1F0009B46DB /* ServerClient */ = {
+			isa = PBXGroup;
+			children = (
+				FACFFEB32781E3C9009B46DB /* Session.swift */,
+			);
+			path = ServerClient;
 			sourceTree = "<group>";
 		};
 		FADC7F74276A204600C81260 /* News */ = {
@@ -508,6 +519,7 @@
 				FA1600FF274F106200BF9C63 /* AppDelegate.swift in Sources */,
 				FA372B49276C106600168776 /* PostViewController.swift in Sources */,
 				FADC7F7D276A6C9F00C81260 /* News.swift in Sources */,
+				FACFFEB42781E3C9009B46DB /* Session.swift in Sources */,
 				FADC7F76276A208600C81260 /* NewsTableViewController.swift in Sources */,
 				FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */,
 				FADC7F7A276A20A200C81260 /* NewsTableViewCell.swift in Sources */,
