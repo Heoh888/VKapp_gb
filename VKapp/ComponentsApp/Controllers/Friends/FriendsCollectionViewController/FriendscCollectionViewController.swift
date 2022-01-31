@@ -13,10 +13,12 @@ class FriendscCollectionViewController: UIViewController {
     
     var index = IndexPath(item: 0, section: 0)
     private var arrUsers = User()
+    var service = RequestsServer()
     
     // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.service.loadPhotos()
         self.collectionView.register(UINib(nibName: "FriendsViewCell", bundle: nil), forCellWithReuseIdentifier: "FriendsViewCell")
         self.collectionView.dataSource = self
         self.collectionView.delegate = self

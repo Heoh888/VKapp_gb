@@ -14,6 +14,8 @@ enum RequestsServerErroe: Error {
 
 fileprivate enum TypeMetod: String {
     case friendsGet = "/method/friends.get"
+    case gpoupGet = "/method/groups.get"
+    case photosGet = "/method/photos.get"
 }
 
 fileprivate enum TypeRequsts: String {
@@ -30,7 +32,7 @@ final class RequestsServer {
         return session
     }()
     
-    func loadFriend() {
+    func loadFriend(complition: @escaping (Result<FriendVk, RequestsServerErroe>) -> ()) {
         guard let token = Session.instance.token else {
             return
         }
@@ -42,10 +44,19 @@ final class RequestsServer {
         print(url)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
-                fatalError("ERROR")
+                return complition(.failure(.requestError(error)))
             }
             guard let data = data else { return }
+            let decoder = JSONDecoder()
             
+            do {
+                let result = try decoder.decode(FriendVk.self, from: data)
+                print(result)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+                
+            }
         }
         task.resume()
     }
@@ -58,7 +69,7 @@ final class RequestsServer {
                                         "fields": "photo_50",
                                         "extended": "1"
         ]
-        let url = configureUrl(method: .friendsGet,
+        let url = configureUrl(method: .gpoupGet,
                                httpMethod: .get,
                                params: params)
         print(url)
@@ -67,7 +78,27 @@ final class RequestsServer {
                 fatalError("ERROR")
             }
             guard let data = data else { return }
-            
+        }
+        task.resume()
+    }
+    
+    func loadPhotos() {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "album_id": "profile",
+                                        "extended": "1"
+        ]
+        let url = configureUrl(method: .photosGet,
+                               httpMethod: .get,
+                               params: params)
+        print(url)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                fatalError("ERROR")
+            }
+            guard let data = data else { return }
         }
         task.resume()
     }
@@ -77,7 +108,7 @@ private extension RequestsServer {
                       httpMethod: TypeRequsts,
                       params: [String : String]) -> URL {
         var queryItem = [URLQueryItem]()
-        queryItem.append(URLQueryItem(name: "v", value: "5.131"))
+        queryItem.append(URLQueryItem(name: "v", value: "5.81"))
         for (param, value) in params {
             queryItem.append(URLQueryItem(name: param, value: value))
         }
