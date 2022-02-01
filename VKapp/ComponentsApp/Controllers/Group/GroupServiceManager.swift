@@ -19,7 +19,7 @@ class GroupServiceManager {
             switch result {
             case .success(let group):
                 let section = self.formGroupArray(from: group.response.items)
-                self.saveFriend(groups: group.response.items)
+                self.saveGroup(groups: group.response.items)
                 complition(section)
             case .failure(_):
                 return
@@ -41,15 +41,17 @@ class GroupServiceManager {
     }
 }
 private extension GroupServiceManager {
-    func saveFriend(groups: [Group]) {
-//        do {
-//            let realm = try Realm()
-//            realm.beginWrite()
-//            realm.add(groups)
-//            try realm.commitWrite()
-//        } catch {
-//            print(error)
-//        }
+    func saveGroup(groups: [Group]) {
+        do {
+            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+            let realm = try Realm(configuration: config)
+            print(realm.configuration.fileURL!)
+            realm.beginWrite()
+            realm.add(groups)
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
     }
     
     func formGroupArray(from array: [Group]?) -> [GroupsSection] {

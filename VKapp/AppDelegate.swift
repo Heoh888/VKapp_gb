@@ -9,26 +9,30 @@ import UIKit
 import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        let testEntity = TestEntity()
-//        testEntity.id = 1
-//        testEntity.name = "Аглая"
-//        testEntity.age = 19
-//        testEntity.gender = true
-//        testEntity.petName = "Евдокиевна"
-//
-//        do {
-////            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-//            let realm = try Realm()
-//            realm.beginWrite()
-//            realm.add(testEntity)
-//            print(realm.configuration.fileURL)
-//            try realm.commitWrite()
-//        } catch {
-//            print(error)
-//        }
+        let realm = try! Realm()
+
+        let charcher = TestModelRealm()
+        charcher.id = 3
+        charcher.name = "Coco"
+        charcher.age = 5
+        
+        let photo = ArrayUrlPhotos()
+        photo.sizes = "jdjkdjk/edkdw"
+        
+        let photos = Person()
+        photos.ownerId = charcher
+        photos.dogs.append(photo)
+
+        try! realm.write {
+            realm.add(charcher, update: .modified)
+        }
+        try! realm.write {
+            realm.add(photos)
+        }
+        print(realm.configuration.fileURL!)
         return true
     }
     

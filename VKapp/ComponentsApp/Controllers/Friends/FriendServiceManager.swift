@@ -13,15 +13,28 @@ class FriendServiceManager {
     private var service = RequestsServer()
     private let imageService = ImageLoader()
     
+    var persistence = RealmCacheService()
     
     func loadFriend(complition: @escaping([FriendsSection]) -> Void) {
+        //        guard let realm = try? Realm() else { return }
+        //        let friends = realm.objects(Friend.self)
+        //
+        //        if !friends.isEmpty {
+        //            let section = formFriendsArray(from: Array(friends))
+        //            complition(section)
+        //            return
+        //        }
         service.loadFriend { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let friend):
-                self.saveFriend(friends: friend.response.items)
                 let section = self.formFriendsArray(from: friend.response.items)
                 complition(section)
+//                DispatchQueue.main.async {
+//                    autoreleasepool {
+//                        try! self.persistence.add(object: friend.response.items)
+//                    }
+//                }
             case .failure(_):
                 return
             }
@@ -42,19 +55,6 @@ class FriendServiceManager {
     }
 }
 private extension FriendServiceManager {
-    func saveFriend(friends: [Friend]) {
-        do {
-            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-            let realm = try Realm()
-            print(realm.configuration.fileURL)
-            realm.beginWrite()
-            realm.add(friends)
-            try realm.commitWrite()
-        } catch {
-            print(error)
-        }
-    }
-    
     func formFriendsArray(from array: [Friend]?) -> [FriendsSection] {
         guard let array = array else {
             return  []

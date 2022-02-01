@@ -16,14 +16,18 @@ struct ResponceGroup: Decodable {
     let items: [Group]
 }
 
-class Group: Decodable {
-    let id: Int
-    let name: String
-    let photo50: String
+class Group: Object, Decodable {
+    @objc dynamic var id: Int
+    @objc dynamic var name: String
+    @objc dynamic var photo50: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case name = "name"
         case photo50 = "photo_50"
+    }
+    
+    override class func primaryKey() -> String? {
+        return "id"
     }
 }
