@@ -17,17 +17,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E51-yg-I1Y">
-                        <rect key="frame" x="7" y="3" width="400" height="71.5"/>
+                        <rect key="frame" x="7" y="3" width="400" height="72"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3lq-LU-awV">
-                                <rect key="frame" x="7" y="7" width="60" height="60"/>
+                                <rect key="frame" x="7" y="7" width="60" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="c6l-GX-uzd"/>
                                     <constraint firstAttribute="width" constant="60" id="iey-s7-PPU"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nm0-yf-qHj">
-                                <rect key="frame" x="79" y="25" width="305" height="20.5"/>
+                                <rect key="frame" x="79" y="25" width="305" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

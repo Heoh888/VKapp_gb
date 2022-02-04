@@ -21,7 +21,7 @@ class TestModelRealm: Object {
 
 class Person: Object {
     @objc dynamic var ownerId: TestModelRealm?
-    let dogs = List<ArrayUrlPhotos>()
+    var dogs = List<ArrayUrlPhotos>()
 }
 
 class ArrayUrlPhotos: Object {

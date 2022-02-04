@@ -41,6 +41,7 @@ final class RequestsServer {
         let url = configureUrl(method: .friendsGet,
                                httpMethod: .get,
                                params: params)
+
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 return complition(.failure(.requestError(error)))
