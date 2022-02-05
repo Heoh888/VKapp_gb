@@ -13,8 +13,6 @@ class FriendPhotosServiceManager {
     private var service = RequestsServer()
     private let imageService = ImageLoader()
     
-    var persistence = RealmCacheService()
-    
     func loadFriendPhoto(idUser: Int, complition: @escaping([String]) -> Void) {
         service.loadPhotos(id: idUser) { [weak self] result in
             guard let self = self else { return }
@@ -22,11 +20,6 @@ class FriendPhotosServiceManager {
             case .success(let photo):
                 let section = self.fromFriendPhotos(from: photo.response.items)
                 complition(section)
-//                DispatchQueue.main.async {
-//                    autoreleasepool {
-//                        try! self.persistence.add(object: photo.response.items)
-//                    }
-//                }
             case .failure(_):
                 return
             }

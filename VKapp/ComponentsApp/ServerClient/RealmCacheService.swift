@@ -28,6 +28,21 @@ class RealmCacheService {
         }
     }
     
+    func read<T: Object>(_ object: T.Type, key: String = "", complition: (Result<T, Error>) -> Void) {
+        let realm = try! Realm()
+        if let result = realm.object(ofType: T.self, forPrimaryKey: key) {
+            complition(.success(result))
+        }
+//        else {
+//            complition(.failure())
+//        }
+    }
+    
+    func read<T: Object>(_ object: T.Type) -> Results<T> {
+        let realm = try! Realm()
+        return realm.objects(T.self)
+    }
+    
     func update<T: Object>(type: T, primaryKeyValue: Any, setNewValue: Any, field: String) throws {
         let realm = try! Realm()
         try realm.write {

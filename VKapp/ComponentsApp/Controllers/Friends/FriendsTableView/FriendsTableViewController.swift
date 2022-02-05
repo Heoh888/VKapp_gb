@@ -8,77 +8,95 @@
 import UIKit
 import RealmSwift
 
-class FriendsTableViewController: UIViewController {
+class FriendsTableViewController: UITableViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    var icon = FriendscCollectionViewController()
-    var friends: [FriendsSection] = []
-    var filteredFriends: [FriendsSection] = []
-    var lettersOfNames: [String] = []
-    var service = FriendServiceManager()
+    @IBOutlet weak var friendTableView: UITableView!
 
+    private var service = RequestsServer()
+    private var persistence = RealmCacheService()
+    private var notificationToken: NotificationToken? = nil
+    private lazy var realm = RealmCacheService()
+    private var friendResponce: Results<Friend>? {
+        realm.read(Friend.self)
+    }
+    
     // MARK: - lifeСycle
     override func viewDidLoad() {
-        super.viewDidLoad()
+        createNotificationFriendToken()
         fetchFriends()
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendsTableViewCell")
+        super.viewDidLoad()
+        friendTableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendsTableViewCell")
         AppUtility.lockOrientation(.portrait)
     }
-}
-
-// MARK: - Table view data source
-extension FriendsTableViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return filteredFriends.count
+    
+    // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return friendResponce?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredFriends[section].data.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsTableViewCell") as! FriendsTableViewCell
         tableView.separatorColor = UIColor.clear
-        let section = filteredFriends[indexPath.section]
-        let name = section.data[indexPath.row].firstName
-        let lastName = section.data[indexPath.row].lastName
-        let photo = section.data[indexPath.row].photo50
-        cell.userName.text = name
-        cell.userLastName.text = lastName
-        service.loadImage(url: photo) { image in
-            cell.avatar.image = image
+        if let friends = friendResponce {
+            cell.configure(friend: friends[indexPath.row])
         }
-        cell.avatar.layer.cornerRadius = cell.avatar.frame.height / 5
-        cell.shadow.layer.cornerRadius = 15
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyoard.instantiateViewController(identifier: "FriendscCollectionViewController") as! FriendscCollectionViewController
-        vc.idUser = filteredFriends[indexPath[0]].data[indexPath[1]].id
+        vc.idUser = friendResponce![indexPath[1]].id
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension FriendsTableViewController {
-    func loadLatters() {
-        for user in friends {
-            lettersOfNames.append(String(user.key))
+
+    func fetchFriends() {
+        service.loadFriend { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let friend):
+                let realm = try! Realm()
+                let friendCount = realm.objects(Friend.self)
+                
+            // TO:DO до делать удаление по индексу
+                if friendCount.count != friend.response.items.count {
+                    try! realm.write {
+                        realm.delete(friendCount)
+                    }
+                    DispatchQueue.main.async {
+                        autoreleasepool {
+                            try! self.persistence.add(object: friend.response.items)
+                        }
+                    }
+                }
+            case .failure(_):
+                return
+            }
         }
     }
     
-    func fetchFriends() {
-        service.loadFriend { [weak self] friends in
-            guard let self = self else { return }
-            self.friends = friends
-            self.filteredFriends = friends
-            self.loadLatters()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+    func createNotificationFriendToken() {
+        let realm = try! Realm()
+        let results = realm.objects(Friend.self)
+        notificationToken = results.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.beginUpdates()
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                     with: .automatic)
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
             }
         }
     }

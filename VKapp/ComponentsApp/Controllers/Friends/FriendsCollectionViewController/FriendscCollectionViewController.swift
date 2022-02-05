@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendscCollectionViewController: UIViewController {
     
@@ -13,7 +14,9 @@ class FriendscCollectionViewController: UIViewController {
     
     var idUser: Int = 0
     var friendPhotos: [String] = []
-    var service = FriendPhotosServiceManager()
+    private var service = RequestsServer()
+    private var imageLoad = ImageLoader()
+    private var persistence = RealmCacheService()
     
     // MARK: - lifeСycle
     override func viewDidLoad() {
@@ -40,7 +43,7 @@ extension FriendscCollectionViewController: UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsViewCell", for: indexPath) as! FriendsViewCell
         let photo = friendPhotos[indexPath[0]]
-        service.loadImage(url: photo) { image in
+        imageLoad.loadImageData(url: photo) { image in
             cell.imageFriends.image = image
         }
         cell.imageFriends.layer.cornerRadius =  10
@@ -66,9 +69,9 @@ extension FriendscCollectionViewController: UICollectionViewDelegate, UICollecti
 
 extension FriendscCollectionViewController {
     
-    func creatingArrayPhotos(arrayFriendPhotos: [String]) {
-        for url in arrayFriendPhotos {
-            friendPhotos.append(url)
+    func creatingArrayPhotos(arrayFriendPhotos: [FriendPhoto]) {
+        for item in arrayFriendPhotos {
+            friendPhotos.append(item.sizes[item.sizes.count - 1].url)
         }
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -76,8 +79,14 @@ extension FriendscCollectionViewController {
     }
 
     func fetchFriendsPhotos() {
-        service.loadFriendPhoto(idUser: idUser) { photos in
-            self.creatingArrayPhotos(arrayFriendPhotos: photos)
+        service.loadPhotos(id: idUser) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let photo):
+                self.creatingArrayPhotos(arrayFriendPhotos: photo.response.items)
+            case .failure(_):
+                return
+            }
         }
     }
 }
