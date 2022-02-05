@@ -9,7 +9,7 @@ import UIKit
 
 class PushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    private let duration:  TimeInterval = 0.5
+    private let duration:  TimeInterval = 0
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         duration

@@ -54,43 +54,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="3sK-3d-ESc" kind="relationship" relationship="rootViewController" id="Bvs-Ib-phh"/>
+                        <segue destination="743-JB-FVS" kind="relationship" relationship="rootViewController" id="uJk-2F-gjr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZ7-IQ-Nxa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2454" y="818"/>
-        </scene>
-        <!--Мои друзья-->
-        <scene sceneID="KpS-nh-Hj2">
-            <objects>
-                <viewController storyboardIdentifier="FriendsTableViewController" id="3sK-3d-ESc" customClass="FriendsTableViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="J21-i8-WHb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Zoi-UQ-LUS">
-                                <rect key="frame" x="0.0" y="56" width="414" height="757"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="4Ao-d9-8cY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="4Ao-d9-8cY" firstAttribute="trailing" secondItem="Zoi-UQ-LUS" secondAttribute="trailing" id="BO3-9O-Aht"/>
-                            <constraint firstItem="4Ao-d9-8cY" firstAttribute="bottom" secondItem="Zoi-UQ-LUS" secondAttribute="bottom" id="ED4-02-3AL"/>
-                            <constraint firstItem="Zoi-UQ-LUS" firstAttribute="top" secondItem="4Ao-d9-8cY" secondAttribute="top" id="Q52-LL-tia"/>
-                            <constraint firstItem="Zoi-UQ-LUS" firstAttribute="leading" secondItem="4Ao-d9-8cY" secondAttribute="leading" id="YUB-wD-9ih"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Мои друзья" id="4rI-bf-tMt"/>
-                    <connections>
-                        <outlet property="tableView" destination="Zoi-UQ-LUS" id="3PI-jX-VPO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gc5-cH-bgq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3274" y="818"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oz7-uU-jv9">
@@ -944,6 +913,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpd-Vj-v96" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2455" y="82"/>
+        </scene>
+        <!--Мои друзья-->
+        <scene sceneID="ZNz-IN-VLr">
+            <objects>
+                <tableViewController storyboardIdentifier="FriendsTableViewController" id="743-JB-FVS" customClass="FriendsTableViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="jZm-cl-FrT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="743-JB-FVS" id="xec-Cc-RO9"/>
+                            <outlet property="delegate" destination="743-JB-FVS" id="NkB-sK-kxc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Мои друзья" id="7rV-Nb-Ssc"/>
+                    <connections>
+                        <outlet property="friendTableView" destination="jZm-cl-FrT" id="P0a-Jx-sld"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W7m-n2-rqz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3230" y="818"/>
         </scene>
     </scenes>
     <resources>
