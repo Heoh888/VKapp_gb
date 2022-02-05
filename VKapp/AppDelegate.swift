@@ -4,14 +4,56 @@
 //
 //  Created by MacBook on 25.11.2021.
 //
-
+import RealmSwift
 import UIKit
 import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+/*
+        let realm = try! Realm()
+
+        let charcher = TestModelRealm()
+        charcher.id = 2
+        charcher.name = "dfcs"
+        charcher.age = 5
+        
+        let photo1 = ArrayUrlPhotos()
+        photo1.sizes = "q/55"
+        
+        let photo2 = ArrayUrlPhotos()
+        photo2.sizes = "a/66"
+        
+        let photos = Person()
+        photos.ownerId = charcher
+        photos.dogs.append(objectsIn: [photo1, photo2])
+
+//        try! realm.write {
+//            realm.add(charcher, update: .modified)
+//        }
+//        try! realm.write {
+//            realm.add(photos)
+//        }
+
+ 
+//        let persons = realm.objects(Person.self)
+//        print(persons[0].ownerId?.id ?? 0 )
+//        print(realm.configuration.fileURL!)
+//        try! realm.write {
+//            // set each person's planet property to "Earth"
+//            print(persons[0].dogs.count)
+////            persons[0].dogs.removeAll()
+//            persons[0].dogs[0].sizes = "324"
+//            persons[0].dogs[1].sizes = "234"
+//
+//        }
+        let persons = realm.objects(ArrayUrlPhotos.self)
+        try! realm.write {
+            realm.delete(persons)
+//            realm.deleteAll()
+        }
+ */
         return true
     }
     

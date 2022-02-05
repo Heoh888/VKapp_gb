@@ -13,13 +13,27 @@ class GroupServiceManager {
     private var service = RequestsServer()
     private let imageService = ImageLoader()
     
+    var persistence = RealmCacheService()
+    
     func loadGroup(complition: @escaping([GroupsSection]) -> Void) {
+        //        guard let realm = try? Realm() else { return }
+        //        let friends = realm.objects(Friend.self)
+        //
+        //        if !friends.isEmpty {
+        //            let section = formFriendsArray(from: Array(friends))
+        //            complition(section)
+        //            return
+        //        }
         service.loadGroups { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let group):
                 let section = self.formGroupArray(from: group.response.items)
-                self.saveFriend(groups: group.response.items)
+                                DispatchQueue.main.async {
+                                    autoreleasepool {
+                                        try! self.persistence.add(object: group.response.items)
+                                    }
+                                }
                 complition(section)
             case .failure(_):
                 return
@@ -41,17 +55,6 @@ class GroupServiceManager {
     }
 }
 private extension GroupServiceManager {
-    func saveFriend(groups: [Group]) {
-        do {
-            let realm = try Realm()
-            realm.beginWrite()
-            realm.add(groups)
-            try realm.commitWrite()
-        } catch {
-            print(error)
-        }
-    }
-    
     func formGroupArray(from array: [Group]?) -> [GroupsSection] {
         guard let array = array else {
             return  []
