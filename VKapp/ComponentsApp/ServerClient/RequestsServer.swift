@@ -16,6 +16,9 @@ fileprivate enum TypeMetod: String {
     case friendsGet = "/method/friends.get"
     case gpoupGet = "/method/groups.get"
     case photosGet = "/method/photos.get"
+    case deleteGroup = "/method/groups.leave"
+    case joinGroup = "/method/groups.join"
+    case searchGroup = "/method/groups.search"
 }
 
 fileprivate enum TypeRequsts: String {
@@ -41,7 +44,6 @@ final class RequestsServer {
         let url = configureUrl(method: .friendsGet,
                                httpMethod: .get,
                                params: params)
-
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 return complition(.failure(.requestError(error)))
@@ -86,6 +88,62 @@ final class RequestsServer {
                 
             }
         }
+        task.resume()
+    }
+    
+    func loadGroupsSearch(q: String, complition: @escaping (Result<GroupVk, RequestsServerErroe>) -> ()) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "q": q,
+                                        "count": "100"
+        ]
+        let url = configureUrl(method: .searchGroup,
+                               httpMethod: .get,
+                               params: params)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                return complition(.failure(.requestError(error)))
+            }
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            
+            do {
+                let result = try decoder.decode(GroupVk.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+                
+            }
+        }
+        task.resume()
+    }
+    func joinGroup(idGroup: Int) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "group_id": String(idGroup),
+        ]
+        let url = configureUrl(method: .joinGroup,
+                               httpMethod: .get,
+                               params: params)
+        let task = session.dataTask(with: url)
+        task.resume()
+    }
+    
+    func deleteGroup(idGroup: Int) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "group_id": String(idGroup),
+        ]
+        let url = configureUrl(method: .deleteGroup,
+                               httpMethod: .get,
+                               params: params)
+        let task = session.dataTask(with: url)
         task.resume()
     }
     
