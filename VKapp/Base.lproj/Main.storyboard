@@ -119,25 +119,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllCroupTableViewCell" rowHeight="92" id="wXw-r3-oOb" customClass="AllCroupTableViewCell" customModule="VKapp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="92"/>
+                            <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllCroupTableViewCell" rowHeight="79" id="wXw-r3-oOb" customClass="AllCroupTableViewCell" customModule="VKapp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wXw-r3-oOb" id="gxv-Bg-bBd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9G-Hk-ld7">
-                                            <rect key="frame" x="10" y="10" width="394" height="72"/>
+                                            <rect key="frame" x="7" y="3" width="400" height="73"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DeM-wy-87n">
-                                                    <rect key="frame" x="8" y="6" width="60" height="60"/>
+                                                    <rect key="frame" x="8" y="6" width="60" height="61"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="LlJ-mb-PMY"/>
                                                         <constraint firstAttribute="width" constant="60" id="jsH-JW-51x"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNN-5s-TMo">
-                                                    <rect key="frame" x="82" y="25" width="42" height="21"/>
+                                                    <rect key="frame" x="82" y="25" width="48" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -156,10 +155,10 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="I9G-Hk-ld7" firstAttribute="leading" secondItem="gxv-Bg-bBd" secondAttribute="leading" constant="10" id="Drq-Yf-Q1Q"/>
-                                        <constraint firstItem="I9G-Hk-ld7" firstAttribute="top" secondItem="gxv-Bg-bBd" secondAttribute="top" constant="10" id="Xln-AE-C0O"/>
-                                        <constraint firstAttribute="trailing" secondItem="I9G-Hk-ld7" secondAttribute="trailing" constant="10" id="dLQ-Nh-ySP"/>
-                                        <constraint firstAttribute="bottom" secondItem="I9G-Hk-ld7" secondAttribute="bottom" constant="10" id="jLW-bG-eWk"/>
+                                        <constraint firstItem="I9G-Hk-ld7" firstAttribute="leading" secondItem="gxv-Bg-bBd" secondAttribute="leading" constant="7" id="Drq-Yf-Q1Q"/>
+                                        <constraint firstItem="I9G-Hk-ld7" firstAttribute="top" secondItem="gxv-Bg-bBd" secondAttribute="top" constant="3" id="Xln-AE-C0O"/>
+                                        <constraint firstAttribute="trailing" secondItem="I9G-Hk-ld7" secondAttribute="trailing" constant="7" id="dLQ-Nh-ySP"/>
+                                        <constraint firstAttribute="bottom" secondItem="I9G-Hk-ld7" secondAttribute="bottom" constant="3" id="jLW-bG-eWk"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -181,7 +180,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eor-Ww-dgb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="ONJ-x9-A2q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4067" y="82"/>
+            <point key="canvasLocation" x="4066.666666666667" y="81.696428571428569"/>
         </scene>
         <!--Friendsc Collection View Controller-->
         <scene sceneID="YQY-oF-PE7">

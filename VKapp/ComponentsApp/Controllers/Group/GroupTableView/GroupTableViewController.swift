@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import FirebaseDatabase
 
 class GroupTableViewController: UITableViewController {
     
@@ -15,13 +16,14 @@ class GroupTableViewController: UITableViewController {
     var service = RequestsServer()
     var persistence = RealmCacheService()
     
+    private var notificationToken: NotificationToken? = nil
+    private var communitesFirebase = [FireBaseGroup]()
+    private let ref = Database.database().reference(withPath: "Communities")
     private lazy var realm = RealmCacheService()
     private var groupResponce: Results<Group>? {
         realm.read(Group.self)
     }
-    
-    private  var notificationToken: NotificationToken? = nil
-    
+
     // MARK: - lifeСycle
     override func viewDidLoad() {
         createNotificationGroupToken()
@@ -29,6 +31,19 @@ class GroupTableViewController: UITableViewController {
         super.viewDidLoad()
         groupTableView.register(UINib(nibName: "GroupTableViewCell", bundle: nil), forCellReuseIdentifier: "CellViewGroup")
         AppUtility.lockOrientation(.portrait)
+        
+        ref.observe(.value, with: { snapshot in
+            var communities: [FireBaseGroup] = []
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let group = FireBaseGroup(snapshot: snapshot) {
+                    communities.append(group)
+                }
+            }
+            print("Обнавлен список добавленных групп")
+            communities.forEach { print($0.groupName) }
+            print(communities.count)
+        })
     }
     
     // MARK: - Table view data source
@@ -47,40 +62,37 @@ class GroupTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //        if editingStyle == .delete {
-        //            userGroups.remove(at: indexPath.row)
-        //            tableView.deleteRows(at: [indexPath], with: .fade)
-        //        }
+        service.deleteGroup(idGroup: groupResponce![indexPath[1]].id)
+        let realm = try! Realm()
+        print(realm.configuration.fileURL!)
+        let group = realm.objects(Group.self)
+        for item in group {
+            if item.id == groupResponce![indexPath[1]].id {
+                try! realm.write {
+                    realm.delete(group[indexPath[1]])
+                }
+                break;
+            }
+        }
     }
     
     // MARK: - Actions
     @IBAction func addGroup(segue: UIStoryboardSegue) {
-        //        if segue.identifier == "addGroup" {
-        //            guard let allGroupController = segue.source as? AllGroupTableViewController else { return }
-        //            if let indexPath = allGroupController.tableView.indexPathForSelectedRow {
-        //                let group = allGroupController.fillteredAllGroup[indexPath.row]
-        //                print(indexPath)
-        //                if groups.count == 0 {
-        //                    groups.append(group)
-        //                    tableView.reloadData()
-        //                } else {
-        //                    var item:Bool = false
-        //                    for i in groups {
-        //                        if i.name == group.name {
-        //                            item = false
-        //                            break
-        //                        } else {
-        //                            item = true
-        //                        }
-        //                    }
-        //                    if item == true {
-        //                        groups.append(group)
-        //                        tableView.reloadData()
-        //                        item = false
-        //                    }
-        //                }
-        //            }
-        //        }
+                if segue.identifier == "addGroup" {
+                    guard let allGroupController = segue.source as? AllGroupTableViewController else { return }
+                    if let indexPath = allGroupController.tableView.indexPathForSelectedRow {
+                        let group = allGroupController.groupArrayModel[indexPath.row]
+                        service.joinGroup(idGroup: group.id)
+                        DispatchQueue.main.async {
+                            autoreleasepool {
+                                try! self.persistence.add(object: group)
+                            }
+                        }
+                        let fireCom = FireBaseGroup(name: group.name.lowercased(), id: group.id)
+                        let comRef = self.ref.child(group.name.lowercased())
+                        comRef.setValue(fireCom.toAnyObject())
+                    }
+                }
     }
     deinit {
         notificationToken?.invalidate()

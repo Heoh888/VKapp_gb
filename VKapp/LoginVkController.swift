@@ -6,8 +6,11 @@
 //
 import UIKit
 import WebKit
+import FirebaseDatabase
 
 class LoginVkController: UIViewController {
+    
+    private let ref = Database.database().reference(withPath: "User")
     
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -70,6 +73,7 @@ extension LoginVkController: WKNavigationDelegate {
         if let token = params["access_token"], let userID = params["user_id"] {
             session.token = token
             session.userId = Int(userID)!
+            self.ref.child("id\(String(describing: session.userId!))").child("value").setValue(session.userId)
             performSegue(withIdentifier: "login", sender: self)
         }
         decisionHandler(.cancel)
