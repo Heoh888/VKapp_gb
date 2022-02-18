@@ -12,11 +12,17 @@ class NewsTableViewController: UITableViewController {
     var allNews = News()
     var like = NewsTableViewCell()
     
+    var textNews: [String] = []
+    var news: [News1] = []
+    
+    var service = RequestsServer()
+    
     @IBOutlet var tableViewNews: UITableView!
     
     // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchNews()
         tableViewNews.estimatedRowHeight = 7
         tableViewNews.rowHeight = UITableView.automaticDimension
         tableViewNews.estimatedRowHeight = 229.0
@@ -25,33 +31,14 @@ class NewsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allNews.news.count
+        return news.count == 0 ? 0 : allNews.news.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
         tableView.separatorColor = UIColor.clear
-        cell.headerPost.layer.cornerRadius = 10
-        cell.userName.text = allNews.news[indexPath.row].nameUser
-        cell.imageAvatar.image = allNews.news[indexPath.row].imageAvatar
-        cell.imageAvatar.layer.cornerRadius = cell.imageAvatar.frame.height / 2
-        cell.textPost.text = allNews.news[indexPath.row].textPost
-        cell.imagePost.image = allNews.news[indexPath.row].imagePost
-        cell.imagePost.layer.cornerRadius = 10
-        cell.likeText.text = String(allNews.news[indexPath.row].like)
-        cell.likeBase.layer.cornerRadius = cell.likeBase.frame.height / 2
-        cell.like.tintColor = likeColour(status: allNews.news[indexPath.row].likeStatus,
-                                         cell: cell.like,
-                                         statusAnimation: &allNews.news[indexPath.row].animation)
-        cell.commentsText.text = String(allNews.news[indexPath.row].comment.count)
-        cell.commentsBase.layer.cornerRadius = cell.commentsBase.frame.height / 2
-        cell.rePostText.text = String(allNews.news[indexPath.row].rePost)
-        cell.rePostBase.layer.cornerRadius = cell.rePostBase.frame.height / 2
-        cell.post.layer.cornerRadius = 10
-        cell.views.text = String(allNews.news[indexPath.row].views)
-        cell.shadow.layer.shadowColor = UIColor.gray.cgColor
-        cell.shadow.layer.shadowOffset = CGSize(width: 3, height: 3)
-        cell.shadow.layer.shadowOpacity = 4
+        cell.configure(news: news[indexPath.row], allNews: allNews.news[indexPath.row])
+
         return cell
     }
     
@@ -63,31 +50,6 @@ class NewsTableViewController: UITableViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    // MARK: - Private functions
-    private func likeColour(status: Bool, cell: AnyObject, statusAnimation: inout Bool) -> UIColor {
-        var color: UIColor
-        if status == false {
-            color = UIColor.gray
-        } else {
-            color = UIColor.red
-            if statusAnimation == true {
-                liked(sender: cell)
-                statusAnimation = false
-            }
-        }
-        return color
-    }
-    
-    private func liked(sender:AnyObject)  {
-        let animation = CASpringAnimation(keyPath: "transform.scale")
-        animation.fromValue = 0
-        animation.toValue = 1
-        animation.duration = 1
-        animation.timingFunction = .init(name: .easeInEaseOut)
-        animation.mass = 2
-        animation.stiffness = 400
-        sender.layer.add(animation, forKey: nil)
-    }
     
     // MARK: - Actions
     @IBAction func likeButton(_ sender:AnyObject)   {
@@ -101,7 +63,8 @@ class NewsTableViewController: UITableViewController {
             allNews.news[index![1]].like -= 1
             allNews.news[index![1]].likeStatus = false
         }
-        tableViewNews.reloadData()
+        tableView.reloadRows(at: [IndexPath(row: index![1], section: index![0])],
+                             with: .automatic)
     }
     
     @IBAction func rePostButton(_ sender: AnyObject) {
@@ -115,3 +78,28 @@ class NewsTableViewController: UITableViewController {
     }
     
 }
+extension NewsTableViewController {
+    func creatingArrayPhotos(arrayNews: [News1]) {
+        for item in arrayNews {
+            textNews.append(item.text ?? "" )
+        }
+        DispatchQueue.main.async {
+            self.tableViewNews.reloadData()
+        }
+    }
+    
+    func fetchNews() {
+        service.loadNews{  [weak self]  result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let news):
+                self.news = news.response.items
+                self.creatingArrayPhotos(arrayNews: news.response.items)
+            case .failure(_):
+                return
+            }
+        }
+        
+    }
+}
+

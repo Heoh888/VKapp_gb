@@ -60,7 +60,6 @@ extension FriendsTableViewController {
             case .success(let friend):
                 let realm = try! Realm()
                 let friendCount = realm.objects(Friend.self)
-                
             // TO:DO до делать удаление по индексу
                 if friendCount.count != friend.response.items.count {
                     try! realm.write {

@@ -19,6 +19,8 @@ fileprivate enum TypeMetod: String {
     case deleteGroup = "/method/groups.leave"
     case joinGroup = "/method/groups.join"
     case searchGroup = "/method/groups.search"
+    case newsfeed = "/method/newsfeed.get"
+    case userGet = "/method/users.get"
 }
 
 fileprivate enum TypeRequsts: String {
@@ -34,6 +36,34 @@ final class RequestsServer {
         let session = URLSession(configuration: config)
         return session
     }()
+    
+    func loadNews(complition: @escaping (Result<NewsVk, RequestsServerErroe>) -> ()){
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "filters": "post"]
+        let url = configureUrl(method: .newsfeed,
+                               httpMethod: .get,
+                               params: params)
+        print(url)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                return complition(.failure(.requestError(error)))
+            }
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+
+            do {
+                let result = try decoder.decode(NewsVk.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+
+            }
+        }
+        task.resume()
+    }
     
     func loadFriend(complition: @escaping (Result<FriendVk, RequestsServerErroe>) -> ()) {
         guard let token = Session.instance.token else {
@@ -53,6 +83,34 @@ final class RequestsServer {
             
             do {
                 let result = try decoder.decode(FriendVk.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+                
+            }
+        }
+        task.resume()
+    }
+    
+    func loadUser(userId: String, complition: @escaping (Result<UserVk, RequestsServerErroe>) -> ()) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "user_ids": userId,
+                                        "fields": "photo_50"]
+        let url = configureUrl(method: .userGet ,
+                               httpMethod: .get,
+                               params: params)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                return complition(.failure(.requestError(error)))
+            }
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            
+            do {
+                let result = try decoder.decode(UserVk.self, from: data)
                 return complition(.success(result))
             } catch {
                 return complition(.failure(.parseError))
@@ -183,7 +241,7 @@ private extension RequestsServer {
                       httpMethod: TypeRequsts,
                       params: [String : String]) -> URL {
         var queryItem = [URLQueryItem]()
-        queryItem.append(URLQueryItem(name: "v", value: "5.81"))
+        queryItem.append(URLQueryItem(name: "v", value: "5.131"))
         for (param, value) in params {
             queryItem.append(URLQueryItem(name: param, value: value))
         }
