@@ -14,13 +14,14 @@ enum RequestsServerErroe: Error {
 
 fileprivate enum TypeMetod: String {
     case friendsGet = "/method/friends.get"
-    case gpoupGet = "/method/groups.get"
+    case gpoupsGet = "/method/groups.get"
     case photosGet = "/method/photos.get"
     case deleteGroup = "/method/groups.leave"
     case joinGroup = "/method/groups.join"
     case searchGroup = "/method/groups.search"
     case newsfeed = "/method/newsfeed.get"
     case userGet = "/method/users.get"
+    case gpoupGet = "/method/groups.getById"
 }
 
 fileprivate enum TypeRequsts: String {
@@ -92,6 +93,34 @@ final class RequestsServer {
         task.resume()
     }
     
+    func loadGroup(groupId: String, complition: @escaping (Result<GroupVk, RequestsServerErroe>) -> ()) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "group_id": groupId]
+        let url = configureUrl(method: .gpoupGet ,
+                               httpMethod: .get,
+                               params: params)
+        print(url)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                return complition(.failure(.requestError(error)))
+            }
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            
+            do {
+                let result = try decoder.decode(GroupVk.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+                
+            }
+        }
+        task.resume()
+    }
+    
     func loadUser(userId: String, complition: @escaping (Result<UserVk, RequestsServerErroe>) -> ()) {
         guard let token = Session.instance.token else {
             return
@@ -120,7 +149,7 @@ final class RequestsServer {
         task.resume()
     }
     
-    func loadGroups(complition: @escaping (Result<GroupVk, RequestsServerErroe>) -> ()) {
+    func loadGroups(complition: @escaping (Result<GroupsVk, RequestsServerErroe>) -> ()) {
         guard let token = Session.instance.token else {
             return
         }
@@ -128,7 +157,7 @@ final class RequestsServer {
                                         "fields": "photo_50",
                                         "extended": "1"
         ]
-        let url = configureUrl(method: .gpoupGet,
+        let url = configureUrl(method: .gpoupsGet,
                                httpMethod: .get,
                                params: params)
         let task = session.dataTask(with: url) { data, response, error in
@@ -139,7 +168,7 @@ final class RequestsServer {
             let decoder = JSONDecoder()
             
             do {
-                let result = try decoder.decode(GroupVk.self, from: data)
+                let result = try decoder.decode(GroupsVk.self, from: data)
                 return complition(.success(result))
             } catch {
                 return complition(.failure(.parseError))
@@ -149,7 +178,7 @@ final class RequestsServer {
         task.resume()
     }
     
-    func loadGroupsSearch(q: String, complition: @escaping (Result<GroupVk, RequestsServerErroe>) -> ()) {
+    func loadGroupsSearch(q: String, complition: @escaping (Result<GroupsVk, RequestsServerErroe>) -> ()) {
         guard let token = Session.instance.token else {
             return
         }
@@ -168,7 +197,7 @@ final class RequestsServer {
             let decoder = JSONDecoder()
             
             do {
-                let result = try decoder.decode(GroupVk.self, from: data)
+                let result = try decoder.decode(GroupsVk.self, from: data)
                 return complition(.success(result))
             } catch {
                 return complition(.failure(.parseError))

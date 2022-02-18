@@ -82,6 +82,23 @@ class NewsTableViewCell: UITableViewCell {
                 }
             }
         }
+        if news.sourceId! < 0 {
+            service.loadGroup(groupId: String(-news.sourceId!)) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let friend):
+                    DispatchQueue.main.async {
+                        self.userName.text = friend.response[0].name
+                        self.imageService.loadImageData(url: friend.response[0].photo200) { [weak self] image in
+                            guard let self = self else { return }
+                            self.imageAvatar.image = image
+                        }
+                    }
+                case .failure(_):
+                    return
+                }
+            }
+        }
         
         
         

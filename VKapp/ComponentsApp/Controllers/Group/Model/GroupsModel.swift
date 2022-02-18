@@ -7,7 +7,7 @@
 import Foundation
 import RealmSwift
 
-struct GroupVk: Decodable {
+struct GroupsVk: Decodable {
     let response: ResponceGroup
 }
 
