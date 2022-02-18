@@ -66,12 +66,20 @@ class NewsTableViewCell: UITableViewCell {
         // TO:DO Остановился здесь
         // Получим информацию о пользователе
         if news.sourceId! > 0 {
-            let userInfo: [String] = userInfo(userId: news.sourceId!)
-            print(userInfo)
-            userName.text = userInfo[0]
-            imageService.loadImageData(url: userInfo[2] ) { [weak self] image in
+            service.loadUser(userId: String(news.sourceId!)) { [weak self] result in
                 guard let self = self else { return }
-                self.imageAvatar.image = image
+                switch result {
+                case .success(let friend):
+                    DispatchQueue.main.async {
+                        self.userName.text = friend.response[0].firstName
+                        self.imageService.loadImageData(url: friend.response[0].photo50 ) { [weak self] image in
+                            guard let self = self else { return }
+                            self.imageAvatar.image = image
+                        }
+                    }
+                case .failure(_):
+                    return
+                }
             }
         }
         
