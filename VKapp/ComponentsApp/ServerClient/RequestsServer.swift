@@ -22,6 +22,7 @@ fileprivate enum TypeMetod: String {
     case newsfeed = "/method/newsfeed.get"
     case userGet = "/method/users.get"
     case gpoupGet = "/method/groups.getById"
+    case videoGet = "/method/video.get"
 }
 
 fileprivate enum TypeRequsts: String {
@@ -102,7 +103,6 @@ final class RequestsServer {
         let url = configureUrl(method: .gpoupGet ,
                                httpMethod: .get,
                                params: params)
-        print(url)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 return complition(.failure(.requestError(error)))
@@ -231,6 +231,34 @@ final class RequestsServer {
                                httpMethod: .get,
                                params: params)
         let task = session.dataTask(with: url)
+        task.resume()
+    }
+    
+    func loadVideo(id: String, ownerid: String, complition: @escaping (Result<VideoVk, RequestsServerErroe>) -> ()) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "videos": ownerid + "_" + id]
+        let url = configureUrl(method: .videoGet ,
+                               httpMethod: .get,
+                               params: params)
+        print(url)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                return complition(.failure(.requestError(error)))
+            }
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            
+            do {
+                let result = try decoder.decode(VideoVk.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+                
+            }
+        }
         task.resume()
     }
     

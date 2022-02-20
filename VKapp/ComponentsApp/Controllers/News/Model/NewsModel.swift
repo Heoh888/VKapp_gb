@@ -18,6 +18,7 @@ struct ResponceNews: Decodable {
 
 struct News1: Decodable {
     let sourceId: Int?
+    let ownerId: Int?
     let data: Int?
     let photos: PhotosNews?
     let text: String?
@@ -27,6 +28,7 @@ struct News1: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case sourceId = "source_id"
+        case ownerId = "owner_id"
         case data = "date"
         case photos = "photos"
         case text = "text"
@@ -44,6 +46,18 @@ struct PhotosNews: Decodable {
     enum CodingKeys: String, CodingKey {
         case count = "count"
         case items = "items"
+    }
+}
+
+struct VideoNewsItems: Decodable {
+    let image: [PhotoSize]
+    let id: Int
+    let ownerId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case image = "image"
+        case id = "id"
+        case ownerId = "owner_id"
     }
 }
 
@@ -67,10 +81,13 @@ struct PhotoNewsSize: Decodable {
 struct Attachments: Decodable {
     let type: String
     let photo: PhotoNewsItems?
+    let video: VideoNewsItems?
     
     enum CodingKeys: String, CodingKey {
         case type = "type"
         case photo = "photo"
+        case video = "video"
+        
     }
 }
 
