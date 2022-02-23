@@ -6,23 +6,20 @@
 //
 import WebKit
 import UIKit
-import RealmSwift
 
 class NewsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var post: UIView!
     
     // Шапка поста
-    @IBOutlet weak var headerPost: UIView!
-    @IBOutlet weak var imageAvatar: UIImageView!
-    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var headerSpace: UIView!
     
     // Пространство для UILabal
     @IBOutlet weak var textSpace: UIView!
     
     // Пространство для UIImageView
     @IBOutlet weak var imageSpace: UIView!
-    @IBOutlet weak var constraynPostSpace: NSLayoutConstraint!
     
     // кнопка Лайк
     @IBOutlet weak var likeButton: UIButton!
@@ -43,16 +40,16 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var views: UILabel!
     
     private var service = RequestsServer()
-    private let imageService = ImageLoader()
+    private var imageService = ImageLoader()
+    private var elementPost = AddElementNews()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         post.layer.cornerRadius = 10
-        imageAvatar.layer.cornerRadius = imageAvatar.frame.height / 2
+        headerSpace.layer.cornerRadius = 10
         rePostBase.layer.cornerRadius = rePostBase.frame.height / 2
         commentsBase.layer.cornerRadius = commentsBase.frame.height / 2
         likeBase.layer.cornerRadius = likeBase.frame.height / 2
-        headerPost.layer.cornerRadius = 10
         
     }
     
@@ -61,16 +58,10 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     func configure(news: News1, allNews: NewsModel) {
-        
-        // TO:DO Остановился здесь
         // Предварительно очистим все пространства
-        textSpace.subviews.forEach {
-            $0.removeFromSuperview()
-        }
-        imageSpace.subviews.forEach {
-            $0.removeFromSuperview()
-            
-        }
+        textSpace.subviews.forEach { $0.removeFromSuperview() }
+        imageSpace.subviews.forEach { $0.removeFromSuperview() }
+        headerSpace.subviews.forEach { $0.removeFromSuperview() }
         
         // Определим имплементацию модели
         if news.copyHistory != nil && news.attachments == nil {
@@ -79,13 +70,11 @@ class NewsTableViewCell: UITableViewCell {
                 service.loadUser(userId: String(news.copyHistory![0].ownerId!)) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
-                    case .success(let friend):
+                    case .success(let user):
                         DispatchQueue.main.async {
-                            print(friend.response)
-                            self.userName.text = friend.response[0].firstName
-                            self.imageService.loadImageData(url: friend.response[0].photo50 ) { [weak self] image in
+                            self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
                                 guard let self = self else { return }
-                                self.imageAvatar.image = image
+                                    self.elementPost.addElement(userName: user.response[0].firstName, avatarUser: image, space: &self.headerSpace)
                             }
                         }
                     case .failure(_):
@@ -97,12 +86,11 @@ class NewsTableViewCell: UITableViewCell {
                 service.loadGroup(groupId: String(-news.copyHistory![0].ownerId!)) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
-                    case .success(let friend):
+                    case .success(let gpoup):
                         DispatchQueue.main.async {
-                            self.userName.text = friend.response[0].name
-                            self.imageService.loadImageData(url: friend.response[0].photo200) { [weak self] image in
+                            self.imageService.loadImageData(url: gpoup.response[0].photo200) { [weak self] image in
                                 guard let self = self else { return }
-                                self.imageAvatar.image = image
+                                self.elementPost.addElement(userName: gpoup.response[0].name, avatarUser: image, space: &self.headerSpace)
                             }
                         }
                     case .failure(_):
@@ -112,14 +100,14 @@ class NewsTableViewCell: UITableViewCell {
             }
             
             if news.copyHistory![0].text! != "" {
-                self.addTextElement(text: news.copyHistory![0].text!)
+                self.elementPost.addElement(text: news.copyHistory![0].text!, space: &textSpace)
             }
             if news.copyHistory![0].attachments?[0].type == "photo" {
                 let count = news.copyHistory![0].attachments?[0].photo?.sizes.count ?? 0
                 let imageUrl = news.copyHistory![0].attachments?[0].photo?.sizes[count - 1].url ?? ""
                 imageService.loadImageData(url: imageUrl ) { [weak self] image in
                     guard let self = self else { return }
-                    self.addImageElement(image: image)
+                    self.elementPost.addElement(image: image, space: &self.imageSpace)
                 }
             }
             if news.copyHistory![0].attachments?[0].type == "video" {
@@ -132,7 +120,7 @@ class NewsTableViewCell: UITableViewCell {
                     case .success(let video):
                         DispatchQueue.main.async {
                             autoreleasepool {
-                                self.addVideoElement(url: video.response.items[0].player!)
+                                self.elementPost.addElement(url:  video.response.items[0].player!, space: &self.imageSpace)
                             }
                         }
                     case .failure(_):
@@ -146,12 +134,11 @@ class NewsTableViewCell: UITableViewCell {
                 service.loadUser(userId: String(news.sourceId!)) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
-                    case .success(let friend):
+                    case .success(let user):
                         DispatchQueue.main.async {
-                            self.userName.text = friend.response[0].firstName
-                            self.imageService.loadImageData(url: friend.response[0].photo50 ) { [weak self] image in
+                            self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
                                 guard let self = self else { return }
-                                self.imageAvatar.image = image
+                                self.elementPost.addElement(userName: user.response[0].firstName, avatarUser: image, space: &self.headerSpace)
                             }
                         }
                     case .failure(_):
@@ -163,12 +150,11 @@ class NewsTableViewCell: UITableViewCell {
                 service.loadGroup(groupId: String(-news.sourceId!)) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
-                    case .success(let friend):
+                    case .success(let group):
                         DispatchQueue.main.async {
-                            self.userName.text = friend.response[0].name
-                            self.imageService.loadImageData(url: friend.response[0].photo200) { [weak self] image in
+                            self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
                                 guard let self = self else { return }
-                                self.imageAvatar.image = image
+                                self.elementPost.addElement(userName: group.response[0].name, avatarUser: image, space: &self.headerSpace)
                             }
                         }
                     case .failure(_):
@@ -177,14 +163,14 @@ class NewsTableViewCell: UITableViewCell {
                 }
             }
             if news.text! != "" {
-                self.addTextElement(text: news.text!)
+                self.elementPost.addElement(text: news.text!, space: &textSpace)
             }
             if news.attachments![0].type == "photo" {
                 let count = news.attachments?[0].photo?.sizes.count ?? 0
                 let imageUrl = news.attachments?[0].photo?.sizes[count - 1].url ?? ""
                 imageService.loadImageData(url: imageUrl ) { [weak self] image in
                     guard let self = self else { return }
-                    self.addImageElement(image: image)
+                    self.elementPost.addElement(image: image, space: &self.imageSpace)
                 }
             }
             if news.attachments![0].type == "video" {
@@ -196,7 +182,7 @@ class NewsTableViewCell: UITableViewCell {
                     case .success(let video):
                         DispatchQueue.main.async {
                             autoreleasepool {
-                                self.addVideoElement(url: video.response.items[0].player!)
+                                self.elementPost.addElement(url:  video.response.items[0].player!, space: &self.imageSpace)
                             }
                         }
                     case .failure(_):
@@ -208,49 +194,6 @@ class NewsTableViewCell: UITableViewCell {
         //        like.tintColor = likeColour(status: all.likeStatus,
         //                                    cell: like,
         //                                    statusAnimation: &all.animation)
-    }
-    
-    // Добавляет элемент UIImageView в пространство "text Space"
-    private func addImageElement(image: UIImage) {
-        let newView = UIImageView()
-        newView.image = image
-        newView.contentMode = .scaleAspectFill
-        newView.layer.cornerRadius = 10
-        newView.layer.masksToBounds = true;
-        imageSpace.addSubview(newView)
-        newView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ newView.topAnchor.constraint(equalTo: imageSpace.topAnchor, constant: 10),
-                                      newView.bottomAnchor.constraint(equalTo: imageSpace.bottomAnchor, constant: -10),
-                                      newView.leftAnchor.constraint(equalTo: imageSpace.leftAnchor, constant: 7),
-                                      newView.rightAnchor.constraint(equalTo: imageSpace.rightAnchor, constant: -7)])
-    }
-    
-    // Добавляет элемент UILabel в пространство "imageSpace"
-    private func addTextElement(text: String) {
-        let newView = UILabel()
-        newView.text = text
-        newView.numberOfLines = 11
-        textSpace.addSubview(newView)
-        newView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ newView.topAnchor.constraint(equalTo: textSpace.topAnchor, constant: 10),
-                                      newView.bottomAnchor.constraint(equalTo: textSpace.bottomAnchor, constant: -10),
-                                      newView.leftAnchor.constraint(equalTo: textSpace.leftAnchor, constant: 11),
-                                      newView.rightAnchor.constraint(equalTo: textSpace.rightAnchor, constant: -11)])
-    }
-    
-    // Добавляет элемент UILabel в пространство "imageSpace"
-    private func addVideoElement(url: String) {
-        let webKit = WKWebView()
-        guard let url = URL(string: url) else { return }
-        webKit.layer.cornerRadius = 10
-        webKit.layer.masksToBounds = true;
-        imageSpace.addSubview(webKit)
-        webKit.load(URLRequest(url: url))
-        webKit.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ webKit.topAnchor.constraint(equalTo: imageSpace.topAnchor, constant: 10),
-                                      webKit.bottomAnchor.constraint(equalTo: imageSpace.bottomAnchor, constant: -10),
-                                      webKit.leftAnchor.constraint(equalTo: imageSpace.leftAnchor, constant: 7),
-                                      webKit.rightAnchor.constraint(equalTo: imageSpace.rightAnchor, constant: -7)])
     }
     
     // ТО:DО Перенести в общий класс с Анимацииями

@@ -15,9 +15,9 @@ class FriendsTableViewController: UITableViewController {
     private var service = RequestsServer()
     private var persistence = RealmCacheService()
     private var notificationToken: NotificationToken? = nil
-    private lazy var realm = RealmCacheService()
+//    private lazy var realm = RealmCacheService()
     private var friendResponce: Results<Friend>? {
-        realm.read(Friend.self)
+        persistence.read(Friend.self)
     }
     
     // MARK: - lifeСycle

@@ -75,6 +75,7 @@
 		FAB7738527556653007F37C1 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */; };
 		FACFFEB42781E3C9009B46DB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFFEB32781E3C9009B46DB /* Session.swift */; };
 		FAD04F1A27B0E127006B4233 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD04F1927B0E127006B4233 /* NewsModel.swift */; };
+		FAD18B5127C656D2001B95C3 /* AddElementNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD18B5027C656D2001B95C3 /* AddElementNews.swift */; };
 		FAD579B127955F6700E35E20 /* RequestsServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD579B027955F6700E35E20 /* RequestsServer.swift */; };
 		FADC7F76276A208600C81260 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC7F75276A208600C81260 /* NewsTableViewController.swift */; };
 		FADC7F7A276A20A200C81260 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC7F78276A20A200C81260 /* NewsTableViewCell.swift */; };
@@ -145,6 +146,7 @@
 		FAB7738427556653007F37C1 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
 		FACFFEB32781E3C9009B46DB /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		FAD04F1927B0E127006B4233 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		FAD18B5027C656D2001B95C3 /* AddElementNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddElementNews.swift; sourceTree = "<group>"; };
 		FAD579B027955F6700E35E20 /* RequestsServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsServer.swift; sourceTree = "<group>"; };
 		FADC7F75276A208600C81260 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		FADC7F78276A20A200C81260 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -438,9 +440,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FAD18B4F27C656B4001B95C3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FAD18B5027C656D2001B95C3 /* AddElementNews.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FADC7F74276A204600C81260 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				FAD18B4F27C656B4001B95C3 /* Helpers */,
 				FAD04F1827B0E106006B4233 /* Model */,
 				FA372B47276C104B00168776 /* Post */,
 				FADC7F77276A208B00C81260 /* Cell */,
@@ -681,6 +692,7 @@
 				FACFFEB42781E3C9009B46DB /* Session.swift in Sources */,
 				FAD04F1A27B0E127006B4233 /* NewsModel.swift in Sources */,
 				FADC7F76276A208600C81260 /* NewsTableViewController.swift in Sources */,
+				FAD18B5127C656D2001B95C3 /* AddElementNews.swift in Sources */,
 				FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */,
 				FAA7EA80279968FF00F96AA2 /* FriendModel.swift in Sources */,
 				FA998ABD27C050EE0054B888 /* GroupModel.swift in Sources */,
