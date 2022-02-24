@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class NewsTableViewController: UITableViewController {
     
@@ -16,7 +15,7 @@ class NewsTableViewController: UITableViewController {
     var textNews: [String] = []
     var news: [News1] = []
     
-    var service = RequestsServer()
+    private var service = RequestsServer()
     
     @IBOutlet var tableViewNews: UITableView!
     
@@ -32,14 +31,17 @@ class NewsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count == 0 ? 0 : allNews.news.count
+        return news.count
     }
-    
+        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+        // Предварительно очистим все пространства
+        cell.headerSpace.subviews.forEach { $0.removeFromSuperview() }
+        cell.textSpace.subviews.forEach { $0.removeFromSuperview() }
+        cell.imageSpace.subviews.forEach { $0.removeFromSuperview() }
         tableView.separatorColor = UIColor.clear
-        cell.configure(news: news[indexPath.row], allNews: allNews.news[indexPath.row])
-
+        cell.configure(news: news[indexPath.row])
         return cell
     }
     
@@ -56,14 +58,14 @@ class NewsTableViewController: UITableViewController {
     @IBAction func likeButton(_ sender:AnyObject)   {
         let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
         let index = self.tableView.indexPathForRow(at: buttonPosition)
-        if allNews.news[index![1]].likeStatus == false {
-            allNews.news[index![1]].like += 1
-            allNews.news[index![1]].likeStatus = true
-            allNews.news[index![1]].animation = true
-        } else {
-            allNews.news[index![1]].like -= 1
-            allNews.news[index![1]].likeStatus = false
-        }
+//        if allNews.news[index![1]].likeStatus == false {
+//            allNews.news[index![1]].like += 1
+//            allNews.news[index![1]].likeStatus = true
+//            allNews.news[index![1]].animation = true
+//        } else {
+//            allNews.news[index![1]].like -= 1
+//            allNews.news[index![1]].likeStatus = false
+//        }
         tableView.reloadRows(at: [IndexPath(row: index![1], section: index![0])],
                              with: .automatic)
     }

@@ -58,6 +58,8 @@ extension FriendsTableViewController {
             guard let self = self else { return }
             switch result {
             case .success(let friend):
+//                let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+//                let realm = try! Realm(configuration: config)
                 let realm = try! Realm()
                 let friendCount = realm.objects(Friend.self)
             // TO:DO до делать удаление по индексу

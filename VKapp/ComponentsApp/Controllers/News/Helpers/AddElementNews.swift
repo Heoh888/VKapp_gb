@@ -63,6 +63,12 @@ class AddElementNews {
         space.addSubview(avatarUserView)
         space.addSubview(userNameView)
         
+        if space.subviews.contains(avatarUserView) {
+           print("ok")
+          }else{
+           print("yj")
+        }
+        
         avatarUserView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([ avatarUserView.topAnchor.constraint(equalTo: space.topAnchor, constant: 7),
                                       avatarUserView.bottomAnchor.constraint(equalTo: space.bottomAnchor, constant: -7),

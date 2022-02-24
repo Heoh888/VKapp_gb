@@ -9,7 +9,6 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var post: UIView!
     
     // Шапка поста
@@ -57,44 +56,39 @@ class NewsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(news: News1, allNews: NewsModel) {
-        // Предварительно очистим все пространства
-        textSpace.subviews.forEach { $0.removeFromSuperview() }
-        imageSpace.subviews.forEach { $0.removeFromSuperview() }
-        headerSpace.subviews.forEach { $0.removeFromSuperview() }
-        
+    func configure(news: News1) {
         // Определим имплементацию модели
         if news.copyHistory != nil && news.attachments == nil {
             if ((news.copyHistory![0].ownerId)!) > 0 {
                 // Получим информацию о пользователе
-                service.loadUser(userId: String(news.copyHistory![0].ownerId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let user):
-                        DispatchQueue.main.async {
+                DispatchQueue.global(qos: .userInteractive).async {
+                    self.service.loadUser(userId: String(news.copyHistory![0].ownerId!)) { [weak self] result in
+                        guard let self = self else { return }
+                        switch result {
+                        case .success(let user):
                             self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
                                 guard let self = self else { return }
-                                    self.elementPost.addElement(userName: user.response[0].firstName, avatarUser: image, space: &self.headerSpace)
+                                self.elementPost.addElement(userName: user.response[0].firstName, avatarUser: image, space: &self.headerSpace)
                             }
+                        case .failure(_):
+                            return
                         }
-                    case .failure(_):
-                        return
                     }
                 }
             } else {
                 // Запросим информацию о группе
-                service.loadGroup(groupId: String(-news.copyHistory![0].ownerId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let gpoup):
-                        DispatchQueue.main.async {
+                DispatchQueue.global(qos: .userInteractive).async {
+                    self.service.loadGroup(groupId: String(-news.copyHistory![0].ownerId!)) { [weak self] result in
+                        guard let self = self else { return }
+                        switch result {
+                        case .success(let gpoup):
                             self.imageService.loadImageData(url: gpoup.response[0].photo200) { [weak self] image in
                                 guard let self = self else { return }
                                 self.elementPost.addElement(userName: gpoup.response[0].name, avatarUser: image, space: &self.headerSpace)
                             }
+                        case .failure(_):
+                            return
                         }
-                    case .failure(_):
-                        return
                     }
                 }
             }
@@ -131,34 +125,34 @@ class NewsTableViewCell: UITableViewCell {
         } else if news.copyHistory == nil && news.attachments != nil {
             if news.sourceId! > 0 {
                 // Получим информацию о пользователе
-                service.loadUser(userId: String(news.sourceId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let user):
-                        DispatchQueue.main.async {
+                DispatchQueue.global(qos: .userInteractive).async {
+                    self.service.loadUser(userId: String(news.sourceId!)) { [weak self] result in
+                        guard let self = self else { return }
+                        switch result {
+                        case .success(let user):
                             self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
                                 guard let self = self else { return }
                                 self.elementPost.addElement(userName: user.response[0].firstName, avatarUser: image, space: &self.headerSpace)
                             }
+                        case .failure(_):
+                            return
                         }
-                    case .failure(_):
-                        return
                     }
                 }
             } else {
                 // Запросим информацию о группе
-                service.loadGroup(groupId: String(-news.sourceId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let group):
-                        DispatchQueue.main.async {
+                DispatchQueue.global(qos: .userInteractive).async {
+                    self.service.loadGroup(groupId: String(-news.sourceId!)) { [weak self] result in
+                        guard let self = self else { return }
+                        switch result {
+                        case .success(let group):
                             self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
                                 guard let self = self else { return }
                                 self.elementPost.addElement(userName: group.response[0].name, avatarUser: image, space: &self.headerSpace)
                             }
+                        case .failure(_):
+                            return
                         }
-                    case .failure(_):
-                        return
                     }
                 }
             }

@@ -444,7 +444,6 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <connections>
-                                    <outlet property="cellView" destination="p3I-K3-7c9" id="kla-gV-Ogv"/>
                                     <outlet property="commentsBase" destination="weg-Ab-pHI" id="vgO-BC-PIK"/>
                                     <outlet property="commentsButton" destination="4Y4-U3-EXv" id="IGr-qZ-HFW"/>
                                     <outlet property="commentsText" destination="VsZ-pA-pqf" id="cQY-oz-btw"/>

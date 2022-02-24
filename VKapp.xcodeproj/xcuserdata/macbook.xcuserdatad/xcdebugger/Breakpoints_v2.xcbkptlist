@@ -78,8 +78,8 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "likeButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "likeButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -423,22 +423,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E0D11486-FBDA-4C36-89EA-C45E1C33F80D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "likeColour(status:cell:statusAnimation:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "83C137EA-C3CF-439E-80DE-EFC0F9EC64CB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -590,9 +574,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -606,9 +590,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -622,9 +606,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -638,9 +622,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -654,9 +638,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -670,9 +654,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -686,9 +670,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -702,9 +686,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -718,9 +702,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -734,25 +718,9 @@
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "configure(news:allNews:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AFA734FA-941C-4E48-9CFC-E38F82920338"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "configure(news:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -775,16 +743,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2756250E-CAEB-4C07-8994-6D1004F61EE3"
+            uuid = "C6B25C29-0710-4F93-989E-506AF91D5040"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/ComponentsApp/Controllers/Friends/Model/FriendModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "CodingKeys"
+            landmarkType = "13">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C55DAE92-6239-4FBA-9491-F6F9468C07DE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/ComponentsApp/Controllers/News/Model/NewsModelRealm.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CFA156CF-0E3A-48FC-98AF-34F02A7D63BC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "configure(news:allNews:)"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "configure(news:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C2851F8-9861-4ECB-A2B6-1D4D334FE59F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "configure(news:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5D3104FF-6221-4B76-B165-96FFC2FC62B9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/ComponentsApp/Controllers/News/Cell/NewsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "configure(news:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3769D942-0C7E-4309-AFD5-33FE1D70BA2C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/ComponentsApp/Controllers/Group/GroupTableView/GroupTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
