@@ -15,9 +15,9 @@ class FriendsTableViewController: UITableViewController {
     private var service = RequestsServer()
     private var persistence = RealmCacheService()
     private var notificationToken: NotificationToken? = nil
-    private lazy var realm = RealmCacheService()
+//    private lazy var realm = RealmCacheService()
     private var friendResponce: Results<Friend>? {
-        realm.read(Friend.self)
+        persistence.read(Friend.self)
     }
     
     // MARK: - lifeСycle
@@ -58,6 +58,8 @@ extension FriendsTableViewController {
             guard let self = self else { return }
             switch result {
             case .success(let friend):
+//                let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+//                let realm = try! Realm(configuration: config)
                 let realm = try! Realm()
                 let friendCount = realm.objects(Friend.self)
             // TO:DO до делать удаление по индексу

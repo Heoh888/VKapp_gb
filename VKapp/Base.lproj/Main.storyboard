@@ -18,7 +18,7 @@
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kd9-IZ-vkG">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
@@ -255,31 +255,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYi-dj-pIy">
                                                     <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="W2o-Vo-g2l">
-                                                            <rect key="frame" x="6" y="6" width="35" height="35"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="35" id="9Eb-yF-vEl"/>
-                                                                <constraint firstAttribute="width" constant="35" id="LEe-aF-l9n"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFA-KO-wpH">
-                                                            <rect key="frame" x="49" y="13" width="341" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <constraints>
-                                                        <constraint firstItem="W2o-Vo-g2l" firstAttribute="top" secondItem="aYi-dj-pIy" secondAttribute="top" constant="6" id="5sf-P8-ZiD"/>
-                                                        <constraint firstItem="W2o-Vo-g2l" firstAttribute="leading" secondItem="aYi-dj-pIy" secondAttribute="leading" constant="6" id="BMY-F6-bbR"/>
-                                                        <constraint firstAttribute="bottom" secondItem="cFA-KO-wpH" secondAttribute="bottom" constant="16" id="DMD-GC-hlp"/>
-                                                        <constraint firstItem="cFA-KO-wpH" firstAttribute="leading" secondItem="W2o-Vo-g2l" secondAttribute="trailing" constant="8" symbolic="YES" id="EMQ-5m-Mhd"/>
-                                                        <constraint firstItem="cFA-KO-wpH" firstAttribute="top" secondItem="aYi-dj-pIy" secondAttribute="top" constant="13" id="FJS-dV-ewM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="cFA-KO-wpH" secondAttribute="trailing" constant="10" id="cFK-cp-a7S"/>
-                                                        <constraint firstAttribute="bottom" secondItem="W2o-Vo-g2l" secondAttribute="bottom" constant="9" id="puC-S4-YIY"/>
-                                                    </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7NR-qT-C3R">
                                                     <rect key="frame" x="0.0" y="55" width="400" height="22"/>
@@ -448,6 +424,7 @@
                                                 <constraint firstItem="97t-qp-Lgy" firstAttribute="leading" secondItem="weg-Ab-pHI" secondAttribute="trailing" constant="9" id="Tgv-9p-fv0"/>
                                                 <constraint firstAttribute="bottom" secondItem="97t-qp-Lgy" secondAttribute="bottom" constant="9" id="cYp-AD-ojd"/>
                                                 <constraint firstItem="7NR-qT-C3R" firstAttribute="leading" secondItem="VHS-Ra-bm4" secondAttribute="leading" id="dek-rd-Mm4"/>
+                                                <constraint firstItem="7NR-qT-C3R" firstAttribute="top" secondItem="VHS-Ra-bm4" secondAttribute="top" constant="55" id="g7e-5s-On6"/>
                                                 <constraint firstItem="weg-Ab-pHI" firstAttribute="leading" secondItem="QbB-Cg-A2w" secondAttribute="trailing" constant="8" symbolic="YES" id="j9y-xF-AnO"/>
                                                 <constraint firstAttribute="bottom" secondItem="weg-Ab-pHI" secondAttribute="bottom" constant="9" id="kFH-hv-fdN"/>
                                                 <constraint firstItem="Gdp-5n-ONX" firstAttribute="top" secondItem="7NR-qT-C3R" secondAttribute="bottom" id="nj4-74-r0C"/>
@@ -470,9 +447,7 @@
                                     <outlet property="commentsBase" destination="weg-Ab-pHI" id="vgO-BC-PIK"/>
                                     <outlet property="commentsButton" destination="4Y4-U3-EXv" id="IGr-qZ-HFW"/>
                                     <outlet property="commentsText" destination="VsZ-pA-pqf" id="cQY-oz-btw"/>
-                                    <outlet property="constraynPostSpace" destination="OKe-dT-LNX" id="AJZ-kJ-Esl"/>
-                                    <outlet property="headerPost" destination="aYi-dj-pIy" id="sSi-uv-zOy"/>
-                                    <outlet property="imageAvatar" destination="W2o-Vo-g2l" id="DYi-Tr-2L5"/>
+                                    <outlet property="headerSpace" destination="aYi-dj-pIy" id="gtw-RD-kpa"/>
                                     <outlet property="imageSpace" destination="Gdp-5n-ONX" id="J76-oA-HPZ"/>
                                     <outlet property="like" destination="c12-0L-KBE" id="Al1-zd-Xer"/>
                                     <outlet property="likeBase" destination="QbB-Cg-A2w" id="J7Z-y7-eDr"/>
@@ -483,7 +458,6 @@
                                     <outlet property="rePostButton" destination="x9f-pc-nvx" id="ZFL-va-FBS"/>
                                     <outlet property="rePostText" destination="iSq-IN-Vx3" id="nQ6-5a-hoJ"/>
                                     <outlet property="textSpace" destination="7NR-qT-C3R" id="5yR-Sd-9bp"/>
-                                    <outlet property="userName" destination="cFA-KO-wpH" id="dOO-aK-bvP"/>
                                     <outlet property="views" destination="2Fv-j2-Ruk" id="bcH-OK-sWA"/>
                                 </connections>
                             </tableViewCell>
@@ -933,7 +907,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3" width="1000" height="965"/>
         <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="arrowshape.turn.up.forward" catalog="system" width="128" height="106"/>
         <image name="bank" width="600" height="332"/>

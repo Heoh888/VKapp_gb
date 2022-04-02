@@ -34,9 +34,10 @@ class GroupTableViewController: UITableViewController {
         
         ref.observe(.value, with: { snapshot in
             var communities: [FireBaseGroup] = []
+            print(snapshot, "++++++++++++++++++++++++++++++++++++++++++")
             for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let group = FireBaseGroup(snapshot: snapshot) {
+                if let snapshot = child as? DataSnapshot, let group = FireBaseGroup(snapshot: snapshot)
+                {
                     communities.append(group)
                 }
             }
