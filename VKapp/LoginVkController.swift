@@ -6,11 +6,9 @@
 //
 import UIKit
 import WebKit
-import FirebaseDatabase
 
 class LoginVkController: UIViewController {
     
-    private let ref = Database.database().reference(withPath: "User")
     
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -19,6 +17,7 @@ class LoginVkController: UIViewController {
     }
     
     var session = Session.instance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loudAut()
@@ -32,7 +31,7 @@ private extension LoginVkController {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "8087980"),
+            URLQueryItem(name: "client_id", value: "8145040"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "friends, photos, groups, wall, video"),
@@ -73,7 +72,6 @@ extension LoginVkController: WKNavigationDelegate {
         if let token = params["access_token"], let userID = params["user_id"] {
             session.token = token
             session.userId = Int(userID)!
-            self.ref.child("id\(String(describing: session.userId!))").child("value").setValue(session.userId)
             performSegue(withIdentifier: "login", sender: self)
         }
         decisionHandler(.cancel)

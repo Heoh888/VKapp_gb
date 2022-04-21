@@ -13,24 +13,25 @@ struct NewsVk: Decodable {
 }
 
 struct ResponceNews: Decodable {
-    let items: [News1]
+    let items: [News]
 }
 
-struct News1: Decodable {
+struct News: Decodable {
+
     let sourceId: Int?
     let ownerId: Int?
     let data: Int?
-    let photos: PhotosNews?
+//    let photos: PhotosNews?
     let text: String?
     let attachments: [Attachments]?
-    let copyHistory: [News1]?
+    let copyHistory: [News]?
     let type: String?
     
     enum CodingKeys: String, CodingKey {
         case sourceId = "source_id"
         case ownerId = "owner_id"
         case data = "date"
-        case photos = "photos"
+//        case photos = "photos"
         case text = "text"
         case attachments = "attachments"
         case copyHistory = "copy_history"
