@@ -8,10 +8,10 @@
 import UIKit
 
 enum TypeModel: String {
-    case textCell = "NewsTextCell"
-    case photoCell = "NewsPhotoCell"
-    case videoCell = "NewsVideoCell"
-    case noPost = "noPost"
+    case textCell
+    case photoCell
+    case videoCell
+    case noPost
 }
 
 class NewsTableViewController: UITableViewController {
@@ -21,6 +21,8 @@ class NewsTableViewController: UITableViewController {
     var news: [News] = []
     
     private var service = RequestsServer()
+    
+    var group = DispatchGroup()
     
     // MARK: - lifeСycle
     override func viewDidLoad() {
@@ -38,27 +40,23 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: AnyObject!
-        print(news[indexPath.row])
-        if parsingModel(model: news[indexPath.row]).rawValue == "noPost" {
-            cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell", for: indexPath) as! NewsTextCell
+        switch parsingModel(model: news[indexPath.row]) {
+        case .textCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
+            cell.configure(item: news[indexPath.row])
+            return cell
+        case .photoCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell") as! NewsPhotoCell
+            cell.configure(item: news[indexPath.row])
+            return cell
+        case .videoCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsVideoCell") as! NewsVideoCell
+            cell.configure(item: news[indexPath.row])
+            return cell
+        case .noPost:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
+            return cell
         }
-        if parsingModel(model: news[indexPath.row]).rawValue == "NewsTextCell" {
-             cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell", for: indexPath) as! NewsTextCell
-            (cell as! NewsTextCell).configure(item: news[indexPath.row])
-
-        }
-        if parsingModel(model: news[indexPath.row]).rawValue == "NewsPhotoCell" {
-             cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell", for: indexPath) as! NewsPhotoCell
-            (cell as! NewsPhotoCell).configure(item: news[indexPath.row])
-
-        }
-        if parsingModel(model: news[indexPath.row]).rawValue == "NewsVideoCell" {
-             cell = tableView.dequeueReusableCell(withIdentifier: "NewsVideoCell", for: indexPath) as! NewsVideoCell
-            (cell as! NewsVideoCell).configure(item: news[indexPath.row])
-
-        }
-        return cell as! UITableViewCell
     }
 }
 
@@ -81,7 +79,6 @@ extension NewsTableViewController {
     
     func  parsingModel(model: News) -> TypeModel {
         var result: TypeModel = .noPost
-
         if model.attachments == nil &&  model.copyHistory == nil{
             result = .noPost
         } else {
