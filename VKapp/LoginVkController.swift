@@ -31,7 +31,7 @@ private extension LoginVkController {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "8145040"),
+            URLQueryItem(name: "client_id", value: "8150646"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "friends, photos, groups, wall, video"),

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import GameKit
 
 struct NewsVk: Decodable {
     let response: ResponceNews
@@ -21,20 +20,28 @@ struct News: Decodable {
     let sourceId: Int?
     let ownerId: Int?
     let data: Int?
-//    let photos: PhotosNews?
     let text: String?
     let attachments: [Attachments]?
     let copyHistory: [News]?
+    let comments: Comments?
+    var likes: Likes?
+    let reposts: Reposts?
+    let views: Views?
+    let postId: Int?
     let type: String?
     
     enum CodingKeys: String, CodingKey {
         case sourceId = "source_id"
         case ownerId = "owner_id"
         case data = "date"
-//        case photos = "photos"
         case text = "text"
         case attachments = "attachments"
         case copyHistory = "copy_history"
+        case comments = "comments"
+        case likes = "likes"
+        case reposts = "reposts"
+        case views = "views"
+        case postId = "post_id"
         case type = "type"
     }
 }
@@ -63,9 +70,13 @@ struct VideoNewsItems: Decodable {
 }
 
 struct PhotoNewsItems: Decodable {
+    let id: Int
+    let ownerId: Int
     let sizes: [PhotoSize]
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case ownerId = "owner_id"
         case sizes = "sizes"
     }
 }
@@ -94,10 +105,31 @@ struct Attachments: Decodable {
 
 struct CopyHistory: Decodable {
     let type: String
-//    let photo: PhotoNewsItems?
     
     enum CodingKeys: String, CodingKey {
         case type = "type"
-//        case photo = "photo"
     }
 }
+// MARK: Модель для новостей типа "Like"
+struct Likes: Decodable {
+    var count: Int
+    var userLikes: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case count = "count"
+        case userLikes = "user_likes"
+    }
+}
+// MARK: Модель для новостей типа "Comments"
+struct Comments: Decodable {
+    var count: Int
+}
+// MARK: Модель для новостей типа "Reposts"
+struct Reposts: Decodable {
+    var count: Int
+}
+// MARK: Модель для новостей типа "Views"
+struct Views: Decodable {
+    var count: Int
+}
+

@@ -23,6 +23,10 @@ fileprivate enum TypeMetod: String {
     case userGet = "/method/users.get"
     case gpoupGet = "/method/groups.getById"
     case videoGet = "/method/video.get"
+    case likeAdd = "/method/likes.add"
+    case isLiked = "/method/likes.isLiked"
+    case likesDelete = "/method/likes.delete"
+    case likesGetList = "/method/likes.getList"
 }
 
 fileprivate enum TypeRequsts: String {
@@ -38,6 +42,100 @@ final class RequestsServer {
         let session = URLSession(configuration: config)
         return session
     }()
+    
+    func likesGetList(type: String, itemId: Int, ownerId: Int, complition: @escaping (Result<LikesModel, RequestsServerErroe>) -> ()) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "type": type,
+                                        "item_id": String(itemId),
+                                        "owner_id": String(ownerId),
+                                        "filter": "likes"]
+        
+        let url = configureUrl(method: .likesGetList,
+                               httpMethod: .get,
+                               params: params)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                return complition(.failure(.requestError(error)))
+            }
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+
+            do {
+                let result = try decoder.decode(LikesModel.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func likesIsLiked(type: String, itemId: Int, ownerId: Int, complition: @escaping (Result<LikesModel, RequestsServerErroe>) -> ()) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "type": type,
+                                        "item_id": String(itemId),
+                                        "owner_id": String(ownerId)]
+        
+        let url = configureUrl(method: .isLiked,
+                               httpMethod: .get,
+                               params: params)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                return complition(.failure(.requestError(error)))
+            }
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+
+            do {
+                let result = try decoder.decode(LikesModel.self, from: data)
+                return complition(.success(result))
+            } catch {
+                return complition(.failure(.parseError))
+
+            }
+        }
+        task.resume()
+    }
+    
+    func likeAdd(type: String, itemId: Int, ownerId: Int) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "type": type,
+                                        "item_id": String(itemId),
+                                        "owner_id": String(ownerId)
+        ]
+        let url = configureUrl(method: .likeAdd,
+                               httpMethod: .get,
+                               params: params)
+        let task = session.dataTask(with: url)
+        task.resume()
+    }
+    
+    func likesDelete(type: String, itemId: Int, ownerId: Int) {
+        guard let token = Session.instance.token else {
+            return
+        }
+        let params: [String: String] = ["access_token": token,
+                                        "type": type,
+                                        "item_id": String(itemId),
+                                        "owner_id": String(ownerId)
+        ]
+        let url = configureUrl(method: .likesDelete,
+                               httpMethod: .get,
+                               params: params)
+        let task = session.dataTask(with: url)
+        task.resume()
+    }
     
     func loadNews(complition: @escaping (Result<NewsVk, RequestsServerErroe>) -> ()){
         guard let token = Session.instance.token else {
