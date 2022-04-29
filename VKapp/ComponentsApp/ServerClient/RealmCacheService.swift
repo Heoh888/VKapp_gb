@@ -33,9 +33,6 @@ class RealmCacheService {
         if let result = realm.object(ofType: T.self, forPrimaryKey: key) {
             complition(.success(result))
         }
-//        else {
-//            complition(.failure())
-//        }
     }
     
     func read<T: Object>(_ object: T.Type) -> Results<T> {
