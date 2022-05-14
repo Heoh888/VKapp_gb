@@ -149,6 +149,7 @@ final class RequestsServer {
         let url = configureUrl(method: .newsfeed,
                                httpMethod: .get,
                                params: params)
+        print(url)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 return complition(.failure(.requestError(error)))

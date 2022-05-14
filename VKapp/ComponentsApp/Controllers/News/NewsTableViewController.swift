@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 enum TypeModel: String {
     case textCell
@@ -21,6 +22,7 @@ class NewsTableViewController: UIViewController {
     var news: [News] = []
     var group = DispatchGroup()
     
+    private var getUrl = ConfigureUrl()
     private var service = RequestsServer()
     
     // MARK: - lifeСycle
@@ -34,18 +36,22 @@ class NewsTableViewController: UIViewController {
     }
     
     func fetchNews() {
-        service.loadNews{  [weak self]  result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let news):
-                self.news = news.response.items
-                DispatchQueue.main.async {
-                    self.tableViewNews.reloadData()
-                }
-            case .failure(_):
-                return
-            }
+        let queue = OperationQueue()
+        let request = AF.request(String(describing: getUrl.getUrlNews()!))
+        
+        let getDataOperation = GetDataOperation(request: request)
+        queue.addOperation(getDataOperation)
+        
+        let parseData = ParseData()
+        parseData.addDependency(getDataOperation)
+        parseData.completionBlock = {
+            self.news = parseData.outputData
         }
+        queue.addOperation(parseData)
+        
+        let reloadTableController = ReloadTableController(controller: self)
+        reloadTableController.addDependency(parseData)
+        OperationQueue.main.addOperation(reloadTableController)
     }
     
     func  parsingModel(model: News) -> TypeModel {
@@ -62,7 +68,6 @@ class NewsTableViewController: UIViewController {
                     result = .textCell
                 }
             }
-            
             if model.copyHistory != nil {
                 if model.copyHistory![0].attachments != nil {
                     if model.copyHistory![0].attachments![0].photo != nil {
