@@ -57,6 +57,7 @@ final class RequestsServer {
         let url = configureUrl(method: .likesGetList,
                                httpMethod: .get,
                                params: params)
+        print(url)
 
         
         let task = session.dataTask(with: url) { data, response, error in

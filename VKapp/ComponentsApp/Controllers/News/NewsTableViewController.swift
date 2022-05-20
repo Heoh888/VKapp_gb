@@ -33,6 +33,10 @@ class NewsTableViewController: UIViewController {
         tableViewNews.register(UINib(nibName: "NewsPhotoCell", bundle: nil), forCellReuseIdentifier: "NewsPhotoCell")
         tableViewNews.register(UINib(nibName: "NewsTextCell", bundle: nil), forCellReuseIdentifier: "NewsTextCell")
         tableViewNews.register(UINib(nibName: "NewsVideoCell", bundle: nil), forCellReuseIdentifier: "NewsVideoCell")
+        
+        tableViewNews.register(UINib(nibName: "ImagePostCell", bundle: nil), forCellReuseIdentifier: "ImagePostCell")
+        tableViewNews.register(UINib(nibName: "TextPostCell", bundle: nil), forCellReuseIdentifier: "TextPostCell")
+        tableViewNews.register(UINib(nibName: "VideoPostCell", bundle: nil), forCellReuseIdentifier: "VideoPostCell")
     }
     
     func fetchNews() {
@@ -54,7 +58,7 @@ class NewsTableViewController: UIViewController {
         OperationQueue.main.addOperation(reloadTableController)
     }
     
-    func  parsingModel(model: News) -> TypeModel {
+    func parsingModel(model: News) -> TypeModel {
         var result: TypeModel = .noPost
         if model.attachments == nil &&  model.copyHistory == nil{
             result = .noPost
@@ -91,33 +95,43 @@ extension NewsTableViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch parsingModel(model: news[indexPath.row]) {
-        case .textCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
-            cell.itemId = news[indexPath.row].postId!
-            cell.ownerId = news[indexPath.row].sourceId!
-            cell.type = news[indexPath.row].type!
-            cell.configure(model: news, indexPath: indexPath.row)
-            return cell
-        case .photoCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell") as! NewsPhotoCell
-            cell.itemId = news[indexPath.row].postId!
-            cell.ownerId = news[indexPath.row].sourceId!
-            cell.type = news[indexPath.row].type!
-            cell.configure(model: news, indexPath: indexPath.row)
-            return cell
-        case .videoCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsVideoCell") as! NewsVideoCell
-            cell.itemId = news[indexPath.row].postId!
-            cell.ownerId = news[indexPath.row].sourceId!
-            cell.type = news[indexPath.row].type!
-            cell.configure(model: news, indexPath: indexPath.row)
-            return cell
-        case .noPost:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
-            cell.textPost.text = "Запись удалина"
-            return cell
-        }
+        let currentData = news[indexPath.row]
+        print(currentData.postType?.rawValue)
+        guard
+            let cellIdentifier = currentData.postType?.rawValue,
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        else { return UITableViewCell() }
+        
+        (cell as? PostCellProtocol)?.set(value: currentData)
+        return cell
+        
+//        switch parsingModel(model: news[indexPath.row]) {
+//        case .textCell:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
+//            cell.itemId = news[indexPath.row].postId!
+//            cell.ownerId = news[indexPath.row].sourceId!
+//            cell.type = news[indexPath.row].type!
+//            cell.configure(model: news, indexPath: indexPath.row)
+//            return cell
+//        case .photoCell:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell") as! NewsPhotoCell
+//            cell.itemId = news[indexPath.row].postId!
+//            cell.ownerId = news[indexPath.row].sourceId!
+//            cell.type = news[indexPath.row].type!
+//            cell.configure(model: news, indexPath: indexPath.row)
+//            return cell
+//        case .videoCell:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsVideoCell") as! NewsVideoCell
+//            cell.itemId = news[indexPath.row].postId!
+//            cell.ownerId = news[indexPath.row].sourceId!
+//            cell.type = news[indexPath.row].type!
+//            cell.configure(model: news, indexPath: indexPath.row)
+//            return cell
+//        case .noPost:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
+//            cell.textPost.text = "Запись удалина"
+//            return cell
+//        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyoard = UIStoryboard(name: "Main", bundle: nil)

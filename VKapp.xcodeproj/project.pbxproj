@@ -20,6 +20,18 @@
 		8643D4AE282DC1580042332D /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4AD282DC1580042332D /* ParseData.swift */; };
 		8643D4B0282DC1680042332D /* ReloadTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4AF282DC1680042332D /* ReloadTableController.swift */; };
 		8643D4B3282E74B60042332D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8643D4B2282E74B60042332D /* Alamofire */; };
+		8646698F2837097E00734E6B /* VideoPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8646698D2837097E00734E6B /* VideoPostCell.swift */; };
+		864669902837097E00734E6B /* VideoPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8646698E2837097E00734E6B /* VideoPostCell.xib */; };
+		864669932837099300734E6B /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864669912837099300734E6B /* TextPostCell.swift */; };
+		864669942837099300734E6B /* TextPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864669922837099300734E6B /* TextPostCell.xib */; };
+		86466997283709D600734E6B /* ImagePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86466995283709D600734E6B /* ImagePostCell.swift */; };
+		86466998283709D600734E6B /* ImagePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86466996283709D600734E6B /* ImagePostCell.xib */; };
+		8646699B283709EB00734E6B /* ImageRePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86466999283709EB00734E6B /* ImageRePostCell.swift */; };
+		8646699C283709EB00734E6B /* ImageRePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8646699A283709EB00734E6B /* ImageRePostCell.xib */; };
+		8646699F28370A0800734E6B /* TextRePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8646699D28370A0800734E6B /* TextRePostCell.swift */; };
+		864669A028370A0800734E6B /* TextRePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8646699E28370A0800734E6B /* TextRePostCell.xib */; };
+		864669A328370A2100734E6B /* VideoRePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864669A128370A2100734E6B /* VideoRePostCell.swift */; };
+		864669A428370A2100734E6B /* VideoRePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864669A228370A2100734E6B /* VideoRePostCell.xib */; };
 		86499977280DEA4E00972588 /* NewsPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86499975280DEA4E00972588 /* NewsPhotoCell.swift */; };
 		86499978280DEA4E00972588 /* NewsPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86499976280DEA4E00972588 /* NewsPhotoCell.xib */; };
 		864999802811693500972588 /* NewsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8649997E2811693500972588 /* NewsTextCell.swift */; };
@@ -99,6 +111,18 @@
 		8643D4AB282DC1320042332D /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		8643D4AD282DC1580042332D /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		8643D4AF282DC1680042332D /* ReloadTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReloadTableController.swift; path = ../../../../../../Documents/ReloadTableController.swift; sourceTree = "<group>"; };
+		8646698D2837097E00734E6B /* VideoPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPostCell.swift; sourceTree = "<group>"; };
+		8646698E2837097E00734E6B /* VideoPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPostCell.xib; sourceTree = "<group>"; };
+		864669912837099300734E6B /* TextPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPostCell.swift; sourceTree = "<group>"; };
+		864669922837099300734E6B /* TextPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPostCell.xib; sourceTree = "<group>"; };
+		86466995283709D600734E6B /* ImagePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostCell.swift; sourceTree = "<group>"; };
+		86466996283709D600734E6B /* ImagePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePostCell.xib; sourceTree = "<group>"; };
+		86466999283709EB00734E6B /* ImageRePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRePostCell.swift; sourceTree = "<group>"; };
+		8646699A283709EB00734E6B /* ImageRePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageRePostCell.xib; sourceTree = "<group>"; };
+		8646699D28370A0800734E6B /* TextRePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRePostCell.swift; sourceTree = "<group>"; };
+		8646699E28370A0800734E6B /* TextRePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextRePostCell.xib; sourceTree = "<group>"; };
+		864669A128370A2100734E6B /* VideoRePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRePostCell.swift; sourceTree = "<group>"; };
+		864669A228370A2100734E6B /* VideoRePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoRePostCell.xib; sourceTree = "<group>"; };
 		86499975280DEA4E00972588 /* NewsPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPhotoCell.swift; sourceTree = "<group>"; };
 		86499976280DEA4E00972588 /* NewsPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsPhotoCell.xib; sourceTree = "<group>"; };
 		8649997E2811693500972588 /* NewsTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTextCell.swift; sourceTree = "<group>"; };
@@ -194,6 +218,80 @@
 				8643D4AF282DC1680042332D /* ReloadTableController.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		86466985283705EC00734E6B /* Attachments */ = {
+			isa = PBXGroup;
+			children = (
+				8646698C2837091900734E6B /* ImagePost */,
+				8646698B2837091200734E6B /* TextPost */,
+				8646698A2837090A00734E6B /* VideoPost */,
+			);
+			path = Attachments;
+			sourceTree = "<group>";
+		};
+		86466986283705F700734E6B /* CopyHistory */ = {
+			isa = PBXGroup;
+			children = (
+				864669892837064400734E6B /* VideoPost */,
+				864669882837063700734E6B /* TextPost */,
+				864669872837061700734E6B /* ImagePost */,
+			);
+			path = CopyHistory;
+			sourceTree = "<group>";
+		};
+		864669872837061700734E6B /* ImagePost */ = {
+			isa = PBXGroup;
+			children = (
+				86466999283709EB00734E6B /* ImageRePostCell.swift */,
+				8646699A283709EB00734E6B /* ImageRePostCell.xib */,
+			);
+			path = ImagePost;
+			sourceTree = "<group>";
+		};
+		864669882837063700734E6B /* TextPost */ = {
+			isa = PBXGroup;
+			children = (
+				8646699D28370A0800734E6B /* TextRePostCell.swift */,
+				8646699E28370A0800734E6B /* TextRePostCell.xib */,
+			);
+			path = TextPost;
+			sourceTree = "<group>";
+		};
+		864669892837064400734E6B /* VideoPost */ = {
+			isa = PBXGroup;
+			children = (
+				864669A128370A2100734E6B /* VideoRePostCell.swift */,
+				864669A228370A2100734E6B /* VideoRePostCell.xib */,
+			);
+			path = VideoPost;
+			sourceTree = "<group>";
+		};
+		8646698A2837090A00734E6B /* VideoPost */ = {
+			isa = PBXGroup;
+			children = (
+				8646698D2837097E00734E6B /* VideoPostCell.swift */,
+				8646698E2837097E00734E6B /* VideoPostCell.xib */,
+			);
+			path = VideoPost;
+			sourceTree = "<group>";
+		};
+		8646698B2837091200734E6B /* TextPost */ = {
+			isa = PBXGroup;
+			children = (
+				864669912837099300734E6B /* TextPostCell.swift */,
+				864669922837099300734E6B /* TextPostCell.xib */,
+			);
+			path = TextPost;
+			sourceTree = "<group>";
+		};
+		8646698C2837091900734E6B /* ImagePost */ = {
+			isa = PBXGroup;
+			children = (
+				86466995283709D600734E6B /* ImagePostCell.swift */,
+				86466996283709D600734E6B /* ImagePostCell.xib */,
+			);
+			path = ImagePost;
 			sourceTree = "<group>";
 		};
 		86499974280DEA3400972588 /* NewsPhoto */ = {
@@ -470,6 +568,8 @@
 		FADC7F77276A208B00C81260 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				86466986283705F700734E6B /* CopyHistory */,
+				86466985283705EC00734E6B /* Attachments */,
 				867616212811A6D50049BEC2 /* NewsVideo */,
 				86499979281168B400972588 /* NewsText */,
 				86499974280DEA3400972588 /* NewsPhoto */,
@@ -628,12 +728,18 @@
 				FAA56C92275E446A000DDB92 /* FriendsViewCell.xib in Resources */,
 				86499978280DEA4E00972588 /* NewsPhotoCell.xib in Resources */,
 				FA16010E274F106400BF9C63 /* LaunchScreen.storyboard in Resources */,
+				864669902837097E00734E6B /* VideoPostCell.xib in Resources */,
+				86466998283709D600734E6B /* ImagePostCell.xib in Resources */,
+				864669942837099300734E6B /* TextPostCell.xib in Resources */,
 				FA29F312275A434200BBB0EE /* GroupTableViewCell.xib in Resources */,
 				867616252811A6F50049BEC2 /* NewsVideoCell.xib in Resources */,
+				864669A428370A2100734E6B /* VideoRePostCell.xib in Resources */,
 				FA16010B274F106400BF9C63 /* Assets.xcassets in Resources */,
 				864999812811693500972588 /* NewsTextCell.xib in Resources */,
+				864669A028370A0800734E6B /* TextRePostCell.xib in Resources */,
 				FA160106274F106200BF9C63 /* Main.storyboard in Resources */,
 				FAB7738527556653007F37C1 /* FriendsTableViewCell.xib in Resources */,
+				8646699C283709EB00734E6B /* ImageRePostCell.xib in Resources */,
 				86389CE727F85B35004D8788 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,17 +868,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				864669932837099300734E6B /* TextPostCell.swift in Sources */,
+				86466997283709D600734E6B /* ImagePostCell.swift in Sources */,
 				867753412817FAA800B3A9F9 /* LikesModel.swift in Sources */,
 				FAFF0D66279D84210051B993 /* FriendPhotosModel.swift in Sources */,
 				FA581DDA2778F8F700D7483D /* AppUtility.swift in Sources */,
 				FA160109274F106200BF9C63 /* VKapp.xcdatamodeld in Sources */,
 				FA581DD82778D3F300D7483D /* PopAnimator.swift in Sources */,
 				FAA7EA7E279964F000F96AA2 /* ImageLoader.swift in Sources */,
+				8646699B283709EB00734E6B /* ImageRePostCell.swift in Sources */,
 				8643D4AE282DC1580042332D /* ParseData.swift in Sources */,
 				FAA56C98275E4742000DDB92 /* FriendsTableViewController.swift in Sources */,
 				FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */,
 				867616242811A6F50049BEC2 /* NewsVideoCell.swift in Sources */,
 				FAF15C2F277228FF006FC004 /* CommentTableViewCell.swift in Sources */,
+				864669A328370A2100734E6B /* VideoRePostCell.swift in Sources */,
 				FA581DD62778C61400D7483D /* PushAnimator.swift in Sources */,
 				FA17B84027B5443600526EE1 /* UserModel.swift in Sources */,
 				FAFF0D5F279C3A550051B993 /* GroupsModel.swift in Sources */,
@@ -793,7 +903,9 @@
 				FACFFEB42781E3C9009B46DB /* Session.swift in Sources */,
 				FAD04F1A27B0E127006B4233 /* NewsModel.swift in Sources */,
 				FADC7F76276A208600C81260 /* NewsTableViewController.swift in Sources */,
+				8646698F2837097E00734E6B /* VideoPostCell.swift in Sources */,
 				FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */,
+				8646699F28370A0800734E6B /* TextRePostCell.swift in Sources */,
 				FAA7EA80279968FF00F96AA2 /* FriendModel.swift in Sources */,
 				FA998ABD27C050EE0054B888 /* GroupModel.swift in Sources */,
 				FA227BE027C2DF1B00EBDE42 /* VideoModel.swift in Sources */,

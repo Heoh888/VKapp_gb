@@ -58,6 +58,7 @@ class ConfigureUrl {
         let url = configureUrl(method: .newsfeed,
                                httpMethod: .get,
                                params: params)
+        print(url)
         return url
     }
 }
