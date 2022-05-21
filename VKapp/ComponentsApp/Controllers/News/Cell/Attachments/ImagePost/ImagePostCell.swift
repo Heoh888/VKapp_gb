@@ -111,7 +111,7 @@ extension ImagePostCell: PostCellProtocol {
             }
         }
         
-        textPost.text = value.text
+        textPost.text = value.text!
         
         guard let photo = value.attachments![0].photo?.sizes else { return }
         let urlImage = URL(string: photo[photo.count - 1].url)

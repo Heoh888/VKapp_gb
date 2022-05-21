@@ -19,6 +19,12 @@ fileprivate enum TypeRequsts: String {
     case post = "POST"
 }
 
+enum Parametrs {
+    case newsPost
+    case gpoupsGet
+    case friendsGet
+}
+
 class ConfigureUrl {
     private let scheme = "https"
     private let host = "api.vk.com"
@@ -28,37 +34,18 @@ class ConfigureUrl {
         return session
     }()
     
-    func getUrlFriends() -> URL? {
-        guard let token = Session.instance.token else { return nil }
-        let params: [String: String] = ["access_token": token,
-                                        "fields": "photo_50"]
+    func getUrl(parametrs: Parametrs) -> URL? {
+        let params: [String: String]
+        
+        switch parametrs {
+        case .newsPost: params = ["filters": "post",]
+        case .gpoupsGet: params = ["fields": "photo_50", "extended": "1"]
+        case .friendsGet: params = ["fields" : "photo_50"]
+        }
+        
         let url = configureUrl(method: .friendsGet,
                                httpMethod: .get,
                                params: params)
-        return url
-    }
-    
-    func getUrlGrups() -> URL? {
-        guard let token = Session.instance.token else { return nil}
-        let params: [String: String] = ["access_token": token,
-                                        "fields": "photo_50",
-                                        "extended": "1"
-        ]
-        let url = configureUrl(method: .gpoupsGet,
-                               httpMethod: .get,
-                               params: params)
-        return url
-    }
-    
-    func getUrlNews() -> URL? {
-        guard let token = Session.instance.token else { return nil}
-        let params: [String: String] = ["access_token": token,
-                                        "filters": "post",
-        ]
-        let url = configureUrl(method: .newsfeed,
-                               httpMethod: .get,
-                               params: params)
-        print(url)
         return url
     }
 }

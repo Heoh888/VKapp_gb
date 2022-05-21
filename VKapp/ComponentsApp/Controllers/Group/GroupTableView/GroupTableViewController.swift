@@ -85,7 +85,7 @@ extension GroupTableViewController {
     
     func fetchGroups() {
         firstly {
-            URLSession.shared.dataTask(.promise, with: getUrl.getUrlGrups()!)
+            URLSession.shared.dataTask(.promise, with: getUrl.getUrl(parametrs: .gpoupsGet)!)
         }
         .compactMap { try JSONDecoder().decode(GroupsVk.self, from: $0.data) }
         .done { groups in
