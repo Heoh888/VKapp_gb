@@ -7,19 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D1C1201941ACDE95CE84C42 /* Pods_VKappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CBD5D773A646B4620B3FF7 /* Pods_VKappTests.framework */; };
-		2BC60052FD52F85FBA7B925F /* Pods_VKapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6C2DD171935628F3F00E3E /* Pods_VKapp.framework */; };
-		860C76CA280AD27800BAEEFC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 860C76C9280AD27800BAEEFC /* Realm */; };
-		860C76CC280AD27800BAEEFC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 860C76CB280AD27800BAEEFC /* RealmSwift */; };
-		860F5D712823ED920096CAC5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 860F5D702823ED920096CAC5 /* Realm */; };
-		860F5D732823ED920096CAC5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 860F5D722823ED920096CAC5 /* RealmSwift */; };
-		8636AC4C28307FB40052C13F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8636AC4B28307FB40052C13F /* Kingfisher */; };
-		86389CE727F85B35004D8788 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86389CE627F85B35004D8788 /* GoogleService-Info.plist */; };
 		8643D4AA282DC1190042332D /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4A9282DC1190042332D /* GetDataOperation.swift */; };
 		8643D4AC282DC1320042332D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4AB282DC1320042332D /* AsyncOperation.swift */; };
 		8643D4AE282DC1580042332D /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4AD282DC1580042332D /* ParseData.swift */; };
 		8643D4B0282DC1680042332D /* ReloadTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4AF282DC1680042332D /* ReloadTableController.swift */; };
-		8643D4B3282E74B60042332D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8643D4B2282E74B60042332D /* Alamofire */; };
 		8646698F2837097E00734E6B /* VideoPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8646698D2837097E00734E6B /* VideoPostCell.swift */; };
 		864669902837097E00734E6B /* VideoPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8646698E2837097E00734E6B /* VideoPostCell.xib */; };
 		864669932837099300734E6B /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864669912837099300734E6B /* TextPostCell.swift */; };
@@ -40,7 +31,6 @@
 		867616242811A6F50049BEC2 /* NewsVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867616222811A6F50049BEC2 /* NewsVideoCell.swift */; };
 		867616252811A6F50049BEC2 /* NewsVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867616232811A6F50049BEC2 /* NewsVideoCell.xib */; };
 		867753412817FAA800B3A9F9 /* LikesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867753402817FAA800B3A9F9 /* LikesModel.swift */; };
-		EC2CC439C8AA84DC12FE5119 /* Pods_VKapp_VKappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E301147B52E560A105D0A0 /* Pods_VKapp_VKappUITests.framework */; };
 		FA03461B2769008300DCBB60 /* AllCroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */; };
 		FA1600FF274F106200BF9C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1600FE274F106200BF9C63 /* AppDelegate.swift */; };
 		FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA160100274F106200BF9C63 /* SceneDelegate.swift */; };
@@ -100,13 +90,10 @@
 /* Begin PBXFileReference section */
 		1244EF5CF4327CB57C9743F2 /* Pods-VKapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.debug.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.debug.xcconfig"; sourceTree = "<group>"; };
 		160A790F5C5342ED50A2BF9C /* Pods-VKapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.release.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.release.xcconfig"; sourceTree = "<group>"; };
-		1E6C2DD171935628F3F00E3E /* Pods_VKapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36975DB567A5347FB3A0BE08 /* Pods-VKapp-VKappUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp-VKappUITests.release.xcconfig"; path = "Target Support Files/Pods-VKapp-VKappUITests/Pods-VKapp-VKappUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B737C0A5DE135B3C17FB474 /* Pods-VKappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKappTests.debug.xcconfig"; path = "Target Support Files/Pods-VKappTests/Pods-VKappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5612FFE5E3F79E8EAB7657AE /* Pods-VKapp-VKappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp-VKappUITests.debug.xcconfig"; path = "Target Support Files/Pods-VKapp-VKappUITests/Pods-VKapp-VKappUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B2FB70243A9B7E0A88F1757 /* Pods-VKappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKappTests.release.xcconfig"; path = "Target Support Files/Pods-VKappTests/Pods-VKappTests.release.xcconfig"; sourceTree = "<group>"; };
-		70CBD5D773A646B4620B3FF7 /* Pods_VKappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		86389CE627F85B35004D8788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8643D4A9282DC1190042332D /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
 		8643D4AB282DC1320042332D /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		8643D4AD282DC1580042332D /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
@@ -131,7 +118,6 @@
 		867616222811A6F50049BEC2 /* NewsVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVideoCell.swift; sourceTree = "<group>"; };
 		867616232811A6F50049BEC2 /* NewsVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsVideoCell.xib; sourceTree = "<group>"; };
 		867753402817FAA800B3A9F9 /* LikesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesModel.swift; sourceTree = "<group>"; };
-		91E301147B52E560A105D0A0 /* Pods_VKapp_VKappUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKapp_VKappUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCroupTableViewCell.swift; sourceTree = "<group>"; };
 		FA1600FB274F106200BF9C63 /* VKapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1600FE274F106200BF9C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,13 +166,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				860C76CC280AD27800BAEEFC /* RealmSwift in Frameworks */,
-				860C76CA280AD27800BAEEFC /* Realm in Frameworks */,
-				8636AC4C28307FB40052C13F /* Kingfisher in Frameworks */,
-				860F5D712823ED920096CAC5 /* Realm in Frameworks */,
-				8643D4B3282E74B60042332D /* Alamofire in Frameworks */,
-				860F5D732823ED920096CAC5 /* RealmSwift in Frameworks */,
-				2BC60052FD52F85FBA7B925F /* Pods_VKapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +173,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D1C1201941ACDE95CE84C42 /* Pods_VKappTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +180,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC2CC439C8AA84DC12FE5119 /* Pods_VKapp_VKappUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,9 +301,6 @@
 		BF5A3BC2E96C4E3FB6B559A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1E6C2DD171935628F3F00E3E /* Pods_VKapp.framework */,
-				91E301147B52E560A105D0A0 /* Pods_VKapp_VKappUITests.framework */,
-				70CBD5D773A646B4620B3FF7 /* Pods_VKappTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -383,7 +357,6 @@
 				FA16010A274F106400BF9C63 /* Assets.xcassets */,
 				FA16010C274F106400BF9C63 /* LaunchScreen.storyboard */,
 				FA16010F274F106400BF9C63 /* Info.plist */,
-				86389CE627F85B35004D8788 /* GoogleService-Info.plist */,
 				FA160107274F106200BF9C63 /* VKapp.xcdatamodeld */,
 			);
 			path = VKapp;
@@ -621,12 +594,6 @@
 			);
 			name = VKapp;
 			packageProductDependencies = (
-				860C76C9280AD27800BAEEFC /* Realm */,
-				860C76CB280AD27800BAEEFC /* RealmSwift */,
-				860F5D702823ED920096CAC5 /* Realm */,
-				860F5D722823ED920096CAC5 /* RealmSwift */,
-				8643D4B2282E74B60042332D /* Alamofire */,
-				8636AC4B28307FB40052C13F /* Kingfisher */,
 			);
 			productName = VKapp;
 			productReference = FA1600FB274F106200BF9C63 /* VKapp.app */;
@@ -704,10 +671,6 @@
 			);
 			mainGroup = FA1600F2274F106200BF9C63;
 			packageReferences = (
-				860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */,
-				860F5D6F2823ED920096CAC5 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				8643D4B1282E74B60042332D /* XCRemoteSwiftPackageReference "Alamofire" */,
-				8636AC4A28307FB30052C13F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = FA1600FC274F106200BF9C63 /* Products */;
 			projectDirPath = "";
@@ -740,7 +703,6 @@
 				FA160106274F106200BF9C63 /* Main.storyboard in Resources */,
 				FAB7738527556653007F37C1 /* FriendsTableViewCell.xib in Resources */,
 				8646699C283709EB00734E6B /* ImageRePostCell.xib in Resources */,
-				86389CE727F85B35004D8788 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,74 +1248,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		860F5D6F2823ED920096CAC5 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		8636AC4A28307FB30052C13F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		8643D4B1282E74B60042332D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		860C76C9280AD27800BAEEFC /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		860C76CB280AD27800BAEEFC /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		860F5D702823ED920096CAC5 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		860F5D722823ED920096CAC5 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		8636AC4B28307FB40052C13F /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8636AC4A28307FB30052C13F /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		8643D4B2282E74B60042332D /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8643D4B1282E74B60042332D /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FA160107274F106200BF9C63 /* VKapp.xcdatamodeld */ = {
