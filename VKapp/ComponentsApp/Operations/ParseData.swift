@@ -13,8 +13,6 @@ class ParseData: Operation {
         guard let getDataOperation = dependencies.first as? GetDataOperation,
               let data = getDataOperation.data else { return }
         
-        print(data)
-
         let decoder = JSONDecoder()
         do {
             let posts = try decoder.decode(NewsVk.self, from: data)

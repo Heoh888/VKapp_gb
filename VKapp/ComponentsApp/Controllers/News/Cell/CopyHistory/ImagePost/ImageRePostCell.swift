@@ -24,6 +24,8 @@ class ImageRePostCell: UITableViewCell {
     private var service = RequestsServer()
     private var likeCheckbox: Bool = false
     
+    private var getData = ViewNewsModel()
+    
     private var type: String?
     private var itemId: Int?
     private var ownerId: Int?
@@ -73,84 +75,37 @@ class ImageRePostCell: UITableViewCell {
     }
 }
 extension ImageRePostCell: PostCellProtocol {
+    
     func set<T>(value: T) where T : PostCellDataProtocol {
-        commentsButton.setTitle("\(value.comments?.count ?? 0)", for: .normal)
-        rePostButton.setTitle("\(value.reposts?.count ?? 0)", for: .normal)
-        views.text = "\(value.views?.count ?? 0)"
         
         if value.copyHistory![0].attachments != nil {
-            if value.sourceId! > 0 {
-                // Получим информацию о пользователе
-                self.service.loadUser(userId: String(value.sourceId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let user):
-                        self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
-                            guard let self = self else { return }
-                            self.nameUser.text = user.response[0].firstName
-                            self.imageUser.image = image
-                        }
-                    case .failure(_):
-                        return
-                    }
-                }
-            } else {
-                // Запросим информацию о группе
-                self.service.loadGroup(groupId: String(-value.sourceId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let group):
-                        self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
-                            guard let self = self else { return }
-                            self.nameUser.text = group.response[0].name
-                            self.imageUser.image = image
-                        }
-                    case .failure(_):
-                        return
-                    }
-                }
-            }
+
+            let sourceId: String = value.sourceId! > 0 ? String(value.sourceId!) : String(-value.sourceId!)
             
-            if value.copyHistory![0].ownerId! > 0 {
-                // Получим информацию о пользователе
-                self.service.loadUser(userId: String(value.copyHistory![0].ownerId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let user):
-                        self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
-                            guard let self = self else { return }
-                            self.nameUserRePost.text = "\u{21B3}" + " " + user.response[0].firstName
-                            self.imageUserRePost.image = image
-                        }
-                    case .failure(_):
-                        return
-                    }
-                }
-            } else {
-                // Запросим информацию о группе
-                self.service.loadGroup(groupId: String(-value.copyHistory![0].ownerId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let group):
-                        self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
-                            guard let self = self else { return }
-                            self.nameUserRePost.text = "\u{21B3}" + " " + group.response[0].name
-                            self.imageUserRePost.image = image
-                        }
-                    case .failure(_):
-                        return
-                    }
-                }
+            getData.getDataUser(id: sourceId) { [weak self] image, userName in
+                guard let self = self else { return }
+                self.imageUser.image = image
+                self.nameUser.text = userName
+            }
+
+            let ownerId: String = value.copyHistory![0].ownerId! > 0 ? String(value.copyHistory![0].ownerId!) : String(-value.copyHistory![0].ownerId!)
+            
+            getData.getDataUser(id: ownerId) { [weak self] image, userName in
+                guard let self = self else { return }
+                self.imageUserRePost.image = image
+                self.nameUserRePost.text = userName
             }
         }
         
         textPost.text = value.text!
         
-        nameUserRePost.text = "\u{21B3}" + " " + "Name User"
-        
         guard let photo = value.copyHistory![0].attachments![0].photo?.sizes else { return }
         let urlImage = URL(string: photo[photo.count - 1].url)
         imagePost.kf.setImage(with: urlImage)
+        
+        commentsButton.setTitle("\(value.comments?.count ?? 0)", for: .normal)
+        rePostButton.setTitle("\(value.reposts?.count ?? 0)", for: .normal)
+        views.text = "\(value.views?.count ?? 0)"
     }
 }
 

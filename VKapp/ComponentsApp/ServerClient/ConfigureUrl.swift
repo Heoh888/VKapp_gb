@@ -8,21 +8,16 @@
 import Foundation
 import PromiseKit
 
-fileprivate enum TypeMetod: String {
+enum Parametrs: String {
     case friendsGet = "/method/friends.get"
     case gpoupsGet = "/method/groups.get"
     case newsfeed = "/method/newsfeed.get"
+    case userGet = "/method/users.get"
 }
 
 fileprivate enum TypeRequsts: String {
     case get = "GET"
     case post = "POST"
-}
-
-enum Parametrs {
-    case newsPost
-    case gpoupsGet
-    case friendsGet
 }
 
 class ConfigureUrl {
@@ -34,23 +29,36 @@ class ConfigureUrl {
         return session
     }()
     
-    func getUrl(parametrs: Parametrs) -> URL? {
+    func getUrl(parametrs: Parametrs, id: String = "") -> URL? {
+
+        guard let token = Session.instance.token else { return nil }
+        
         let params: [String: String]
         
         switch parametrs {
-        case .newsPost: params = ["filters": "post",]
-        case .gpoupsGet: params = ["fields": "photo_50", "extended": "1"]
-        case .friendsGet: params = ["fields" : "photo_50"]
+        case .newsfeed: params = ["access_token": token,
+                                  "filters": "post",]
+            
+        case .gpoupsGet: params = ["access_token": token,
+                                   "fields": "photo_50",
+                                   "extended": "1"]
+            
+        case .friendsGet: params = ["access_token": token,
+                                    "fields" : "photo_50"]
+            
+        case .userGet: params = ["access_token": token,
+                                 "user_ids": id,
+                                 "fields": "photo_50"]
         }
         
-        let url = configureUrl(method: .friendsGet,
+        let url = configureUrl(method: parametrs,
                                httpMethod: .get,
                                params: params)
         return url
     }
 }
 private extension ConfigureUrl {
-    func configureUrl(method: TypeMetod,
+    func configureUrl(method: Parametrs,
                       httpMethod: TypeRequsts,
                       params: [String : String]) -> URL {
         var queryItem = [URLQueryItem]()

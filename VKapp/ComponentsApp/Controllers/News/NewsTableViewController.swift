@@ -38,7 +38,7 @@ class NewsTableViewController: UIViewController {
     
     func fetchNews() {
         let queue = OperationQueue()
-        let request = AF.request(String(describing: getUrl.getUrl(parametrs: .newsPost)!))
+        let request = AF.request(String(describing: getUrl.getUrl(parametrs: .newsfeed)!))
         
         let getDataOperation = GetDataOperation(request: request)
         queue.addOperation(getDataOperation)
