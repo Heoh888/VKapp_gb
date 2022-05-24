@@ -20,7 +20,6 @@ class ImageRePostCell: UITableViewCell {
     @IBOutlet weak var rePostButton: UIButton!
     @IBOutlet weak var views: UILabel!
     
-    private var imageService = ImageLoader()
     private var service = RequestsServer()
     private var likeCheckbox: Bool = false
     
@@ -42,61 +41,74 @@ class ImageRePostCell: UITableViewCell {
         commentsButton.clipsToBounds = true
         rePostButton.layer.cornerRadius = 12
         rePostButton.clipsToBounds = true
-        likeCheckbox = false
     }
     
-    private func getLikedInfo () {
-        service.likesGetList(type: type!, itemId: itemId!, ownerId: ownerId!) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let likeList):
-                DispatchQueue.main.async {
-                    self.countLIke = likeList.response.count!
-                    self.likeButton.setTitle("\(likeList.response.count!)", for: .normal)
-                }
-            case .failure(_):
-                return
-            }
-        }
-        service.likesIsLiked(type: type!, itemId: itemId!, ownerId: ownerId!) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let like):
-                DispatchQueue.main.async {
-                    if like.response.liked == 1 {
-                        self.likeButton.tintColor = UIColor.red
-                        self.likeCheckbox = true
-                    }
-                }
-            case .failure(_):
-                return
-            }
+    @IBAction func likeButton(_ sender: Any) {
+        if !likeCheckbox {
+            service.likeAdd(type: type!, itemId: itemId!, ownerId: ownerId!)
+            likeCheckbox = true
+            let animation = CASpringAnimation(keyPath: "transform.scale")
+            likeButton.tintColor = UIColor.red
+            animation.fromValue = 0
+            animation.toValue = 1
+            animation.duration = 1
+            animation.timingFunction = .init(name: .easeInEaseOut)
+            animation.mass = 2
+            animation.stiffness = 400
+            likeButton.imageView!.layer.add(animation, forKey: nil)
+            likeButton.setTitle("\(countLIke! + 1)", for: .normal)
+            countLIke! += 1
+        } else {
+            service.likesDelete(type: type!, itemId: itemId!, ownerId: ownerId!)
+            likeCheckbox = false
+            likeButton.tintColor = .systemGray
+            likeButton.setTitle("\(countLIke! - 1)", for: .normal)
+            countLIke! -= 1
         }
     }
 }
+
 extension ImageRePostCell: PostCellProtocol {
     
     func set<T>(value: T) where T : PostCellDataProtocol {
+        type = value.type
+        itemId = value.postId
+        ownerId = value.sourceId
         
-        if value.copyHistory![0].attachments != nil {
-
-            let sourceId: String = value.sourceId! > 0 ? String(value.sourceId!) : String(-value.sourceId!)
-            
-            getData.getDataUser(id: sourceId) { [weak self] image, userName in
-                guard let self = self else { return }
-                self.imageUser.image = image
-                self.nameUser.text = userName
-            }
-
-            let ownerId: String = value.copyHistory![0].ownerId! > 0 ? String(value.copyHistory![0].ownerId!) : String(-value.copyHistory![0].ownerId!)
-            
-            getData.getDataUser(id: ownerId) { [weak self] image, userName in
-                guard let self = self else { return }
-                self.imageUserRePost.image = image
-                self.nameUserRePost.text = userName
+        likeCheckbox = false
+        likeButton.tintColor = UIColor.gray
+        likeButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
+        likeButton.setTitle("\(0)", for: .normal)
+        
+        getData.getDataPostInfo(type: value.type!, itemId: value.postId!) { [weak self] liked, copied, count, items in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                if liked == 1 {
+                    self.likeButton.tintColor = UIColor.red
+                    self.likeCheckbox = true
+                }
+                self.countLIke = count
+                self.likeButton.setTitle("\(count)", for: .normal)
             }
         }
         
+        let sourceId: String = value.sourceId! > 0 ? String(value.sourceId!) : String(-value.sourceId!)
+        
+        getData.getDataUser(id: sourceId) { [weak self] image, userName in
+            guard let self = self else { return }
+            self.imageUser.image = image
+            self.nameUser.text = userName
+        }
+        
+        let ownerId: String = value.copyHistory![0].ownerId! > 0 ? String(value.copyHistory![0].ownerId!) : String(-value.copyHistory![0].ownerId!)
+        
+        getData.getDataUser(id: ownerId) { [weak self] image, userName in
+            guard let self = self else { return }
+            self.imageUserRePost.image = image
+            self.nameUserRePost.text = "\u{21B3}" + " " + userName
+        }
+        
+    
         textPost.text = value.text!
         
         guard let photo = value.copyHistory![0].attachments![0].photo?.sizes else { return }

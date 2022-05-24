@@ -53,6 +53,7 @@ class NewsTableViewController: UIViewController {
         let reloadTableController = ReloadTableController(controller: self)
         reloadTableController.addDependency(parseData)
         OperationQueue.main.addOperation(reloadTableController)
+        
     }
 }
 extension NewsTableViewController: UITableViewDataSource, UITableViewDelegate {

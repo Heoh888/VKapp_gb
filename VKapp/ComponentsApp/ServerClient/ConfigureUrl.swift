@@ -13,6 +13,8 @@ enum Parametrs: String {
     case gpoupsGet = "/method/groups.get"
     case newsfeed = "/method/newsfeed.get"
     case userGet = "/method/users.get"
+    case isLiked = "/method/likes.isLiked"
+    case likesGetList = "/method/likes.getList"
 }
 
 fileprivate enum TypeRequsts: String {
@@ -29,7 +31,9 @@ class ConfigureUrl {
         return session
     }()
     
-    func getUrl(parametrs: Parametrs, id: String = "") -> URL? {
+    func getUrl(parametrs: Parametrs,
+                id: String = "",
+                type: String = "") -> URL? {
 
         guard let token = Session.instance.token else { return nil }
         
@@ -49,6 +53,15 @@ class ConfigureUrl {
         case .userGet: params = ["access_token": token,
                                  "user_ids": id,
                                  "fields": "photo_50"]
+            
+        case .isLiked: params = ["access_token": token,
+                                 "type": type,
+                                 "item_id": id,]
+            
+        case .likesGetList: params = ["access_token": token,
+                                      "type": type,
+                                      "item_id": id,
+                                      "filter": "likes" ]
         }
         
         let url = configureUrl(method: parametrs,

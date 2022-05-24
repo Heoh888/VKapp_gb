@@ -259,6 +259,17 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="commentsButton" destination="jzg-S5-vho" id="4VS-JH-b0g"/>
+                <outlet property="imageUser" destination="lbj-cY-Rnh" id="GEs-q8-M28"/>
+                <outlet property="imageUserRePost" destination="XnQ-hC-DIG" id="LRn-Qj-vYb"/>
+                <outlet property="likeButton" destination="TIZ-0t-I5f" id="DgU-cr-yBI"/>
+                <outlet property="nameUser" destination="6o9-Ip-Ad7" id="YWk-Bu-ZQG"/>
+                <outlet property="nameUserRePost" destination="5Mm-nu-bZV" id="D1b-Fv-67H"/>
+                <outlet property="rePostButton" destination="V6T-rK-LAV" id="VPw-yh-0PK"/>
+                <outlet property="textPost" destination="bZS-T4-X0p" id="sCw-T9-TEx"/>
+                <outlet property="views" destination="pBa-do-tCa" id="F5I-Wz-arH"/>
+            </connections>
             <point key="canvasLocation" x="139" y="154"/>
         </tableViewCell>
     </objects>

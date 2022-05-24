@@ -16,9 +16,10 @@ class TextPostCell: UITableViewCell {
     @IBOutlet weak var rePostButton: UIButton!
     @IBOutlet weak var views: UILabel!
     
-    private var imageService = ImageLoader()
     private var service = RequestsServer()
     private var likeCheckbox: Bool = false
+    
+    private var getData = ViewNewsModel()
     
     private var type: String?
     private var itemId: Int?
@@ -28,7 +29,7 @@ class TextPostCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        imageUser.layer.cornerRadius = imageUser.frame.height / 5
+        imageUser.layer.cornerRadius = imageUser.frame.height / 2
         likeButton.layer.cornerRadius = 12
         likeButton.clipsToBounds = true
         commentsButton.layer.cornerRadius = 12
@@ -36,7 +37,6 @@ class TextPostCell: UITableViewCell {
         rePostButton.layer.cornerRadius = 12
         rePostButton.clipsToBounds = true
         likeCheckbox = false
-        getLikedInfo()
     }
 
     private func getLikedInfo () {
@@ -70,43 +70,39 @@ class TextPostCell: UITableViewCell {
 }
 extension TextPostCell: PostCellProtocol {
     func set<T>(value: T) where T : PostCellDataProtocol {
+        type = value.type
+        itemId = value.postId
+        ownerId = value.sourceId
+        
+        likeCheckbox = false
+        likeButton.tintColor = UIColor.gray
+        likeButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
+        
+        getData.getDataPostInfo(type: value.type!, itemId: value.postId!) { [weak self] liked, copied, count, items in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                if liked == 1 {
+                    self.likeButton.tintColor = UIColor.red
+                    self.likeCheckbox = true
+                }
+                self.countLIke = count
+                self.likeButton.setTitle("\(count)", for: .normal)
+            }
+        }
+        
+        if value.attachments != nil {
+            
+            let sourceId: String = value.sourceId! > 0 ? String(value.sourceId!) : String(-value.sourceId!)
+            
+            getData.getDataUser(id: sourceId) { [weak self] image, userName in
+                guard let self = self else { return }
+                self.imageUser.image = image
+                self.nameUser.text = userName
+            }
+        }
+        textPost.text = value.text!
         commentsButton.setTitle("\(value.comments?.count ?? 0)", for: .normal)
         rePostButton.setTitle("\(value.reposts?.count ?? 0)", for: .normal)
         views.text = "\(value.views?.count ?? 0)"
-        
-        if value.attachments != nil {
-            if value.sourceId! > 0 {
-                // Получим информацию о пользователе
-                self.service.loadUser(userId: String(value.sourceId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let user):
-                        self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
-                            guard let self = self else { return }
-                            self.nameUser.text = user.response[0].firstName
-                            self.imageUser.image = image
-                        }
-                    case .failure(_):
-                        return
-                    }
-                }
-            } else {
-                // Запросим информацию о группе
-                self.service.loadGroup(groupId: String(-value.sourceId!)) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let group):
-                        self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
-                            guard let self = self else { return }
-                            self.nameUser.text = group.response[0].name
-                            self.imageUser.image = image
-                        }
-                    case .failure(_):
-                        return
-                    }
-                }
-            }
-            textPost.text = value.text
-        }
     }
 }

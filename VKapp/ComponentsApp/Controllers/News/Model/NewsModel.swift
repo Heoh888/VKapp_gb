@@ -21,6 +21,8 @@ protocol PostCellDataProtocol {
     var comments: Comments? { get }
     var reposts: Reposts? { get }
     var views: Views? { get }
+    var postId: Int? { get }
+    var type: String? { get }
 }
 
 struct NewsVk: Decodable {
