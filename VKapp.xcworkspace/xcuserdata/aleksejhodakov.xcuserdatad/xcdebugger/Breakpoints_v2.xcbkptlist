@@ -39,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B7894AA0-A0A3-42ED-83DE-44EB2B50E78D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9AE2E16D-0CAE-48B9-94F9-B53AFC973988"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -135,22 +119,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A1B28BF1-88DC-43E2-ACA3-0800AE6C49A8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "fetchNews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "29E2F664-1E47-4EA5-B617-537C65374EED"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -177,38 +145,6 @@
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "getUrl(parametrs:id:type:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C783FBEF-ADB9-4E56-9461-9AFABD36C292"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "fetchNews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "65D25614-3D81-4B08-BC65-48A49435BCF1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "fetchNews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -247,16 +183,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "206BABBB-6D0E-43B6-8449-A547AB67E146"
+            uuid = "1DA22B1C-8FF3-4A21-93A7-530B69F71DCD"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VKapp/ComponentsApp/Controllers/News/Cell/Utils/ViewNewsModel.swift"
+            filePath = "VKapp/ComponentsApp/Controllers/News/Cell/Attachments/ImagePost/ImagePostCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "getDataPostInfo(type:itemId:completion:)"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "set(value:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

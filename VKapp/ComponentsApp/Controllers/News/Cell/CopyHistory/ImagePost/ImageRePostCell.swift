@@ -19,6 +19,7 @@ class ImageRePostCell: UITableViewCell {
     @IBOutlet weak var commentsButton: UIButton!
     @IBOutlet weak var rePostButton: UIButton!
     @IBOutlet weak var views: UILabel!
+    @IBOutlet weak var heightConstraintText: NSLayoutConstraint!
     
     private var service = RequestsServer()
     private var likeCheckbox: Bool = false
@@ -80,6 +81,9 @@ extension ImageRePostCell: PostCellProtocol {
         likeButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
         likeButton.setTitle("\(0)", for: .normal)
         
+        let textPostheight = Double(textPost.numberOfVisibleLines) * Double(textPost.font.lineHeight)
+        heightConstraintText.constant = textPostheight < 200 ? textPostheight + 3 : 200
+        
         getData.getDataPostInfo(type: value.type!, itemId: value.postId!) { [weak self] liked, copied, count, items in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -108,9 +112,6 @@ extension ImageRePostCell: PostCellProtocol {
             self.nameUserRePost.text = "\u{21B3}" + " " + userName
         }
         
-    
-        textPost.text = value.text!
-        
         guard let photo = value.copyHistory![0].attachments![0].photo?.sizes else { return }
         let urlImage = URL(string: photo[photo.count - 1].url)
         imagePost.kf.setImage(with: urlImage)
@@ -120,4 +121,3 @@ extension ImageRePostCell: PostCellProtocol {
         views.text = "\(value.views?.count ?? 0)"
     }
 }
-

@@ -102,7 +102,7 @@
                                 <rect key="frame" x="0.0" y="227.5" width="421" height="283.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NewsTextCell" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZb-ze-KG2">
-                                        <rect key="frame" x="0.0" y="0.0" width="102" height="20.5"/>
+                                        <rect key="frame" x="10" y="0.0" width="102" height="20.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -123,6 +123,8 @@
                                 <constraints>
                                     <constraint firstItem="kC4-Y8-hJW" firstAttribute="leading" secondItem="Hyc-lj-ZOI" secondAttribute="leading" id="2yy-Ig-MoY"/>
                                     <constraint firstAttribute="trailing" secondItem="kC4-Y8-hJW" secondAttribute="trailing" id="FKW-Ny-MLZ"/>
+                                    <constraint firstItem="SZb-ze-KG2" firstAttribute="leading" secondItem="Hyc-lj-ZOI" secondAttribute="leading" constant="10" id="fPZ-H9-xgl"/>
+                                    <constraint firstAttribute="trailing" secondItem="kC4-Y8-hJW" secondAttribute="trailing" id="fo9-o6-iDF"/>
                                 </constraints>
                             </stackView>
                         </subviews>

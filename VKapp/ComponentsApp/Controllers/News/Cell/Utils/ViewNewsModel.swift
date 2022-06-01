@@ -38,8 +38,6 @@ class ViewNewsModel {
                         let count = likeInfo.response.count,
                         let items = likeInfo.response.items
                     else { return }
-                    print(likeIs, likeInfo)
-
                     completion(liked, copied, count, items)
                 }
             }
