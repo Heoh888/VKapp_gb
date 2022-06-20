@@ -8,18 +8,23 @@
 import UIKit
 
 class NewsTextCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameUser: UILabel!
     @IBOutlet weak var imageUser: UIImageView!
     @IBOutlet weak var textPost: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentsButton: UIButton!
     @IBOutlet weak var rePostButton: UIButton!
-    
-    var likeCheckbox: Bool = false
+    @IBOutlet weak var views: UILabel!
     
     private var imageService = ImageLoader()
     private var service = RequestsServer()
+    
+    var likeCheckbox: Bool = false
+    var type: String = ""
+    var itemId: Int = 0
+    var ownerId: Int = 0
+    var countLIke: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,47 +38,52 @@ class NewsTextCell: UITableViewCell {
         rePostButton.clipsToBounds = true
         likeCheckbox = false
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func configure(item: News) {
+    func configure(model: [News], indexPath: Int) {
+        let item = model[indexPath]
+        likeCheckbox = false
+        likeButton.tintColor = UIColor.gray
+        likeButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
+        getLikedInfo()
+        commentsButton.setTitle("\(item.comments?.count ?? 0)", for: .normal)
+        rePostButton.setTitle("\(item.reposts?.count ?? 0)", for: .normal)
+        views.text = "\(item.views?.count ?? 0)"
+        
         if item.attachments != nil {
             if item.sourceId! > 0 {
                 // Получим информацию о пользователе
-                DispatchQueue.global(qos: .userInteractive).async {
-                    self.service.loadUser(userId: String(item.sourceId!)) { [weak self] result in
-                        guard let self = self else { return }
-                        switch result {
-                        case .success(let user):
-                            self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
-                                guard let self = self else { return }
-                                self.nameUser.text = user.response[0].firstName
-                                self.imageUser.image = image
-                            }
-                        case .failure(_):
-                            return
+                self.service.loadUser(userId: String(item.sourceId!)) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let user):
+                        self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
+                            guard let self = self else { return }
+                            self.nameUser.text = user.response[0].firstName
+                            self.imageUser.image = image
                         }
+                    case .failure(_):
+                        return
                     }
                 }
             } else {
                 // Запросим информацию о группе
-                DispatchQueue.global(qos: .userInteractive).async {
-                    self.service.loadGroup(groupId: String(-item.sourceId!)) { [weak self] result in
-                        guard let self = self else { return }
-                        switch result {
-                        case .success(let group):
-                            self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
-                                guard let self = self else { return }
-                                self.nameUser.text = group.response[0].name
-                                self.imageUser.image = image
-                            }
-                        case .failure(_):
-                            return
+                self.service.loadGroup(groupId: String(-item.sourceId!)) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let group):
+                        self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
+                            guard let self = self else { return }
+                            self.nameUser.text = group.response[0].name
+                            self.imageUser.image = image
                         }
+                    case .failure(_):
+                        return
                     }
                 }
             }
@@ -83,36 +93,32 @@ class NewsTextCell: UITableViewCell {
         if item.copyHistory != nil {
             if ((item.copyHistory![0].ownerId)!) > 0 {
                 // Получим информацию о пользователе
-                DispatchQueue.global(qos: .userInteractive).async {
-                    self.service.loadUser(userId: String(item.copyHistory![0].ownerId!)) { [weak self] result in
-                        guard let self = self else { return }
-                        switch result {
-                        case .success(let user):
-                            self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
-                                guard let self = self else { return }
-                                self.nameUser.text = user.response[0].firstName
-                                self.imageUser.image = image
-                            }
-                        case .failure(_):
-                            return
+                self.service.loadUser(userId: String(item.copyHistory![0].ownerId!)) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let user):
+                        self.imageService.loadImageData(url: user.response[0].photo50 ) { [weak self] image in
+                            guard let self = self else { return }
+                            self.nameUser.text = user.response[0].firstName
+                            self.imageUser.image = image
                         }
+                    case .failure(_):
+                        return
                     }
                 }
             } else {
                 // Запросим информацию о группе
-                DispatchQueue.global(qos: .userInteractive).async {
-                    self.service.loadGroup(groupId: String(-item.copyHistory![0].ownerId!)) { [weak self] result in
-                        guard let self = self else { return }
-                        switch result {
-                        case .success(let group):
-                            self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
-                                guard let self = self else { return }
-                                self.nameUser.text = group.response[0].name
-                                self.imageUser.image = image
-                            }
-                        case .failure(_):
-                            return
+                self.service.loadGroup(groupId: String(-item.copyHistory![0].ownerId!)) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let group):
+                        self.imageService.loadImageData(url: group.response[0].photo200) { [weak self] image in
+                            guard let self = self else { return }
+                            self.nameUser.text = group.response[0].name
+                            self.imageUser.image = image
                         }
+                    case .failure(_):
+                        return
                     }
                 }
             }
@@ -136,6 +142,37 @@ class NewsTextCell: UITableViewCell {
         } else {
             likeCheckbox.toggle()
             likeButton.tintColor = .systemGray
+        }
+    }
+}
+extension NewsTextCell {
+    
+    func getLikedInfo () {
+        service.likesGetList(type: type, itemId: itemId, ownerId: ownerId) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let likeList):
+                DispatchQueue.main.async {
+                    self.countLIke = likeList.response.count!
+                    self.likeButton.setTitle("\(likeList.response.count!)", for: .normal)
+                }
+            case .failure(_):
+                return
+            }
+        }
+        service.likesIsLiked(type: type, itemId: itemId, ownerId: ownerId) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let like):
+                DispatchQueue.main.async {
+                    if like.response.liked == 1 {
+                        self.likeButton.tintColor = UIColor.red
+                        self.likeCheckbox = true
+                    }
+                }
+            case .failure(_):
+                return
+            }
         }
     }
 }

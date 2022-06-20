@@ -118,18 +118,10 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
-                                        <buttonConfiguration key="configuration" style="gray" imagePlacement="leading" imagePadding="5" titleAlignment="center">
-                                            <imageReference key="image" image="suit.heart.fill" catalog="system" symbolScale="medium"/>
+                                        <buttonConfiguration key="configuration" style="gray" imagePlacement="leading" title="0" imagePadding="5" cornerStyle="fixed" titleAlignment="center">
+                                            <imageReference key="image" image="suit.heart.fill" catalog="system" symbolScale="default"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="0">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.55691212420000002" green="0.55663239959999999" blue="0.57647538190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <font key="NSFont" size="12" name="Helvetica"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="likeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="L8N-qK-WaC"/>
@@ -232,6 +224,7 @@
                 <outlet property="nameUser" destination="mGT-Pi-Ecn" id="SHM-CZ-Vep"/>
                 <outlet property="rePostButton" destination="hJf-7H-n1h" id="MG1-OQ-ule"/>
                 <outlet property="textPost" destination="b2T-LV-eXZ" id="IXc-qk-HSt"/>
+                <outlet property="views" destination="M00-JC-skV" id="lJP-eM-otJ"/>
             </connections>
             <point key="canvasLocation" x="150.72463768115944" y="81.026785714285708"/>
         </tableViewCell>

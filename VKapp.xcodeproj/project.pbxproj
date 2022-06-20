@@ -16,6 +16,7 @@
 		864999812811693500972588 /* NewsTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8649997F2811693500972588 /* NewsTextCell.xib */; };
 		867616242811A6F50049BEC2 /* NewsVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867616222811A6F50049BEC2 /* NewsVideoCell.swift */; };
 		867616252811A6F50049BEC2 /* NewsVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867616232811A6F50049BEC2 /* NewsVideoCell.xib */; };
+		867753412817FAA800B3A9F9 /* LikesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867753402817FAA800B3A9F9 /* LikesModel.swift */; };
 		FA03461B2769008300DCBB60 /* AllCroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */; };
 		FA1600FF274F106200BF9C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1600FE274F106200BF9C63 /* AppDelegate.swift */; };
 		FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA160100274F106200BF9C63 /* SceneDelegate.swift */; };
@@ -81,6 +82,7 @@
 		8649997F2811693500972588 /* NewsTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTextCell.xib; sourceTree = "<group>"; };
 		867616222811A6F50049BEC2 /* NewsVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVideoCell.swift; sourceTree = "<group>"; };
 		867616232811A6F50049BEC2 /* NewsVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsVideoCell.xib; sourceTree = "<group>"; };
+		867753402817FAA800B3A9F9 /* LikesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesModel.swift; sourceTree = "<group>"; };
 		FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCroupTableViewCell.swift; sourceTree = "<group>"; };
 		FA1600FB274F106200BF9C63 /* VKapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1600FE274F106200BF9C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				FA17B83F27B5443600526EE1 /* UserModel.swift */,
 				FA998ABC27C050EE0054B888 /* GroupModel.swift */,
 				FA227BDF27C2DF1B00EBDE42 /* VideoModel.swift */,
+				867753402817FAA800B3A9F9 /* LikesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867753412817FAA800B3A9F9 /* LikesModel.swift in Sources */,
 				FAFF0D66279D84210051B993 /* FriendPhotosModel.swift in Sources */,
 				FA581DDA2778F8F700D7483D /* AppUtility.swift in Sources */,
 				FA160109274F106200BF9C63 /* VKapp.xcdatamodeld in Sources */,

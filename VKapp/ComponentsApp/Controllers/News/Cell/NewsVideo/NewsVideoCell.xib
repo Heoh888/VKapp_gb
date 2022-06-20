@@ -241,6 +241,7 @@
                 <outlet property="rePostButton" destination="JjV-ct-tZK" id="gv8-NK-BbV"/>
                 <outlet property="textPost" destination="2dV-ce-QFS" id="EjM-8i-Afc"/>
                 <outlet property="videoPost" destination="7K4-ec-Apb" id="jio-c9-mWR"/>
+                <outlet property="views" destination="hfd-Su-81E" id="6bo-l5-PGG"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="185.15625"/>
         </tableViewCell>

@@ -14,15 +14,14 @@ enum TypeModel: String {
     case noPost
 }
 
-class NewsTableViewController: UITableViewController {
+class NewsTableViewController: UIViewController {
     
     @IBOutlet var tableViewNews: UITableView!
     
     var news: [News] = []
+    var group = DispatchGroup()
     
     private var service = RequestsServer()
-    
-    var group = DispatchGroup()
     
     // MARK: - lifeСycle
     override func viewDidLoad() {
@@ -33,34 +32,6 @@ class NewsTableViewController: UITableViewController {
         tableViewNews.register(UINib(nibName: "NewsTextCell", bundle: nil), forCellReuseIdentifier: "NewsTextCell")
         tableViewNews.register(UINib(nibName: "NewsVideoCell", bundle: nil), forCellReuseIdentifier: "NewsVideoCell")
     }
-    
-    // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch parsingModel(model: news[indexPath.row]) {
-        case .textCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
-            cell.configure(item: news[indexPath.row])
-            return cell
-        case .photoCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell") as! NewsPhotoCell
-            cell.configure(item: news[indexPath.row])
-            return cell
-        case .videoCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsVideoCell") as! NewsVideoCell
-            cell.configure(item: news[indexPath.row])
-            return cell
-        case .noPost:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
-            return cell
-        }
-    }
-}
-
-extension NewsTableViewController {
     
     func fetchNews() {
         service.loadNews{  [weak self]  result in
@@ -105,5 +76,49 @@ extension NewsTableViewController {
             }
         }
         return result
+    }
+}
+extension NewsTableViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    // MARK: - Table view data source
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return news.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch parsingModel(model: news[indexPath.row]) {
+        case .textCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
+            cell.itemId = news[indexPath.row].postId!
+            cell.ownerId = news[indexPath.row].sourceId!
+            cell.type = news[indexPath.row].type!
+            cell.configure(model: news, indexPath: indexPath.row)
+            return cell
+        case .photoCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell") as! NewsPhotoCell
+            cell.itemId = news[indexPath.row].postId!
+            cell.ownerId = news[indexPath.row].sourceId!
+            cell.type = news[indexPath.row].type!
+            cell.configure(model: news, indexPath: indexPath.row)
+            return cell
+        case .videoCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsVideoCell") as! NewsVideoCell
+            cell.itemId = news[indexPath.row].postId!
+            cell.ownerId = news[indexPath.row].sourceId!
+            cell.type = news[indexPath.row].type!
+            cell.configure(model: news, indexPath: indexPath.row)
+            return cell
+        case .noPost:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell") as! NewsTextCell
+            cell.textPost.text = "Запись удалина"
+            return cell
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyoard.instantiateViewController(identifier: "PostViewController") as! PostViewController
+        vc.index = IndexPath(row: indexPath[1], section: 0)
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
