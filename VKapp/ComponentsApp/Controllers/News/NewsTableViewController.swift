@@ -76,9 +76,8 @@ class NewsTableViewController: UIViewController {
         loadNews { [weak self] newPosts in
             guard let self = self else { return }
             self.news = newPosts
-            print(newPosts)
+            self.tableViewNews.reloadData()
         }
-        tableViewNews.reloadData()
     }
 }
 extension NewsTableViewController: UITableViewDataSource, UITableViewDelegate {

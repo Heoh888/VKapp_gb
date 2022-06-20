@@ -22,10 +22,10 @@
                         <rect key="frame" x="0.0" y="10" width="431" height="478"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7rq-c3-51p">
-                                <rect key="frame" x="0.0" y="0.0" width="160.5" height="184.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="160.5" height="205"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9" translatesAutoresizingMaskIntoConstraints="NO" id="5UP-MG-nw8">
-                                        <rect key="frame" x="10" y="67.5" width="50" height="50"/>
+                                        <rect key="frame" x="10" y="77.5" width="50" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="4Vz-YV-zV9"/>
@@ -33,7 +33,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FTw-qy-rwl">
-                                        <rect key="frame" x="72" y="72" width="88.5" height="41"/>
+                                        <rect key="frame" x="72" y="82" width="88.5" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnS-7F-JLU">
                                                 <rect key="frame" x="0.0" y="0.0" width="88.5" height="20.5"/>
@@ -60,17 +60,17 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="YBG-dX-nrN">
-                                <rect key="frame" x="0.0" y="194.5" width="431" height="283.5"/>
+                                <rect key="frame" x="0.0" y="215" width="431" height="263"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NewsTextCell" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFz-Ah-CGU">
-                                        <rect key="frame" x="10" y="0.0" width="102" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFz-Ah-CGU">
+                                        <rect key="frame" x="10" y="0.0" width="0.0" height="0.0"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hN-dW-oJU">
-                                        <rect key="frame" x="0.0" y="33.5" width="431" height="250"/>
+                                        <rect key="frame" x="0.0" y="13" width="431" height="250"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="dbH-jQ-Wrg"/>
