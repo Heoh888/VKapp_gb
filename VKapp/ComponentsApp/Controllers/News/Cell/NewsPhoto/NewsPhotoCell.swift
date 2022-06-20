@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsPhotoCell: UITableViewCell {
     @IBOutlet weak var nameUser: UILabel!
@@ -83,12 +84,8 @@ class NewsPhotoCell: UITableViewCell {
             }
             textPost.text = item.text
             guard let photo = item.attachments![0].photo?.sizes else { return }
-            let urlImage = photo[photo.count - 1].url
-            imageService.loadImageData(url: urlImage ) { [weak self] image in
-                guard let self = self else { return }
-                guard (self.imagePost != nil) else { return }
-                self.imagePost.image = image
-            }
+            let urlImage = URL(string: photo[photo.count - 1].url)
+            imagePost.kf.setImage(with: urlImage)
         }
         
         if item.copyHistory != nil {
@@ -127,12 +124,8 @@ class NewsPhotoCell: UITableViewCell {
             textPost.text = item.copyHistory![0].text
             if item.copyHistory![0].attachments != nil {
                 guard let photo = item.copyHistory![0].attachments![0].photo?.sizes else { return }
-                let urlImage = photo[photo.count - 1].url
-                imageService.loadImageData(url: urlImage ) { [weak self] image in
-                    guard let self = self else { return }
-                    guard (self.imagePost != nil) else { return }
-                    self.imagePost.image = image
-                }
+                let urlImage = URL(string: photo[photo.count - 1].url)
+                imagePost.kf.setImage(with: urlImage)
             }
         }
     }
