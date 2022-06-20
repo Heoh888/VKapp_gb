@@ -7,15 +7,17 @@
 
 import UIKit
 import RealmSwift
+import PromiseKit
 
 class FriendsTableViewController: UITableViewController {
     
     @IBOutlet weak var friendTableView: UITableView!
-
+    
     private var service = RequestsServer()
     private var persistence = RealmCacheService()
+    private var getUrl = ConfigureUrl()
     private var notificationToken: NotificationToken? = nil
-//    private lazy var realm = RealmCacheService()
+    //    private lazy var realm = RealmCacheService()
     private var friendResponce: Results<Friend>? {
         persistence.read(Friend.self)
     }
@@ -52,29 +54,24 @@ class FriendsTableViewController: UITableViewController {
     }
 }
 extension FriendsTableViewController {
-
+    
     func fetchFriends() {
-        service.loadFriend { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let friend):
-//                let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-//                let realm = try! Realm(configuration: config)
-                let realm = try! Realm()
-                let friendCount = realm.objects(Friend.self)
-            // TO:DO до делать удаление по индексу
-                if friendCount.count != friend.response.items.count {
-                    try! realm.write {
-                        realm.delete(friendCount)
-                    }
-                    DispatchQueue.main.async {
-                        autoreleasepool {
-                            try! self.persistence.add(object: friend.response.items)
-                        }
+        firstly {
+            URLSession.shared.dataTask(.promise, with: getUrl.getUrlFriends()!)
+        }
+        .compactMap { try JSONDecoder().decode(FriendVk.self, from: $0.data) }
+        .done { friends in
+            let realm = try! Realm()
+            let friendCount = realm.objects(Friend.self)
+            if friendCount.count != friends.response.items.count {
+                try! realm.write {
+                    realm.delete(friendCount)
+                }
+                DispatchQueue.main.async {
+                    autoreleasepool {
+                        try! self.persistence.add(object: friends.response.items)
                     }
                 }
-            case .failure(_):
-                return
             }
         }
     }

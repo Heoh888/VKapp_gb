@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import PromiseKit
 
 class GroupTableViewController: UITableViewController {
     
@@ -14,13 +15,13 @@ class GroupTableViewController: UITableViewController {
     
     var service = RequestsServer()
     var persistence = RealmCacheService()
-    
+    private var getUrl = ConfigureUrl()
     private var notificationToken: NotificationToken? = nil
     private lazy var realm = RealmCacheService()
     private var groupResponce: Results<Group>? {
         realm.read(Group.self)
     }
-
+    
     // MARK: - lifeСycle
     override func viewDidLoad() {
         createNotificationGroupToken()
@@ -63,47 +64,42 @@ class GroupTableViewController: UITableViewController {
     
     // MARK: - Actions
     @IBAction func addGroup(segue: UIStoryboardSegue) {
-                if segue.identifier == "addGroup" {
-                    guard let allGroupController = segue.source as? AllGroupTableViewController else { return }
-                    if let indexPath = allGroupController.tableView.indexPathForSelectedRow {
-                        let group = allGroupController.groupArrayModel[indexPath.row]
-                        service.joinGroup(idGroup: group.id)
-                        DispatchQueue.main.async {
-                            autoreleasepool {
-                                try! self.persistence.add(object: group)
-                            }
-                        }
+        if segue.identifier == "addGroup" {
+            guard let allGroupController = segue.source as? AllGroupTableViewController else { return }
+            if let indexPath = allGroupController.tableView.indexPathForSelectedRow {
+                let group = allGroupController.groupArrayModel[indexPath.row]
+                service.joinGroup(idGroup: group.id)
+                DispatchQueue.main.async {
+                    autoreleasepool {
+                        try! self.persistence.add(object: group)
                     }
                 }
+            }
+        }
     }
     deinit {
         notificationToken?.invalidate()
     }
 }
 extension GroupTableViewController {
-
+    
     func fetchGroups() {
-        service.loadGroups { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let group):
-               
-                let realm = try! Realm()
-                let groupsCount = realm.objects(Group.self)
-                
-            // TO:DO до делать удаление по индексу
-                if groupsCount.count != group.response.items.count {
-                    try! realm.write {
-                        realm.delete(groupsCount)
-                    }
-                    DispatchQueue.main.async {
-                        autoreleasepool {
-                            try! self.persistence.add(object: group.response.items)
-                        }
+        firstly {
+            URLSession.shared.dataTask(.promise, with: getUrl.getUrlFriends()!)
+        }
+        .compactMap { try JSONDecoder().decode(GroupsVk.self, from: $0.data) }
+        .done { groups in
+            let realm = try! Realm()
+            let groupsCount = realm.objects(Group.self)
+            if groupsCount.count != groups.response.items.count {
+                try! realm.write {
+                    realm.delete(groupsCount)
+                }
+                DispatchQueue.main.async {
+                    autoreleasepool {
+                        try! self.persistence.add(object: groups.response.items)
                     }
                 }
-            case .failure(_):
-                return
             }
         }
     }
