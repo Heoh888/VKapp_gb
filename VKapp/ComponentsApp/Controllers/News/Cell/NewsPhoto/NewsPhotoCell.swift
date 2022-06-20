@@ -48,7 +48,7 @@ class NewsPhotoCell: UITableViewCell {
         if item.attachments != nil {
             if item.sourceId! > 0 {
                 // Получим информацию о пользователе
-                DispatchQueue.global(qos: .userInteractive).async {
+
                     self.service.loadUser(userId: String(item.sourceId!)) { [weak self] result in
                         guard let self = self else { return }
                         switch result {
@@ -61,11 +61,11 @@ class NewsPhotoCell: UITableViewCell {
                         case .failure(_):
                             return
                         }
-                    }
+                    
                 }
             } else {
                 // Запросим информацию о группе
-                DispatchQueue.global(qos: .userInteractive).async {
+
                     self.service.loadGroup(groupId: String(-item.sourceId!)) { [weak self] result in
                         guard let self = self else { return }
                         switch result {
@@ -78,7 +78,7 @@ class NewsPhotoCell: UITableViewCell {
                         case .failure(_):
                             return
                         }
-                    }
+                    
                 }
             }
             textPost.text = item.text
@@ -94,7 +94,7 @@ class NewsPhotoCell: UITableViewCell {
         if item.copyHistory != nil {
             if ((item.copyHistory![0].ownerId)!) > 0 {
                 // Получим информацию о пользователе
-                DispatchQueue.global(qos: .userInteractive).async {
+
                     self.service.loadUser(userId: String(item.copyHistory![0].ownerId!)) { [weak self] result in
                         guard let self = self else { return }
                         switch result {
@@ -107,11 +107,11 @@ class NewsPhotoCell: UITableViewCell {
                         case .failure(_):
                             return
                         }
-                    }
+                    
                 }
             } else {
                 // Запросим информацию о группе
-                DispatchQueue.global(qos: .userInteractive).async {
+
                     self.service.loadGroup(groupId: String(-item.copyHistory![0].ownerId!)) { [weak self] result in
                         guard let self = self else { return }
                         switch result {
@@ -124,7 +124,7 @@ class NewsPhotoCell: UITableViewCell {
                         case .failure(_):
                             return
                         }
-                    }
+                    
                 }
             }
             textPost.text = item.copyHistory![0].text

@@ -22,17 +22,17 @@
                         <rect key="frame" x="10" y="10" width="394" height="385"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="s8a-QD-HzJ">
-                                <rect key="frame" x="0.0" y="0.0" width="150.5" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150.5" height="91.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9" translatesAutoresizingMaskIntoConstraints="NO" id="CxI-l9-Nsm">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="21" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="Hlg-0K-J8J"/>
                                             <constraint firstAttribute="height" constant="50" id="wde-cD-2VJ"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WLG-X9-UYj">
-                                        <rect key="frame" x="62" y="4.5" width="88.5" height="41"/>
+                                        <rect key="frame" x="62" y="25.5" width="88.5" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGT-Pi-Ecn">
                                                 <rect key="frame" x="0.0" y="0.0" width="88.5" height="20.5"/>
@@ -54,17 +54,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="uHO-9c-OHs">
-                                <rect key="frame" x="0.0" y="60" width="394" height="325"/>
+                                <rect key="frame" x="0.0" y="101.5" width="394" height="283.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2T-LV-eXZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="391" height="62"/>
-                                        <string key="text">Displays a rounded rectangle that can contain editable text. When a user taps a text field, a keyboard appears; when a user taps Return in the keyboard, the keyboard disappears and the text field can handle the input in an application-specific way. UITextField supports overlay views to display additional information, such as a bookmarks icon. UITextField also provides a clear text control a user taps to erase the contents of the text field.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" NewsPhotoCell" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2T-LV-eXZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="120.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uDB-9Y-j4k">
-                                        <rect key="frame" x="0.0" y="75" width="394" height="250"/>
+                                        <rect key="frame" x="0.0" y="33.5" width="394" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="ylv-5I-iyp"/>
                                         </constraints>
