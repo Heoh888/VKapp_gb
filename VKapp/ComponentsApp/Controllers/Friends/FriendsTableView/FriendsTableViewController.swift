@@ -68,9 +68,7 @@ extension FriendsTableViewController {
                     realm.delete(friendCount)
                 }
                 DispatchQueue.main.async {
-                    autoreleasepool {
-                        try! self.persistence.add(object: friends.response.items)
-                    }
+                    try! self.persistence.add(object: friends.response.items)
                 }
             }
         }
