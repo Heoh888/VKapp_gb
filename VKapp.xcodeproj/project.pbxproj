@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D1C1201941ACDE95CE84C42 /* Pods_VKappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CBD5D773A646B4620B3FF7 /* Pods_VKappTests.framework */; };
-		2BC60052FD52F85FBA7B925F /* Pods_VKapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6C2DD171935628F3F00E3E /* Pods_VKapp.framework */; };
-		860C76CA280AD27800BAEEFC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 860C76C9280AD27800BAEEFC /* Realm */; };
-		860C76CC280AD27800BAEEFC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 860C76CB280AD27800BAEEFC /* RealmSwift */; };
-		860F5D712823ED920096CAC5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 860F5D702823ED920096CAC5 /* Realm */; };
-		860F5D732823ED920096CAC5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 860F5D722823ED920096CAC5 /* RealmSwift */; };
-		8636AC4C28307FB40052C13F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8636AC4B28307FB40052C13F /* Kingfisher */; };
-		86389CE727F85B35004D8788 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86389CE627F85B35004D8788 /* GoogleService-Info.plist */; };
+		2B77582C46C0E22D8B4B1E5E /* Pods_VKapp_VKappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0AEA83A9AA1DD8581BB5C /* Pods_VKapp_VKappUITests.framework */; };
 		8643D4AA282DC1190042332D /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4A9282DC1190042332D /* GetDataOperation.swift */; };
 		8643D4AC282DC1320042332D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4AB282DC1320042332D /* AsyncOperation.swift */; };
 		8643D4AE282DC1580042332D /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4AD282DC1580042332D /* ParseData.swift */; };
 		8643D4B0282DC1680042332D /* ReloadTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4AF282DC1680042332D /* ReloadTableController.swift */; };
-		8643D4B3282E74B60042332D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8643D4B2282E74B60042332D /* Alamofire */; };
-		86499977280DEA4E00972588 /* NewsPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86499975280DEA4E00972588 /* NewsPhotoCell.swift */; };
-		86499978280DEA4E00972588 /* NewsPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86499976280DEA4E00972588 /* NewsPhotoCell.xib */; };
-		864999802811693500972588 /* NewsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8649997E2811693500972588 /* NewsTextCell.swift */; };
-		864999812811693500972588 /* NewsTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8649997F2811693500972588 /* NewsTextCell.xib */; };
+		8646698F2837097E00734E6B /* VideoPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8646698D2837097E00734E6B /* VideoPostCell.swift */; };
+		864669902837097E00734E6B /* VideoPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8646698E2837097E00734E6B /* VideoPostCell.xib */; };
+		864669932837099300734E6B /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864669912837099300734E6B /* TextPostCell.swift */; };
+		864669942837099300734E6B /* TextPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864669922837099300734E6B /* TextPostCell.xib */; };
+		86466997283709D600734E6B /* ImagePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86466995283709D600734E6B /* ImagePostCell.swift */; };
+		86466998283709D600734E6B /* ImagePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86466996283709D600734E6B /* ImagePostCell.xib */; };
+		8646699B283709EB00734E6B /* ImageRePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86466999283709EB00734E6B /* ImageRePostCell.swift */; };
+		8646699C283709EB00734E6B /* ImageRePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8646699A283709EB00734E6B /* ImageRePostCell.xib */; };
+		8646699F28370A0800734E6B /* TextRePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8646699D28370A0800734E6B /* TextRePostCell.swift */; };
+		864669A028370A0800734E6B /* TextRePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8646699E28370A0800734E6B /* TextRePostCell.xib */; };
+		864669A328370A2100734E6B /* VideoRePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864669A128370A2100734E6B /* VideoRePostCell.swift */; };
+		864669A428370A2100734E6B /* VideoRePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 864669A228370A2100734E6B /* VideoRePostCell.xib */; };
 		865F2BD2281BBCF00045B076 /* ConfigureUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F2BD1281BBCF00045B076 /* ConfigureUrl.swift */; };
-		867616242811A6F50049BEC2 /* NewsVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867616222811A6F50049BEC2 /* NewsVideoCell.swift */; };
-		867616252811A6F50049BEC2 /* NewsVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867616232811A6F50049BEC2 /* NewsVideoCell.xib */; };
 		867753412817FAA800B3A9F9 /* LikesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867753402817FAA800B3A9F9 /* LikesModel.swift */; };
-		EC2CC439C8AA84DC12FE5119 /* Pods_VKapp_VKappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E301147B52E560A105D0A0 /* Pods_VKapp_VKappUITests.framework */; };
+		86DA0D1D2839B4FE00EE646C /* ViewNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DA0D1C2839B4FE00EE646C /* ViewNewsModel.swift */; };
+		9218A06DC2F011E1C88ACB26 /* Pods_VKappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FEA92D171E78321A499B64C /* Pods_VKappTests.framework */; };
+		D548D6501DFE40FC6A956C71 /* Pods_VKapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24274EE7D1A6618A627C818D /* Pods_VKapp.framework */; };
 		FA03461B2769008300DCBB60 /* AllCroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */; };
 		FA1600FF274F106200BF9C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1600FE274F106200BF9C63 /* AppDelegate.swift */; };
 		FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA160100274F106200BF9C63 /* SceneDelegate.swift */; };
@@ -88,26 +88,32 @@
 /* Begin PBXFileReference section */
 		1244EF5CF4327CB57C9743F2 /* Pods-VKapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.debug.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.debug.xcconfig"; sourceTree = "<group>"; };
 		160A790F5C5342ED50A2BF9C /* Pods-VKapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.release.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.release.xcconfig"; sourceTree = "<group>"; };
-		1E6C2DD171935628F3F00E3E /* Pods_VKapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24274EE7D1A6618A627C818D /* Pods_VKapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36975DB567A5347FB3A0BE08 /* Pods-VKapp-VKappUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp-VKappUITests.release.xcconfig"; path = "Target Support Files/Pods-VKapp-VKappUITests/Pods-VKapp-VKappUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B737C0A5DE135B3C17FB474 /* Pods-VKappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKappTests.debug.xcconfig"; path = "Target Support Files/Pods-VKappTests/Pods-VKappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5612FFE5E3F79E8EAB7657AE /* Pods-VKapp-VKappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp-VKappUITests.debug.xcconfig"; path = "Target Support Files/Pods-VKapp-VKappUITests/Pods-VKapp-VKappUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B2FB70243A9B7E0A88F1757 /* Pods-VKappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKappTests.release.xcconfig"; path = "Target Support Files/Pods-VKappTests/Pods-VKappTests.release.xcconfig"; sourceTree = "<group>"; };
-		70CBD5D773A646B4620B3FF7 /* Pods_VKappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		86389CE627F85B35004D8788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8643D4A9282DC1190042332D /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
 		8643D4AB282DC1320042332D /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		8643D4AD282DC1580042332D /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		8643D4AF282DC1680042332D /* ReloadTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReloadTableController.swift; path = ../../../../../../Documents/ReloadTableController.swift; sourceTree = "<group>"; };
-		86499975280DEA4E00972588 /* NewsPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPhotoCell.swift; sourceTree = "<group>"; };
-		86499976280DEA4E00972588 /* NewsPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsPhotoCell.xib; sourceTree = "<group>"; };
-		8649997E2811693500972588 /* NewsTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTextCell.swift; sourceTree = "<group>"; };
-		8649997F2811693500972588 /* NewsTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTextCell.xib; sourceTree = "<group>"; };
+		8646698D2837097E00734E6B /* VideoPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPostCell.swift; sourceTree = "<group>"; };
+		8646698E2837097E00734E6B /* VideoPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPostCell.xib; sourceTree = "<group>"; };
+		864669912837099300734E6B /* TextPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPostCell.swift; sourceTree = "<group>"; };
+		864669922837099300734E6B /* TextPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPostCell.xib; sourceTree = "<group>"; };
+		86466995283709D600734E6B /* ImagePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostCell.swift; sourceTree = "<group>"; };
+		86466996283709D600734E6B /* ImagePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePostCell.xib; sourceTree = "<group>"; };
+		86466999283709EB00734E6B /* ImageRePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRePostCell.swift; sourceTree = "<group>"; };
+		8646699A283709EB00734E6B /* ImageRePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageRePostCell.xib; sourceTree = "<group>"; };
+		8646699D28370A0800734E6B /* TextRePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRePostCell.swift; sourceTree = "<group>"; };
+		8646699E28370A0800734E6B /* TextRePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextRePostCell.xib; sourceTree = "<group>"; };
+		864669A128370A2100734E6B /* VideoRePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRePostCell.swift; sourceTree = "<group>"; };
+		864669A228370A2100734E6B /* VideoRePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoRePostCell.xib; sourceTree = "<group>"; };
 		865F2BD1281BBCF00045B076 /* ConfigureUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureUrl.swift; sourceTree = "<group>"; };
-		867616222811A6F50049BEC2 /* NewsVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVideoCell.swift; sourceTree = "<group>"; };
-		867616232811A6F50049BEC2 /* NewsVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsVideoCell.xib; sourceTree = "<group>"; };
 		867753402817FAA800B3A9F9 /* LikesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesModel.swift; sourceTree = "<group>"; };
-		91E301147B52E560A105D0A0 /* Pods_VKapp_VKappUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKapp_VKappUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86DA0D1C2839B4FE00EE646C /* ViewNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNewsModel.swift; sourceTree = "<group>"; };
+		8FEA92D171E78321A499B64C /* Pods_VKappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2A0AEA83A9AA1DD8581BB5C /* Pods_VKapp_VKappUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKapp_VKappUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0346192769008300DCBB60 /* AllCroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCroupTableViewCell.swift; sourceTree = "<group>"; };
 		FA1600FB274F106200BF9C63 /* VKapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1600FE274F106200BF9C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,13 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				860C76CC280AD27800BAEEFC /* RealmSwift in Frameworks */,
-				860C76CA280AD27800BAEEFC /* Realm in Frameworks */,
-				8636AC4C28307FB40052C13F /* Kingfisher in Frameworks */,
-				860F5D712823ED920096CAC5 /* Realm in Frameworks */,
-				8643D4B3282E74B60042332D /* Alamofire in Frameworks */,
-				860F5D732823ED920096CAC5 /* RealmSwift in Frameworks */,
-				2BC60052FD52F85FBA7B925F /* Pods_VKapp.framework in Frameworks */,
+				D548D6501DFE40FC6A956C71 /* Pods_VKapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D1C1201941ACDE95CE84C42 /* Pods_VKappTests.framework in Frameworks */,
+				9218A06DC2F011E1C88ACB26 /* Pods_VKappTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC2CC439C8AA84DC12FE5119 /* Pods_VKapp_VKappUITests.framework in Frameworks */,
+				2B77582C46C0E22D8B4B1E5E /* Pods_VKapp_VKappUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,39 +196,94 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
-		86499974280DEA3400972588 /* NewsPhoto */ = {
+		86466985283705EC00734E6B /* Attachments */ = {
 			isa = PBXGroup;
 			children = (
-				86499975280DEA4E00972588 /* NewsPhotoCell.swift */,
-				86499976280DEA4E00972588 /* NewsPhotoCell.xib */,
+				8646698C2837091900734E6B /* ImagePost */,
+				8646698B2837091200734E6B /* TextPost */,
+				8646698A2837090A00734E6B /* VideoPost */,
 			);
-			path = NewsPhoto;
+			path = Attachments;
 			sourceTree = "<group>";
 		};
-		86499979281168B400972588 /* NewsText */ = {
+		86466986283705F700734E6B /* CopyHistory */ = {
 			isa = PBXGroup;
 			children = (
-				8649997E2811693500972588 /* NewsTextCell.swift */,
-				8649997F2811693500972588 /* NewsTextCell.xib */,
+				864669892837064400734E6B /* VideoPost */,
+				864669882837063700734E6B /* TextPost */,
+				864669872837061700734E6B /* ImagePost */,
 			);
-			path = NewsText;
+			path = CopyHistory;
 			sourceTree = "<group>";
 		};
-		867616212811A6D50049BEC2 /* NewsVideo */ = {
+		864669872837061700734E6B /* ImagePost */ = {
 			isa = PBXGroup;
 			children = (
-				867616222811A6F50049BEC2 /* NewsVideoCell.swift */,
-				867616232811A6F50049BEC2 /* NewsVideoCell.xib */,
+				86466999283709EB00734E6B /* ImageRePostCell.swift */,
+				8646699A283709EB00734E6B /* ImageRePostCell.xib */,
 			);
-			path = NewsVideo;
+			path = ImagePost;
+			sourceTree = "<group>";
+		};
+		864669882837063700734E6B /* TextPost */ = {
+			isa = PBXGroup;
+			children = (
+				8646699D28370A0800734E6B /* TextRePostCell.swift */,
+				8646699E28370A0800734E6B /* TextRePostCell.xib */,
+			);
+			path = TextPost;
+			sourceTree = "<group>";
+		};
+		864669892837064400734E6B /* VideoPost */ = {
+			isa = PBXGroup;
+			children = (
+				864669A128370A2100734E6B /* VideoRePostCell.swift */,
+				864669A228370A2100734E6B /* VideoRePostCell.xib */,
+			);
+			path = VideoPost;
+			sourceTree = "<group>";
+		};
+		8646698A2837090A00734E6B /* VideoPost */ = {
+			isa = PBXGroup;
+			children = (
+				8646698D2837097E00734E6B /* VideoPostCell.swift */,
+				8646698E2837097E00734E6B /* VideoPostCell.xib */,
+			);
+			path = VideoPost;
+			sourceTree = "<group>";
+		};
+		8646698B2837091200734E6B /* TextPost */ = {
+			isa = PBXGroup;
+			children = (
+				864669912837099300734E6B /* TextPostCell.swift */,
+				864669922837099300734E6B /* TextPostCell.xib */,
+			);
+			path = TextPost;
+			sourceTree = "<group>";
+		};
+		8646698C2837091900734E6B /* ImagePost */ = {
+			isa = PBXGroup;
+			children = (
+				86466995283709D600734E6B /* ImagePostCell.swift */,
+				86466996283709D600734E6B /* ImagePostCell.xib */,
+			);
+			path = ImagePost;
+			sourceTree = "<group>";
+		};
+		86DA0D1B2839B4CA00EE646C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				86DA0D1C2839B4FE00EE646C /* ViewNewsModel.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		BF5A3BC2E96C4E3FB6B559A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1E6C2DD171935628F3F00E3E /* Pods_VKapp.framework */,
-				91E301147B52E560A105D0A0 /* Pods_VKapp_VKappUITests.framework */,
-				70CBD5D773A646B4620B3FF7 /* Pods_VKappTests.framework */,
+				24274EE7D1A6618A627C818D /* Pods_VKapp.framework */,
+				C2A0AEA83A9AA1DD8581BB5C /* Pods_VKapp_VKappUITests.framework */,
+				8FEA92D171E78321A499B64C /* Pods_VKappTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -285,7 +340,6 @@
 				FA16010A274F106400BF9C63 /* Assets.xcassets */,
 				FA16010C274F106400BF9C63 /* LaunchScreen.storyboard */,
 				FA16010F274F106400BF9C63 /* Info.plist */,
-				86389CE627F85B35004D8788 /* GoogleService-Info.plist */,
 				FA160107274F106200BF9C63 /* VKapp.xcdatamodeld */,
 			);
 			path = VKapp;
@@ -470,9 +524,9 @@
 		FADC7F77276A208B00C81260 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				867616212811A6D50049BEC2 /* NewsVideo */,
-				86499979281168B400972588 /* NewsText */,
-				86499974280DEA3400972588 /* NewsPhoto */,
+				86DA0D1B2839B4CA00EE646C /* Utils */,
+				86466986283705F700734E6B /* CopyHistory */,
+				86466985283705EC00734E6B /* Attachments */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -520,14 +574,6 @@
 			dependencies = (
 			);
 			name = VKapp;
-			packageProductDependencies = (
-				860C76C9280AD27800BAEEFC /* Realm */,
-				860C76CB280AD27800BAEEFC /* RealmSwift */,
-				860F5D702823ED920096CAC5 /* Realm */,
-				860F5D722823ED920096CAC5 /* RealmSwift */,
-				8643D4B2282E74B60042332D /* Alamofire */,
-				8636AC4B28307FB40052C13F /* Kingfisher */,
-			);
 			productName = VKapp;
 			productReference = FA1600FB274F106200BF9C63 /* VKapp.app */;
 			productType = "com.apple.product-type.application";
@@ -603,12 +649,6 @@
 				Base,
 			);
 			mainGroup = FA1600F2274F106200BF9C63;
-			packageReferences = (
-				860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */,
-				860F5D6F2823ED920096CAC5 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				8643D4B1282E74B60042332D /* XCRemoteSwiftPackageReference "Alamofire" */,
-				8636AC4A28307FB30052C13F /* XCRemoteSwiftPackageReference "Kingfisher" */,
-			);
 			productRefGroup = FA1600FC274F106200BF9C63 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -626,15 +666,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA56C92275E446A000DDB92 /* FriendsViewCell.xib in Resources */,
-				86499978280DEA4E00972588 /* NewsPhotoCell.xib in Resources */,
 				FA16010E274F106400BF9C63 /* LaunchScreen.storyboard in Resources */,
+				864669902837097E00734E6B /* VideoPostCell.xib in Resources */,
+				86466998283709D600734E6B /* ImagePostCell.xib in Resources */,
+				864669942837099300734E6B /* TextPostCell.xib in Resources */,
 				FA29F312275A434200BBB0EE /* GroupTableViewCell.xib in Resources */,
-				867616252811A6F50049BEC2 /* NewsVideoCell.xib in Resources */,
+				864669A428370A2100734E6B /* VideoRePostCell.xib in Resources */,
 				FA16010B274F106400BF9C63 /* Assets.xcassets in Resources */,
-				864999812811693500972588 /* NewsTextCell.xib in Resources */,
+				864669A028370A0800734E6B /* TextRePostCell.xib in Resources */,
 				FA160106274F106200BF9C63 /* Main.storyboard in Resources */,
 				FAB7738527556653007F37C1 /* FriendsTableViewCell.xib in Resources */,
-				86389CE727F85B35004D8788 /* GoogleService-Info.plist in Resources */,
+				8646699C283709EB00734E6B /* ImageRePostCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,17 +804,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				864669932837099300734E6B /* TextPostCell.swift in Sources */,
+				86466997283709D600734E6B /* ImagePostCell.swift in Sources */,
 				867753412817FAA800B3A9F9 /* LikesModel.swift in Sources */,
 				FAFF0D66279D84210051B993 /* FriendPhotosModel.swift in Sources */,
 				FA581DDA2778F8F700D7483D /* AppUtility.swift in Sources */,
 				FA160109274F106200BF9C63 /* VKapp.xcdatamodeld in Sources */,
 				FA581DD82778D3F300D7483D /* PopAnimator.swift in Sources */,
 				FAA7EA7E279964F000F96AA2 /* ImageLoader.swift in Sources */,
+				8646699B283709EB00734E6B /* ImageRePostCell.swift in Sources */,
 				8643D4AE282DC1580042332D /* ParseData.swift in Sources */,
 				FAA56C98275E4742000DDB92 /* FriendsTableViewController.swift in Sources */,
 				FAA56C91275E446A000DDB92 /* FriendsViewCell.swift in Sources */,
-				867616242811A6F50049BEC2 /* NewsVideoCell.swift in Sources */,
 				FAF15C2F277228FF006FC004 /* CommentTableViewCell.swift in Sources */,
+				864669A328370A2100734E6B /* VideoRePostCell.swift in Sources */,
 				FA581DD62778C61400D7483D /* PushAnimator.swift in Sources */,
 				FA17B84027B5443600526EE1 /* UserModel.swift in Sources */,
 				FAFF0D5F279C3A550051B993 /* GroupsModel.swift in Sources */,
@@ -781,9 +826,7 @@
 				FADEE0C5275FAD94009BBFFF /* AllGroupTableViewController.swift in Sources */,
 				FA9F079E27A7429400BB129C /* RealmCacheService.swift in Sources */,
 				FA581DD32778C0E000D7483D /* InteractiveTransition.swift in Sources */,
-				86499977280DEA4E00972588 /* NewsPhotoCell.swift in Sources */,
 				FA581DD12778BF8C00D7483D /* CustomNavigationController.swift in Sources */,
-				864999802811693500972588 /* NewsTextCell.swift in Sources */,
 				FAB77381275564DE007F37C1 /* FriendsTableViewCell.swift in Sources */,
 				8643D4AC282DC1320042332D /* AsyncOperation.swift in Sources */,
 				FA23A8CA279033B000A7FC12 /* LoginVkController.swift in Sources */,
@@ -793,8 +836,11 @@
 				FACFFEB42781E3C9009B46DB /* Session.swift in Sources */,
 				FAD04F1A27B0E127006B4233 /* NewsModel.swift in Sources */,
 				FADC7F76276A208600C81260 /* NewsTableViewController.swift in Sources */,
+				8646698F2837097E00734E6B /* VideoPostCell.swift in Sources */,
 				FA160101274F106200BF9C63 /* SceneDelegate.swift in Sources */,
+				8646699F28370A0800734E6B /* TextRePostCell.swift in Sources */,
 				FAA7EA80279968FF00F96AA2 /* FriendModel.swift in Sources */,
+				86DA0D1D2839B4FE00EE646C /* ViewNewsModel.swift in Sources */,
 				FA998ABD27C050EE0054B888 /* GroupModel.swift in Sources */,
 				FA227BE027C2DF1B00EBDE42 /* VideoModel.swift in Sources */,
 				FA29F30F275A42DE00BBB0EE /* GroupTableViewController.swift in Sources */,
@@ -1174,74 +1220,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		860F5D6F2823ED920096CAC5 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		8636AC4A28307FB30052C13F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		8643D4B1282E74B60042332D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		860C76C9280AD27800BAEEFC /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		860C76CB280AD27800BAEEFC /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		860F5D702823ED920096CAC5 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		860F5D722823ED920096CAC5 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 860C76C8280AD27800BAEEFC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		8636AC4B28307FB40052C13F /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8636AC4A28307FB30052C13F /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		8643D4B2282E74B60042332D /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8643D4B1282E74B60042332D /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FA160107274F106200BF9C63 /* VKapp.xcdatamodeld */ = {

@@ -57,7 +57,7 @@ extension FriendsTableViewController {
     
     func fetchFriends() {
         firstly {
-            URLSession.shared.dataTask(.promise, with: getUrl.getUrlFriends()!)
+            URLSession.shared.dataTask(.promise, with: getUrl.getUrl(parametrs: .friendsGet)!)
         }
         .compactMap { try JSONDecoder().decode(FriendVk.self, from: $0.data) }
         .done { friends in

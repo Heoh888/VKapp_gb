@@ -8,10 +8,13 @@
 import Foundation
 import PromiseKit
 
-fileprivate enum TypeMetod: String {
+enum Parametrs: String {
     case friendsGet = "/method/friends.get"
     case gpoupsGet = "/method/groups.get"
     case newsfeed = "/method/newsfeed.get"
+    case userGet = "/method/users.get"
+    case isLiked = "/method/likes.isLiked"
+    case likesGetList = "/method/likes.getList"
 }
 
 fileprivate enum TypeRequsts: String {
@@ -28,41 +31,47 @@ class ConfigureUrl {
         return session
     }()
     
-    func getUrlFriends() -> URL? {
+    func getUrl(parametrs: Parametrs,
+                id: String = "",
+                type: String = "") -> URL? {
+
         guard let token = Session.instance.token else { return nil }
-        let params: [String: String] = ["access_token": token,
-                                        "fields": "photo_50"]
-        let url = configureUrl(method: .friendsGet,
-                               httpMethod: .get,
-                               params: params)
-        return url
-    }
-    
-    func getUrlGrups() -> URL? {
-        guard let token = Session.instance.token else { return nil}
-        let params: [String: String] = ["access_token": token,
-                                        "fields": "photo_50",
-                                        "extended": "1"
-        ]
-        let url = configureUrl(method: .gpoupsGet,
-                               httpMethod: .get,
-                               params: params)
-        return url
-    }
-    
-    func getUrlNews() -> URL? {
-        guard let token = Session.instance.token else { return nil}
-        let params: [String: String] = ["access_token": token,
-                                        "filters": "post",
-        ]
-        let url = configureUrl(method: .newsfeed,
+        
+        let params: [String: String]
+        
+        switch parametrs {
+        case .newsfeed: params = ["access_token": token,
+                                  "filters": "post",]
+            
+        case .gpoupsGet: params = ["access_token": token,
+                                   "fields": "photo_50",
+                                   "extended": "1"]
+            
+        case .friendsGet: params = ["access_token": token,
+                                    "fields" : "photo_50"]
+            
+        case .userGet: params = ["access_token": token,
+                                 "user_ids": id,
+                                 "fields": "photo_50"]
+            
+        case .isLiked: params = ["access_token": token,
+                                 "type": type,
+                                 "item_id": id,]
+            
+        case .likesGetList: params = ["access_token": token,
+                                      "type": type,
+                                      "item_id": id,
+                                      "filter": "likes" ]
+        }
+        
+        let url = configureUrl(method: parametrs,
                                httpMethod: .get,
                                params: params)
         return url
     }
 }
 private extension ConfigureUrl {
-    func configureUrl(method: TypeMetod,
+    func configureUrl(method: Parametrs,
                       httpMethod: TypeRequsts,
                       params: [String : String]) -> URL {
         var queryItem = [URLQueryItem]()

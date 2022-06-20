@@ -43,7 +43,7 @@ final class RequestsServer {
         let session = URLSession(configuration: config)
         return session
     }()
-    
+    //
     func likesGetList(type: String, itemId: Int, ownerId: Int, complition: @escaping (Result<LikesModel, RequestsServerErroe>) -> ()) {
         guard let token = Session.instance.token else {
             return
@@ -57,6 +57,7 @@ final class RequestsServer {
         let url = configureUrl(method: .likesGetList,
                                httpMethod: .get,
                                params: params)
+        print(url)
 
         
         let task = session.dataTask(with: url) { data, response, error in
@@ -77,7 +78,7 @@ final class RequestsServer {
         task.resume()
     }
     
-    
+    //
     func likesIsLiked(type: String, itemId: Int, ownerId: Int, complition: @escaping (Result<LikesModel, RequestsServerErroe>) -> ()) {
         guard let token = Session.instance.token else {
             return
@@ -120,6 +121,7 @@ final class RequestsServer {
         let url = configureUrl(method: .likeAdd,
                                httpMethod: .get,
                                params: params)
+        print(url)
         let task = session.dataTask(with: url)
         task.resume()
     }
@@ -139,7 +141,7 @@ final class RequestsServer {
         let task = session.dataTask(with: url)
         task.resume()
     }
-    
+    //
     func loadNews(complition: @escaping (Result<NewsVk, RequestsServerErroe>) -> ()){
         guard let token = Session.instance.token else {
             return

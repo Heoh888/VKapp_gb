@@ -5,7 +5,6 @@
 //  Created by MacBook on 23.01.2022.
 //
 import Foundation
-import RealmSwift
 
 struct FriendPhotoVk: Decodable {
     let response: ResponceFriendsPhoto

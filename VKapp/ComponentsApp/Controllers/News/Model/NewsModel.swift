@@ -7,6 +7,24 @@
 
 import Foundation
 
+protocol PostCellProtocol {
+    func set<T: PostCellDataProtocol>(value: T)
+}
+
+protocol PostCellDataProtocol {
+    var sourceId: Int? { get }
+    var ownerId: Int? { get }
+    var text: String? { get }
+    var attachments: [Attachments]? { get }
+    var copyHistory: [CopyHistory]? { get }
+    var likes: Likes? { get }
+    var comments: Comments? { get }
+    var reposts: Reposts? { get }
+    var views: Views? { get }
+    var postId: Int? { get }
+    var type: String? { get }
+}
+
 struct NewsVk: Decodable {
     let response: ResponceNews
 }
@@ -17,12 +35,21 @@ struct ResponceNews: Decodable {
 
 struct News: Decodable {
 
+    enum PostType: String {
+        case postImageOnly = "ImagePostCell"
+        case postTextOnly = "TextPostCell"
+        case postVideoOnly = "VideoPostCell"
+        case rePostImageOnly = "ImageRePostCell"
+        case rePostTextOnly = "TextRePostCell"
+        case rePostVideoOnly = "VideoRePostCell"
+    }
+
     let sourceId: Int?
     let ownerId: Int?
     let data: Int?
     let text: String?
     let attachments: [Attachments]?
-    let copyHistory: [News]?
+    let copyHistory: [CopyHistory]?
     let comments: Comments?
     var likes: Likes?
     let reposts: Reposts?
@@ -43,6 +70,39 @@ struct News: Decodable {
         case views = "views"
         case postId = "post_id"
         case type = "type"
+    }
+    var postType: PostType? {
+        let hasAttachments = attachments != nil
+        let hasCopyHistory = copyHistory != nil
+        
+        switch (hasAttachments, hasCopyHistory) {
+        case (true, false):
+            let hasImage = attachments![0].photo != nil
+            let hasVideo = attachments![0].video != nil
+            let hasText = text != ""
+            switch (hasImage, hasText, hasVideo) {
+            case (true, false, false): return .postImageOnly
+            case (true, true, false): return .postImageOnly
+            case (false, true, false): return .postTextOnly
+            case (false, false, true): return .postVideoOnly
+            case (false, true, true): return .postVideoOnly
+            default: return nil
+            }
+        case (false, true):
+            let hasImage = copyHistory![0].attachments?[0].photo != nil
+            let hasVideo = copyHistory![0].attachments?[0].video != nil
+            let hasText = copyHistory![0].text != ""
+            switch (hasImage, hasText, hasVideo) {
+            case (true, false, false): return .rePostImageOnly
+            case (true, true, false): return .rePostImageOnly
+            case (false, true, false): return .rePostTextOnly
+            case (false, false, true): return .rePostVideoOnly
+            case (false, true, true): return .rePostVideoOnly
+            default: return nil
+            }
+        case (false, false): return nil
+        case (true, true): return nil
+        }
     }
 }
 
@@ -104,10 +164,18 @@ struct Attachments: Decodable {
 }
 
 struct CopyHistory: Decodable {
-    let type: String
+    let id: Int?
+    let ownerId: Int?
+    let fromId: Int?
+    let text: String?
+    let attachments: [Attachments]?
     
     enum CodingKeys: String, CodingKey {
-        case type = "type"
+        case id = "id"
+        case ownerId = "owner_id"
+        case fromId = "from_id"
+        case text = "text"
+        case attachments = "attachments"
     }
 }
 // MARK: Модель для новостей типа "Like"
@@ -133,3 +201,4 @@ struct Views: Decodable {
     var count: Int
 }
 
+extension News: PostCellDataProtocol {}
