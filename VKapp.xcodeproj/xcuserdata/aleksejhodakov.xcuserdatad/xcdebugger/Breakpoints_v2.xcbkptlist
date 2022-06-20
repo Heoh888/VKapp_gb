@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "7E5DB57A-84EB-4B3D-830D-36CC723F39DD"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "37BE6E5B-6C99-4795-942F-4BFAAAA339CB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "NewsTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA5EF410-76C4-4118-ABB8-6242CC0A3346"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "NewsTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "CA5EF410-76C4-4118-ABB8-6242CC0A3346 - 314731d8789cb79d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.NewsTableViewController.__allocating_init(style: __C.UITableViewStyle) -&gt; VKapp.NewsTableViewController"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksejhodakov/Desktop/GitHub/VKapp_gb/VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "CA5EF410-76C4-4118-ABB8-6242CC0A3346 - 9171dbcae0ec64e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.NewsTableViewController.init(style: __C.UITableViewStyle) -&gt; VKapp.NewsTableViewController"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksejhodakov/Desktop/GitHub/VKapp_gb/VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  uuid = "CA5EF410-76C4-4118-ABB8-6242CC0A3346 - f4dba7b13e37d95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.NewsTableViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; VKapp.NewsTableViewController"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksejhodakov/Desktop/GitHub/VKapp_gb/VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "CA5EF410-76C4-4118-ABB8-6242CC0A3346 - 3b7dcd83dc1b275a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.NewsTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; VKapp.NewsTableViewController"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksejhodakov/Desktop/GitHub/VKapp_gb/VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "139">
+               </Location>
+               <Location
+                  uuid = "CA5EF410-76C4-4118-ABB8-6242CC0A3346 - c9290adfc736309d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.NewsTableViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;VKapp.NewsTableViewController&gt;"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksejhodakov/Desktop/GitHub/VKapp_gb/VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "CA5EF410-76C4-4118-ABB8-6242CC0A3346 - 2b5c916e71d90126"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.NewsTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;VKapp.NewsTableViewController&gt;"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksejhodakov/Desktop/GitHub/VKapp_gb/VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "CA5EF410-76C4-4118-ABB8-6242CC0A3346 - de9941e274937bce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.NewsTableViewController.__deallocating_deinit"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksejhodakov/Desktop/GitHub/VKapp_gb/VKapp/ComponentsApp/Controllers/News/NewsTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8DB4EE20-D6F6-4D4B-9446-A8B601B045E5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/ComponentsApp/ServerClient/RequestsServer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "loadVideo(id:ownerid:complition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

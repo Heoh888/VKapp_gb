@@ -7,89 +7,62 @@
 
 import UIKit
 
+enum TypeModel: String {
+    case textCell = "NewsTextCell"
+    case photoCell = "NewsPhotoCell"
+    case videoCell = "NewsVideoCell"
+    case noPost = "noPost"
+}
+
 class NewsTableViewController: UITableViewController {
     
-    var allNews = News()
-    var like = NewsTableViewCell()
+    @IBOutlet var tableViewNews: UITableView!
     
-    var textNews: [String] = []
-    var news: [News1] = []
+    var news: [News] = []
     
     private var service = RequestsServer()
-    
-    @IBOutlet var tableViewNews: UITableView!
     
     // MARK: - lifeСycle
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchNews()
-        tableViewNews.estimatedRowHeight = 7
-        tableViewNews.rowHeight = UITableView.automaticDimension
-        tableViewNews.estimatedRowHeight = 229.0
         AppUtility.lockOrientation(.portrait)
+        tableViewNews.register(UINib(nibName: "NewsPhotoCell", bundle: nil), forCellReuseIdentifier: "NewsPhotoCell")
+        tableViewNews.register(UINib(nibName: "NewsTextCell", bundle: nil), forCellReuseIdentifier: "NewsTextCell")
+        tableViewNews.register(UINib(nibName: "NewsVideoCell", bundle: nil), forCellReuseIdentifier: "NewsVideoCell")
     }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return news.count
     }
-        
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
-        // Предварительно очистим все пространства
-        cell.headerSpace.subviews.forEach { $0.removeFromSuperview() }
-        cell.textSpace.subviews.forEach { $0.removeFromSuperview() }
-        cell.imageSpace.subviews.forEach { $0.removeFromSuperview() }
-        tableView.separatorColor = UIColor.clear
-        cell.configure(news: news[indexPath.row])
-        return cell
+        var cell: AnyObject!
+        print(news[indexPath.row])
+        if parsingModel(model: news[indexPath.row]).rawValue == "noPost" {
+            cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell", for: indexPath) as! NewsTextCell
+        }
+        if parsingModel(model: news[indexPath.row]).rawValue == "NewsTextCell" {
+             cell = tableView.dequeueReusableCell(withIdentifier: "NewsTextCell", for: indexPath) as! NewsTextCell
+            (cell as! NewsTextCell).configure(item: news[indexPath.row])
+
+        }
+        if parsingModel(model: news[indexPath.row]).rawValue == "NewsPhotoCell" {
+             cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell", for: indexPath) as! NewsPhotoCell
+            (cell as! NewsPhotoCell).configure(item: news[indexPath.row])
+
+        }
+        if parsingModel(model: news[indexPath.row]).rawValue == "NewsVideoCell" {
+             cell = tableView.dequeueReusableCell(withIdentifier: "NewsVideoCell", for: indexPath) as! NewsVideoCell
+            (cell as! NewsVideoCell).configure(item: news[indexPath.row])
+
+        }
+        return cell as! UITableViewCell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyoard.instantiateViewController(identifier: "PostViewController") as! PostViewController
-        vc.index = IndexPath(row: indexPath[1], section: 0)
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
-    // MARK: - Actions
-    @IBAction func likeButton(_ sender:AnyObject)   {
-        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
-        let index = self.tableView.indexPathForRow(at: buttonPosition)
-//        if allNews.news[index![1]].likeStatus == false {
-//            allNews.news[index![1]].like += 1
-//            allNews.news[index![1]].likeStatus = true
-//            allNews.news[index![1]].animation = true
-//        } else {
-//            allNews.news[index![1]].like -= 1
-//            allNews.news[index![1]].likeStatus = false
-//        }
-        tableView.reloadRows(at: [IndexPath(row: index![1], section: index![0])],
-                             with: .automatic)
-    }
-    
-    @IBAction func rePostButton(_ sender: AnyObject) {
-        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
-        let index = self.tableView.indexPathForRow(at: buttonPosition)
-        let items:[Any] = [allNews.news[index![1]].imagePost]
-        allNews.news[index![1]].rePost += 1
-        let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        self.present(avc, animated: true, completion: nil)
-        tableViewNews.reloadData()
-    }
-    
 }
+
 extension NewsTableViewController {
-    func creatingArrayPhotos(arrayNews: [News1]) {
-        for item in arrayNews {
-            textNews.append(item.text ?? "" )
-        }
-        DispatchQueue.main.async {
-            self.tableViewNews.reloadData()
-        }
-    }
     
     func fetchNews() {
         service.loadNews{  [weak self]  result in
@@ -97,12 +70,43 @@ extension NewsTableViewController {
             switch result {
             case .success(let news):
                 self.news = news.response.items
-                self.creatingArrayPhotos(arrayNews: news.response.items)
+                DispatchQueue.main.async {
+                    self.tableViewNews.reloadData()
+                }
             case .failure(_):
                 return
             }
         }
-        
+    }
+    
+    func  parsingModel(model: News) -> TypeModel {
+        var result: TypeModel = .noPost
+
+        if model.attachments == nil &&  model.copyHistory == nil{
+            result = .noPost
+        } else {
+            if model.attachments != nil {
+                if model.attachments![0].photo != nil {
+                    result = .photoCell
+                } else if model.attachments![0].video != nil {
+                    result = .videoCell
+                } else {
+                    result = .textCell
+                }
+            }
+            
+            if model.copyHistory != nil {
+                if model.copyHistory![0].attachments != nil {
+                    if model.copyHistory![0].attachments![0].photo != nil {
+                        result = .photoCell
+                    } else if model.copyHistory![0].attachments![0].video != nil {
+                        result = .videoCell
+                    } else {
+                        result = .textCell
+                    }
+                }
+            }
+        }
+        return result
     }
 }
-

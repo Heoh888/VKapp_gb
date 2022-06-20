@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import FirebaseDatabase
 
 class GroupTableViewController: UITableViewController {
     
@@ -17,8 +16,6 @@ class GroupTableViewController: UITableViewController {
     var persistence = RealmCacheService()
     
     private var notificationToken: NotificationToken? = nil
-    private var communitesFirebase = [FireBaseGroup]()
-    private let ref = Database.database().reference(withPath: "Communities")
     private lazy var realm = RealmCacheService()
     private var groupResponce: Results<Group>? {
         realm.read(Group.self)
@@ -32,19 +29,6 @@ class GroupTableViewController: UITableViewController {
         groupTableView.register(UINib(nibName: "GroupTableViewCell", bundle: nil), forCellReuseIdentifier: "CellViewGroup")
         AppUtility.lockOrientation(.portrait)
         
-        ref.observe(.value, with: { snapshot in
-            var communities: [FireBaseGroup] = []
-            print(snapshot, "++++++++++++++++++++++++++++++++++++++++++")
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot, let group = FireBaseGroup(snapshot: snapshot)
-                {
-                    communities.append(group)
-                }
-            }
-            print("Обнавлен список добавленных групп")
-            communities.forEach { print($0.groupName) }
-            print(communities.count)
-        })
     }
     
     // MARK: - Table view data source
@@ -89,9 +73,6 @@ class GroupTableViewController: UITableViewController {
                                 try! self.persistence.add(object: group)
                             }
                         }
-                        let fireCom = FireBaseGroup(name: group.name.lowercased(), id: group.id)
-                        let comRef = self.ref.child(group.name.lowercased())
-                        comRef.setValue(fireCom.toAnyObject())
                     }
                 }
     }
