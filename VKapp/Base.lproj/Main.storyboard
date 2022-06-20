@@ -224,7 +224,7 @@
         <!--Новости-->
         <scene sceneID="Izg-Qr-9BJ">
             <objects>
-                <tableViewController storyboardIdentifier="NewsTableViewController" id="jAX-vo-6S7" customClass="NewsTableViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NewsTableViewController" modalPresentationStyle="fullScreen" id="jAX-vo-6S7" customClass="NewsTableViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="RdF-Ru-XlV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

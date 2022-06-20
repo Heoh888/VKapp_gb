@@ -95,6 +95,8 @@ extension ImagePostCell: PostCellProtocol {
             self.nameUser.text = userName
         }
         
+        print(textPost.font.lineHeight)
+        textPost.frame.size.width = CGFloat(200)
         textPost.text = value.text!
         
         guard let photo = value.attachments![0].photo?.sizes else { return }
